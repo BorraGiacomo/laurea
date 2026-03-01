@@ -10,7 +10,7 @@ def main():
     #Given theta (distribution of the hat and check population on the routes):
     theta_hat = np.array([1/2, 1/2])
     
-    theta_check = np.array([1/2, 1/2])
+    theta_check = np.array([0, 1])
     
     #Population on each road:
     pop_hat = param.Gamma_hat @ theta_hat.T
