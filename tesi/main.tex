@@ -1,10 +1,14 @@
 \documentclass[12pt,a4paper,hidelinks]{article}
 \input{premable}
 \textwidth=450pt\oddsidemargin=0pt
+
 \begin{document}
 
 \include{titolo/title}
 
+\newgeometry{top=4cm,bottom=4cm,left=2.5cm,right=2.5cm}
+\setlength{\textheight}{21cm}
+\begin{spacing}{1.7}
 \tableofcontents
 
 \include{0_introduzione}
@@ -17,5 +21,5 @@
 \nocite{*}
 
 \printbibliography
-
+\end{spacing}
 \end{document}
