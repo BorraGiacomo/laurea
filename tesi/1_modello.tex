@@ -1,5 +1,6 @@
 \section{Modello}
 
+In questa sezione sono presentati i concetti teorici utili all'analisi del problema. Per una trattazione più approfondita, vedi \cite{MR4911797}.
 \subsection{Descrizione del modello}
 
 Consideriamo $N$ strade $r_1,...,r_N$, aventi un unico senso di percorrenza, tali che ogni strada $r_i, i=1,...,N$
@@ -33,6 +34,19 @@ Costruiamo ora la matrice $\widehat{\Gamma}$, di dimensioni $N\times\widehat{n}$
     0 &\text{ altrimenti}
 \end{cases} 
 \text{ con } h\in\{1,...,N\} \text{ e } i\in\{1,...,\widecheck{n}\}\text{.}
+\]
+
+Supponiamo che l'ammontare di veicoli della popolazione \textit{hat} presenti sulla rete $\widehat{\mathcal{N}}$ sia 1
+(analogo per la popolazione \textit{check} presente sulla rete $\widecheck{\mathcal{N}}$). Chiamiamo $\widehat{\theta_i}$ il numero
+di viaggiatori che scelgono di percorrere $\widehat{\gamma}_i$, con $i\in\{1,...,\widehat{n}\}$, e $\widecheck{\theta_j}$ il numero di
+viaggiatori che scelgono di percorrere $\widecheck{\gamma}_j$, con $j\in\{1,...,\widecheck{n}\}$. Allora $\widehat{\theta}\equiv(\widehat{\theta}_1,...,\widehat{\theta}_{\widehat{n}})$
+è un punto del simplesso $S^{\widehat{n}}$ di dimensione $\widehat{n}-1$; rispettivamente $\widecheck{\theta}\equiv(\widecheck{\theta}_1,...,\widecheck{\theta}_{\widecheck{n}})$
+è un punto del simplesso $S^{\widecheck{n}}$ di dimensione $\widecheck{n}-1$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono identificabili
+come vettori colonna, perciò il numero totale di veicoli sulla strada $r_h$ è:
+\[
+\widehat{\Gamma}_h\widehat{\theta}+\widecheck{\Gamma}_h\widecheck{\theta}=
+\sum_{i=1}^{\widehat{n}}\widehat{\Gamma}_{hi}\widehat{\theta}_i+
+\sum_{j=1}^{\widecheck{n}}\widecheck{\Gamma}_{hj}\widecheck{\theta}_j
 \]
 
 \subsection{Teoremi}

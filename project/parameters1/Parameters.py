@@ -29,7 +29,9 @@ class Parameters:
         :param nu_check: array where `nu_check[i]` is the number of travelers of the check population on road `i+1`
         :return: array with dimension `n_roads` with the costs (travel time) of the roads for the hat population. If no hat travelers use the road `i+1` then `return[i]` is set to 0 (since defining such a function is unnecessary)
         """
-        return np.array([1+eta_hat[0], 3+eta_hat[1], 1+eta_hat[2]+eta_check[2], 0., 0.])
+        eta_hat_t = eta_hat.flatten()
+        eta_check_t = eta_check.flatten()
+        return np.array([1+eta_hat_t[0], 3+eta_hat_t[1], 1+eta_hat_t[2]+eta_check_t[2], 0., 0.])
     
     def tau_check(self, eta_hat, eta_check):
         """
@@ -39,4 +41,6 @@ class Parameters:
         :param nu_check: array where `nu_check[i]` is the number of travelers of the check population on road `i+1`
         :return: array with dimension `n_roads` with the costs (travel time) of the roads for the check population. If no check travelers use the road `i+1` then `return[i]` is set to 0 (since defining such a function is unnecessary)
         """
-        return np.array([0., 0., 1+eta_hat[2]+eta_check[2], 1+eta_check[3], 3+eta_check[4]])
+        eta_hat_t = eta_hat.flatten()
+        eta_check_t = eta_check.flatten()
+        return np.array([0., 0., 1+eta_hat_t[2]+eta_check_t[2], 1+eta_check_t[3], 3+eta_check_t[4]])
