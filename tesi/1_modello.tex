@@ -43,11 +43,46 @@ viaggiatori che scelgono di percorrere $\widecheck{\gamma}_j$, con $j\in\{1,...,
 è un punto del simplesso $S^{\widehat{n}}$ di dimensione $\widehat{n}-1$; rispettivamente $\widecheck{\theta}\equiv(\widecheck{\theta}_1,...,\widecheck{\theta}_{\widecheck{n}})$
 è un punto del simplesso $S^{\widecheck{n}}$ di dimensione $\widecheck{n}-1$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono identificabili
 come vettori colonna, perciò il numero totale di veicoli sulla strada $r_h$ è:
-\[
-\widehat{\Gamma}_h\widehat{\theta}+\widecheck{\Gamma}_h\widecheck{\theta}=
-\sum_{i=1}^{\widehat{n}}\widehat{\Gamma}_{hi}\widehat{\theta}_i+
-\sum_{j=1}^{\widecheck{n}}\widecheck{\Gamma}_{hj}\widecheck{\theta}_j
-\]
+\begin{equation}
+    \widehat{\Gamma}_h\widehat{\theta}+\widecheck{\Gamma}_h\widecheck{\theta}=
+    \sum_{i=1}^{\widehat{n}}\widehat{\Gamma}_{hi}\widehat{\theta}_i+
+    \sum_{j=1}^{\widecheck{n}}\widecheck{\Gamma}_{hj}\widecheck{\theta}_j
+    \label{eq:1}
+\end{equation}
+
+Definiamo inoltre i vettori $\widehat{\nu}$ e $\widecheck{\nu}$, le cui componenti, rispettivamente $\widehat{\nu}_i$ e $\widecheck{\nu}_i$ con $i=1,...,N$,
+rappresentano il numero di veicoli (rispettivamente delle popolazioni \textit{hat} e \textit{check}) sulla strada $r_i$.
+Sappiamo dunque che:
+\begin{equation}
+    \widehat{\nu}=\widehat{\Gamma}\widehat{\theta}
+    \label{eq:2}
+\end{equation}
+\begin{equation}
+    \widecheck{\nu}=\widecheck{\Gamma}\widecheck{\theta}
+    \label{eq:3}
+\end{equation}
+
+Introduciamo ora $\widehat{\tau}_h=\widehat{\tau}_h(\widehat{\eta},\widecheck{\eta})$ e $\widecheck{\tau}_h=\widecheck{\tau}_h(\widehat{\eta},\widecheck{\eta})$,
+rispettivamente i costi della strada $r_h$, $h\in\{1,...,N\}$, per la popolazione \textit{hat} e per la popolazione \textit{check}. I costi possono rappresentare, per esempio,
+il tempo necessario a percorrere la strada, il consumo di benzina oppure l'emissione di inquinanti. In questa trattazione considereremo i costi come tempi di viaggio.
+
+Denotiamo con $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ i tempi di viaggio dei percorsi $\widehat{\gamma}_i$ e $\widecheck{\gamma}_j$.
+$\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ sono componenti dei vettori $\widehat{T}(\theta)$ e $\widecheck{T}(\theta)$.
+Sfruttando anche \ref{eq:2} e \ref{eq:3}:
+\begin{equation}
+    \widehat{T}(\theta)\coloneqq\widehat{\Gamma}^{\intercal}\widehat{\tau}(\widehat{\nu},\widecheck{\nu})
+    \text{\quad e\quad}
+    \widehat{T}_i(\theta)=\sum_{h=1}^{N}\widehat{\Gamma}_{hi}\widehat{\tau}_h(\widehat{\nu}_h,\widecheck{\nu}_h)
+    \text{, }i\in\{1,...,\widehat{n}\};
+    \label{eq:4}
+\end{equation}
+\begin{equation}
+    \widecheck{T}(\theta)\coloneqq\widecheck{\Gamma}^{\intercal}\widecheck{\tau}(\widehat{\nu},\widecheck{\nu})
+    \text{\quad e\quad}
+    \widecheck{T}_j(\theta)=\sum_{h=1}^{N}\widecheck{\Gamma}_{hj}\widecheck{\tau}_h(\widehat{\nu}_h,\widecheck{\nu}_h)
+    \text{, }j\in\{1,...,\widecheck{n}\}.
+    \label{eq:5}
+\end{equation}
 
 \subsection{Teoremi}
 

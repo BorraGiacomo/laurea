@@ -15,13 +15,13 @@ def main():
                             [1/2]])
     
     #Population on each road:
-    pop_hat = param.Gamma_hat @ theta_hat
+    nu_hat = param.Gamma_hat @ theta_hat
     
-    pop_check = param.Gamma_check @ theta_check
+    nu_check = param.Gamma_check @ theta_check
     
     #Travel times for every route
-    T_hat = param.tau_hat(pop_hat, pop_check) @ param.Gamma_hat
-    T_check = param.tau_check(pop_hat, pop_check) @ param.Gamma_check
+    T_hat = param.Gamma_hat.T @ param.tau_hat(nu_hat, nu_check)
+    T_check = param.Gamma_check.T @ param.tau_check(nu_hat, nu_check)
     
     print(T_hat)
     print(T_check)
