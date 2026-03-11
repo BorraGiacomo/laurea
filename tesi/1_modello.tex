@@ -54,12 +54,11 @@ Definiamo inoltre i vettori $\widehat{\nu}$ e $\widecheck{\nu}$, le cui componen
 rappresentano il numero di veicoli (rispettivamente delle popolazioni \textit{hat} e \textit{check}) sulla strada $r_i$.
 Sappiamo dunque che:
 \begin{equation}
-    \widehat{\nu}=\widehat{\Gamma}\widehat{\theta}
-    \label{eq:2}
-\end{equation}
-\begin{equation}
+    \begin{split}
+    \widehat{\nu}=\widehat{\Gamma}\widehat{\theta}\\
     \widecheck{\nu}=\widecheck{\Gamma}\widecheck{\theta}
-    \label{eq:3}
+    \end{split}
+    \label{eq:2}
 \end{equation}
 
 Introduciamo ora $\widehat{\tau}_h=\widehat{\tau}_h(\widehat{\eta},\widecheck{\eta})$ e $\widecheck{\tau}_h=\widecheck{\tau}_h(\widehat{\eta},\widecheck{\eta})$,
@@ -68,25 +67,58 @@ il tempo necessario a percorrere la strada, il consumo di benzina oppure l'emiss
 
 Denotiamo con $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ i tempi di viaggio dei percorsi $\widehat{\gamma}_i$ e $\widecheck{\gamma}_j$.
 $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ sono componenti dei vettori $\widehat{T}(\theta)$ e $\widecheck{T}(\theta)$.
-Sfruttando anche \ref{eq:2} e \ref{eq:3}:
+Sfruttando anche \ref{eq:2}:
 \begin{equation}
+    \begin{split}
     \widehat{T}(\theta)\coloneqq\widehat{\Gamma}^{\intercal}\widehat{\tau}(\widehat{\nu},\widecheck{\nu})
     \text{\quad e\quad}
     \widehat{T}_i(\theta)=\sum_{h=1}^{N}\widehat{\Gamma}_{hi}\widehat{\tau}_h(\widehat{\nu}_h,\widecheck{\nu}_h)
-    \text{, }i\in\{1,...,\widehat{n}\};
-    \label{eq:4}
-\end{equation}
-\begin{equation}
+    \text{, }i\in\{1,...,\widehat{n}\};\\
     \widecheck{T}(\theta)\coloneqq\widecheck{\Gamma}^{\intercal}\widecheck{\tau}(\widehat{\nu},\widecheck{\nu})
     \text{\quad e\quad}
     \widecheck{T}_j(\theta)=\sum_{h=1}^{N}\widecheck{\Gamma}_{hj}\widecheck{\tau}_h(\widehat{\nu}_h,\widecheck{\nu}_h)
     \text{, }j\in\{1,...,\widecheck{n}\}.
-    \label{eq:5}
+    \end{split}
+    \label{eq:3}
 \end{equation}
 
-\subsection{Teoremi}
+Sarà utile, da ultimo, saper calcolare il tempo medio necessario ad attraversare la rete, per la popolazione \textit{hat}
+e per quella \textit{check}:
+\begin{equation}
+    \begin{split}
+    \widehat{T}_M(\theta)=\widehat{\theta}^{\intercal}\widehat{T}(\theta)
+    \text{ o, equivalentemente }
+    \widehat{T}_M(\theta)\coloneqq\sum_{i=1}^{\widehat{n}}\widehat{\theta}_i\widehat{T}_i(\theta);\\
+    \widecheck{T}_M(\theta)=\widecheck{\theta}^{\intercal}\widecheck{T}(\theta)
+    \text{ o, equivalentemente }
+    \widecheck{T}_M(\theta)\coloneqq\sum_{i=1}^{\widecheck{n}}\widecheck{\theta}_i\widecheck{T}_i(\theta).
+    \end{split}
+    \label{eq:4}
+\end{equation}
 
-Esistenza eq. Nash, unicità?
+\subsection{Equilibrio di Nash}
+
+\begin{definition}\label{def:1}
+    Dato uno stato $\theta\in S^{\widehat{n}}\times S^{\widecheck{n}}$ chiamiamo \textit{hat}-rilevante, rispettivamente
+    \textit{check}-rilevante, un tempo di viaggio $\widehat{T}_i(\theta)$, rispettivamente $\widecheck{T}_i(\theta)$, tale 
+    che $\widehat{\theta}_i\neq 0$, rispettivamente $\widecheck{\theta}_i\neq 0$.
+\end{definition}
+
+\begin{definition}\label{def:2}
+    Dato uno stato $\theta_i^{*}\in S^{\widehat{n}}\times S^{\widecheck{n}}$ è uno \textit{stato di equilibrio}
+    se tutti i tempi di viaggio rilevanti, come da Definizione \ref{def:1}, di ogni popolazione coincidono, ovvero se:
+    \begin{equation*}
+        \begin{split}
+        \forall i,j\in\{1,...,\widehat{n}\} \text{, se }\widehat{\theta}_i^{*}\neq 0 \text{ e }\widehat{\theta}_j^{*}\neq 0
+        \text{, allora }\widehat{T}_i(\theta^{*})=\widehat{T}_i(\theta^{*});\\
+        \forall i,j\in\{1,...,\widecheck{n}\} \text{, se }\widecheck{\theta}_i^{*}\neq 0 \text{ e }\widecheck{\theta}_j^{*}\neq 0
+        \text{, allora }\widecheck{T}_i(\theta^{*})=\widecheck{T}_i(\theta^{*}).
+        \end{split}
+    \end{equation*}
+\end{definition}
+
+La Definizione \ref{def:2} assicura che all'equilibrio tutti i guidatori di una stessa popolazione impieghino lo stesso tempo per
+arrivare dall'origine alla destinazione appartenenti a suddetta popolazione.
 
 \subsection{Esempi}
 
