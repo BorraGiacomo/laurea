@@ -2,9 +2,10 @@ import numpy as np
 
 class Parameters:
     
-    n_roads = 5
-    n_routes_hat = 2
-    n_routes_check = 2
+    def __initit__(self):
+        n_roads = 5
+        n_routes_hat = 2
+        n_routes_check = 2
 
     #routes for the hat population
     Gamma_hat = np.array([[1, 0],

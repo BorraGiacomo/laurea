@@ -1,17 +1,20 @@
 import numpy as np
 import importlib
 from pathlib import Path
+from Computator import Computator
 
 def main():
     Param = importlib.import_module(f"{getParam()}.Parameters")
     
     param = Param.Parameters()
     
+    computator = Computator(param)
+    
     
     
 def getParam():
     cartella = Path(__file__).parent
-    parametri = [f.name for f in cartella.iterdir() if f.is_dir and f.name.startswith("parameters")]
+    parametri = [f.name for f in cartella.iterdir() if f.is_dir() and f.name.startswith("parameters")]
     print(parametri)
     
     scelta = None
