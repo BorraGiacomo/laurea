@@ -10,6 +10,18 @@ def main():
     
     computator = Computator(param)
     
+    theta_hat = np.array([[0.25],
+                          [0.75]])
+    theta_check = np.array([[0.4],
+                            [0.6]])
+    limit = np.array([[1e-100],
+                      [1e-100]])
+    
+    theta_hat, theta_check = computator.compute(theta_hat, theta_check, limit)
+    
+    print(theta_hat)
+    print(theta_check)
+    
     
     
 def getParam():

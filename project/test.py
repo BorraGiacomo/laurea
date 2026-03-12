@@ -11,8 +11,8 @@ def main():
     theta_hat = np.array([[1/2],
                           [1/2]])
     
-    theta_check = np.array([[1/2],
-                            [1/2]])
+    theta_check = np.array([[0],
+                            [1]])
     
     #Population on each road:
     nu_hat = param.Gamma_hat @ theta_hat
