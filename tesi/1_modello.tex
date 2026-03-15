@@ -7,9 +7,16 @@ la popolazione \textit{hat} e la popolazione \textit{check}. Entrambe hanno un'o
 dalle coppie di intersezioni di archi $(\widehat{O}, \widehat{D})$ e $(\widecheck{O}, \widecheck{D})$, non per forza distinte.
 Introduciamo infine il concetto di percorso, ovvero una tupla composta da $m$ strade adiacenti e distinte
 a coppie $\gamma\equiv(r_{h_1},...,r_{h_m})$, tale che il punto finale di $r_{h_l}$ è il punto iniziale di 
-$r_{h_{l+1}}$, con $l\in(1,...,m-1)$. Grazie 
+$r_{h_{l+1}}$, con $l\in(1,...,m-1)$.
 
-Costruiamo ora la matrice $\widehat{\Gamma}$, di dimensioni $N\times\widehat{n}$,  e la matrice $\widecheck{\Gamma}$, di dimensioni $N\times\widecheck{n}$:
+Viene utile introdurre una suddivisione di $\mathcal{N}$ in due sottoreti, $\widehat{\mathcal{N}}$,
+costituita dai percorsi $\widehat{\gamma}_1,...,widehat{\gamma}_{\widehat{n}}$ che collegano $\widehat{O}$ a $\widehat{D}$, e
+$\widecheck{\mathcal{N}}$, costituita dai percorsi $\widecheck{\gamma}_1,...,\widecheck{\gamma}_{\widecheck{n}}$. Queste due sottoreti
+devono essere grafi orientati aciclici (DAG) e, ovviamente, connessi. Si noti che non è necessario imporre queste condizioni
+all'intera rete $\mathcal{N}$, anche se, per ottenere risultati rilevanti, in seguito si troveranno solo reti di traffico che sono 
+DAG connessi.
+
+Costruiamo ora la matrice $\widehat{\Gamma}$, di dimensioni $N\times\widehat{n}$, e la matrice $\widecheck{\Gamma}$, di dimensioni $N\times\widecheck{n}$:
 \[
 \widehat{\Gamma}_{hi} \coloneqq
 \begin{cases}
@@ -27,12 +34,11 @@ Costruiamo ora la matrice $\widehat{\Gamma}$, di dimensioni $N\times\widehat{n}$
 \text{ con } h\in\{1,...,N\} \text{ e } i\in\{1,...,\widecheck{n}\}\text{.}
 \]
 
-Supponiamo che l'ammontare di veicoli della popolazione \textit{hat} presenti sulla rete $\widehat{\mathcal{N}}$ sia 1
-(analogo per la popolazione \textit{check} presente sulla rete $\widecheck{\mathcal{N}}$). Chiamiamo $\widehat{\theta_i}$ il numero
+Supponiamo che il numero totale di veicoli della popolazione per ognuna delle popolazioni presenti sulla rete sia 1. Chiamiamo $\widehat{\theta_i}$ il numero
 di viaggiatori che scelgono di percorrere $\widehat{\gamma}_i$, con $i\in\{1,...,\widehat{n}\}$, e $\widecheck{\theta_j}$ il numero di
 viaggiatori che scelgono di percorrere $\widecheck{\gamma}_j$, con $j\in\{1,...,\widecheck{n}\}$. Allora $\widehat{\theta}\equiv(\widehat{\theta}_1,...,\widehat{\theta}_{\widehat{n}})$
-è un punto del simplesso $S^{\widehat{n}}$ di dimensione $\widehat{n}-1$; rispettivamente $\widecheck{\theta}\equiv(\widecheck{\theta}_1,...,\widecheck{\theta}_{\widecheck{n}})$
-è un punto del simplesso $S^{\widecheck{n}}$ di dimensione $\widecheck{n}-1$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono identificabili
+è un punto del simplesso $S^{\widehat{n}}$ di dimensione $\widehat{n}$; rispettivamente $\widecheck{\theta}\equiv(\widecheck{\theta}_1,...,\widecheck{\theta}_{\widecheck{n}})$
+è un punto del simplesso $S^{\widecheck{n}}$ di dimensione $\widecheck{n}$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono identificabili
 come vettori colonna, perciò il numero totale di veicoli sulla strada $r_h$ è:
 \begin{equation}
     \widehat{\Gamma}_h\widehat{\theta}+\widecheck{\Gamma}_h\widecheck{\theta}=
