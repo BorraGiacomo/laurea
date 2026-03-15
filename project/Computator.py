@@ -11,13 +11,16 @@ class Computator:
         prev_hat = np.ones((self.param.n_routes_hat, 1))*np.inf
         prev_check = np.ones((self.param.n_routes_check, 1))*np.inf
         
+        count = 0
+        
         while np.any(np.abs(theta_hat-prev_hat) > limit) or np.any(np.abs(theta_check-prev_check) > limit):
             prev_hat = theta_hat
             prev_check = theta_check
             
             theta_hat = self.f_hat(theta_hat, theta_check)
             theta_check = self.f_check(theta_hat, theta_check)
-        
+            count+=1
+        print(count)
         return theta_hat, theta_check
     
     def phi(self, x):

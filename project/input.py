@@ -22,6 +22,17 @@ def main():
     print(theta_hat)
     print(theta_check)
     
+    #Population on each road:
+    nu_hat = param.Gamma_hat @ theta_hat
+    
+    nu_check = param.Gamma_check @ theta_check
+    
+    #Travel times for every route
+    T_hat = param.Gamma_hat.T @ param.tau_hat(nu_hat, nu_check)
+    T_check = param.Gamma_check.T @ param.tau_check(nu_hat, nu_check)
+    
+    print(T_hat)
+    print(T_check)
     
     
 def getParam():

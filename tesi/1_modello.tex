@@ -1,22 +1,13 @@
 \section{Modello}
-
-In questa sezione sono presentati i concetti teorici utili all'analisi del problema. Per una trattazione più approfondita, vedi \cite{MR4911797}.
 \subsection{Descrizione del modello}
 
-Consideriamo $N$ strade $r_1,...,r_N$, aventi un unico senso di percorrenza, tali che ogni strada $r_i, i=1,...,N$
-abbia almeno un estremo in comune con le altre strade. Chiameremo ognuno di questi estremi comuni giunzione. Dato che
-ogni strada ha un unico senso di percorrenza, è ragionevole imporre che in ogni giunzione ci sia almeno una strada in 
-entrata ed almeno una strada in uscita. Chiameremo due strade adiacenti se l'estremo finale di una strada e l'estremo iniziale
-dell'altra sono in giunzione. Un percorso è dunque una $m-tupla$ di strade adiacenti (distinte a coppie), 
-ovvero $\gamma\equiv (r_{h_1},...,r_{h_m})$, tale che l'estremo finale di $r_{h_l}$ e l'estremo iniziale di $r_{h_{l+1}}$ sono in giunzione, 
-per $l\in\{1,...,m-1\}$. Come rete $\mathcal{N}$ si intende l'insieme dei percorsi.
-
-Supponiamo, date 2 popolazioni, di avere 2 coppie di punti origine-destinazione $(\widehat{\mathcal{O}}, \widehat{\mathcal{D}})$
-e $(\widecheck{\mathcal{O}}, \widecheck{\mathcal{D}})$, rispettivamente relative alla popolazione \textit{hat} e \textit{check}.
-Possiamo dunque definire $\widehat{\mathcal{N}}$, sottorete di $\mathcal{N}$ contenente i percorsi $\widehat{\gamma}_1,...,\widehat{\gamma}_{\widehat{n}}$,
-$\widehat{n}\leq N$, che connettono $\widehat{\mathcal{O}}$ a $\widehat{\mathcal{D}}$. Analogamente definiamo $\widecheck{\mathcal{N}}$,
-sottorete di $\mathcal{N}$ contenente i percorsi $\widecheck{\gamma}_1,...,\widecheck{\gamma}_{\widecheck{n}}$, $\widecheck{n}\leq N$,
-che connettono $\widecheck{\mathcal{O}}$ a $\widecheck{\mathcal{D}}$.
+Rappresentiamo il modello di una rete stradale $\mathcal{N}$ come un grafo avente per archi le $N$ strade $r_1,...,r_N$,
+le cui proprietà verranno descritte in seguito. Le due popolazioni presenti nella suddetta rete saranno 
+la popolazione \textit{hat} e la popolazione \textit{check}. Entrambe hanno un'origine e una destinazione, rappresentate
+dalle coppie di intersezioni di archi $(\widehat{O}, \widehat{D})$ e $(\widecheck{O}, \widecheck{D})$, non per forza distinte.
+Introduciamo infine il concetto di percorso, ovvero una tupla composta da $m$ strade adiacenti e distinte
+a coppie $\gamma\equiv(r_{h_1},...,r_{h_m})$, tale che il punto finale di $r_{h_l}$ è il punto iniziale di 
+$r_{h_{l+1}}$, con $l\in(1,...,m-1)$. Grazie 
 
 Costruiamo ora la matrice $\widehat{\Gamma}$, di dimensioni $N\times\widehat{n}$,  e la matrice $\widecheck{\Gamma}$, di dimensioni $N\times\widecheck{n}$:
 \[
