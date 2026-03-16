@@ -10,7 +10,7 @@ a coppie $\gamma\equiv(r_{h_1},...,r_{h_m})$, tale che il punto finale di $r_{h_
 $r_{h_{l+1}}$, con $l\in(1,...,m-1)$.
 
 Viene utile introdurre una suddivisione di $\mathcal{N}$ in due sottoreti, $\widehat{\mathcal{N}}$,
-costituita dai percorsi $\widehat{\gamma}_1,...,widehat{\gamma}_{\widehat{n}}$ che collegano $\widehat{O}$ a $\widehat{D}$, e
+costituita dai percorsi $\widehat{\gamma}_1,...,\widehat{\gamma}_{\widehat{n}}$ che collegano $\widehat{O}$ a $\widehat{D}$, e
 $\widecheck{\mathcal{N}}$, costituita dai percorsi $\widecheck{\gamma}_1,...,\widecheck{\gamma}_{\widecheck{n}}$. Queste due sottoreti
 devono essere grafi orientati aciclici (DAG) e, ovviamente, connessi. Si noti che non è necessario imporre queste condizioni
 all'intera rete $\mathcal{N}$, anche se, per ottenere risultati rilevanti, in seguito si troveranno solo reti di traffico che sono 
@@ -34,21 +34,15 @@ Costruiamo ora la matrice $\widehat{\Gamma}$, di dimensioni $N\times\widehat{n}$
 \text{ con } h\in\{1,...,N\} \text{ e } i\in\{1,...,\widecheck{n}\}\text{.}
 \]
 
-Supponiamo che il numero totale di veicoli della popolazione per ognuna delle popolazioni presenti sulla rete sia 1. Chiamiamo $\widehat{\theta_i}$ il numero
+Consideriamo la totalità di una popolazione presente sulla rete essere 1. Chiamiamo $\widehat{\theta_i}$ il numero
 di viaggiatori che scelgono di percorrere $\widehat{\gamma}_i$, con $i\in\{1,...,\widehat{n}\}$, e $\widecheck{\theta_j}$ il numero di
 viaggiatori che scelgono di percorrere $\widecheck{\gamma}_j$, con $j\in\{1,...,\widecheck{n}\}$. Allora $\widehat{\theta}\equiv(\widehat{\theta}_1,...,\widehat{\theta}_{\widehat{n}})$
-è un punto del simplesso $S^{\widehat{n}}$ di dimensione $\widehat{n}$; rispettivamente $\widecheck{\theta}\equiv(\widecheck{\theta}_1,...,\widecheck{\theta}_{\widecheck{n}})$
-è un punto del simplesso $S^{\widecheck{n}}$ di dimensione $\widecheck{n}$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono identificabili
-come vettori colonna, perciò il numero totale di veicoli sulla strada $r_h$ è:
-\begin{equation}
-    \widehat{\Gamma}_h\widehat{\theta}+\widecheck{\Gamma}_h\widecheck{\theta}=
-    \sum_{i=1}^{\widehat{n}}\widehat{\Gamma}_{hi}\widehat{\theta}_i+
-    \sum_{j=1}^{\widecheck{n}}\widecheck{\Gamma}_{hj}\widecheck{\theta}_j
-    \label{eq:1}
-\end{equation}
+è un punto del simplesso $S^{\widehat{n}}$ di dimensione $\widehat{n}$, dove $\widehat{\theta}_i\in[0,1]$; rispettivamente $\widecheck{\theta}\equiv(\widecheck{\theta}_1,...,\widecheck{\theta}_{\widecheck{n}})$
+è un punto del simplesso $S^{\widecheck{n}}$ di dimensione $\widecheck{n}$, con $\widecheck{\theta}_j\in[0,1]$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono identificabili
+come vettori colonna.
 
-Definiamo inoltre i vettori $\widehat{\nu}$ e $\widecheck{\nu}$, le cui componenti, rispettivamente $\widehat{\nu}_i$ e $\widecheck{\nu}_i$ con $i=1,...,N$,
-rappresentano il numero di veicoli (rispettivamente delle popolazioni \textit{hat} e \textit{check}) sulla strada $r_i$.
+Definiamo i vettori $\widehat{\nu}$ e $\widecheck{\nu}$, le cui componenti, rispettivamente $\widehat{\nu}_i$ e $\widecheck{\nu}_i$ con $i=1,...,N$,
+rappresentano il numero di veicoli (delle popolazioni \textit{hat} e \textit{check}) sulla strada $r_i$.
 Sappiamo dunque che:
 \begin{equation}
     \begin{split}
@@ -79,7 +73,7 @@ Sfruttando anche \ref{eq:2}:
     \label{eq:3}
 \end{equation}
 
-Sarà utile, da ultimo, saper calcolare il tempo medio necessario ad attraversare la rete, per la popolazione \textit{hat}
+Sarà utile, da ultimo, saper calcolare il tempo medio necessario ad attraversare la rete per la popolazione \textit{hat}
 e per quella \textit{check}:
 \begin{equation}
     \begin{split}
@@ -102,7 +96,7 @@ e per quella \textit{check}:
 \end{definition}
 
 \begin{definition}\label{def:2}
-    Dato uno stato $\theta_i^{*}\in S^{\widehat{n}}\times S^{\widecheck{n}}$ è uno \textit{stato di equilibrio}
+    Dato uno stato $\theta^{*}\in S^{\widehat{n}}\times S^{\widecheck{n}}$ è uno \textit{stato di equilibrio}
     se tutti i tempi di viaggio rilevanti, come da Definizione \ref{def:1}, di ogni popolazione coincidono, ovvero se:
     \begin{equation*}
         \begin{split}
@@ -116,6 +110,19 @@ e per quella \textit{check}:
 
 La Definizione \ref{def:2} assicura che all'equilibrio tutti i guidatori di una stessa popolazione impieghino lo stesso tempo per
 arrivare dall'origine alla destinazione appartenenti a suddetta popolazione.
+
+Grazie a queste definizioni ed a \ref{eq:4}, introduciamo:
+
+\begin{definition}\label{def:3}
+    Uno stato di equilibrio $\theta^{*}$ è un \textit{equilibrio di Nash} se:
+    \begin{equation*}
+        \begin{split}
+        \forall i\in\{1,...,\widehat{n}\}\text{ }\widehat{\theta}_i^{*}=0\implies\widehat{T}_i(\theta^*)\geq\widehat{T}_M(\theta^*);\\
+        \forall i\in\{1,...,\widecheck{n}\}\text{ }\widecheck{\theta}_i^{*}=0\implies\widecheck{T}_i(\theta^*)\geq\widecheck{T}_M(\theta^*).
+        \end{split}
+    \end{equation*}
+\end{definition}
+Notiamo che in uno stato di equilibrio (compreso un equilibrio di Nash) i tempi di percorrenza medi delle due popolazioni 
 
 \subsection{Esempi}
 
