@@ -49,7 +49,7 @@ Sappiamo dunque che:
     \widehat{\nu}=\widehat{\Gamma}\widehat{\theta}\\
     \widecheck{\nu}=\widecheck{\Gamma}\widecheck{\theta}
     \end{split}
-    \label{eq:2}
+    \label{eq:1}
 \end{equation}
 
 Introduciamo ora $\widehat{\tau}_h=\widehat{\tau}_h(\widehat{\eta},\widecheck{\eta})$ e $\widecheck{\tau}_h=\widecheck{\tau}_h(\widehat{\eta},\widecheck{\eta})$,
@@ -58,13 +58,12 @@ il tempo necessario a percorrere la strada, il consumo di benzina oppure l'emiss
 in quanto ciò permette di aggiungere $+\infty$ ai valori che le funzioni di costo possono assumere, rappresentante una strada
 completamente congestionata o, comunque, bloccata/non percorribile:
 \begin{equation*}
-    \widehat{\tau}, \widecheck{\tau}: [0,1]^N\times[0,1]^N \to R_+^N \cup \{+\infty\}
-    \label{eq:5}
+    \widehat{\tau}, \widecheck{\tau}: [0,1]^N\times[0,1]^N \to \mathbb{R}_+^N \cup \{+\infty\}
 \end{equation*}
 
 Denotiamo con $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ i tempi di viaggio dei percorsi $\widehat{\gamma}_i$ e $\widecheck{\gamma}_j$.
 $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ sono componenti dei vettori $\widehat{T}(\theta)$ e $\widecheck{T}(\theta)$.
-Sfruttando anche (\ref{eq:2}):
+Sfruttando anche (\ref{eq:1}):
 \begin{equation}
     \begin{split}
     \widehat{T}(\theta)\coloneqq\widehat{\Gamma}^{\intercal}\widehat{\tau}(\widehat{\nu},\widecheck{\nu})
@@ -76,7 +75,7 @@ Sfruttando anche (\ref{eq:2}):
     \widecheck{T}_j(\theta)=\sum_{h=1}^{N}\widecheck{\Gamma}_{hj}\widecheck{\tau}_h(\widehat{\nu}_h,\widecheck{\nu}_h)
     \text{, }j\in\{1,...,\widecheck{n}\}.
     \end{split}
-    \label{eq:3}
+    \label{eq:2}
 \end{equation}
 
 Sarà utile, da ultimo, saper calcolare il tempo medio necessario ad attraversare la rete per la popolazione \textit{hat}
@@ -90,7 +89,7 @@ e per quella \textit{check}:
     \text{ o, equivalentemente }
     \widecheck{T}_M(\theta)\coloneqq\sum_{i=1}^{\widecheck{n}}\widecheck{\theta}_i\widecheck{T}_i(\theta).
     \end{split}
-    \label{eq:4}
+    \label{eq:3}
 \end{equation}
 
 \subsection{Equilibrio di Nash}
@@ -117,7 +116,7 @@ e per quella \textit{check}:
 La Definizione \ref{def:2} assicura che all'equilibrio tutti i guidatori di una stessa popolazione impieghino lo stesso tempo per
 arrivare dall'origine alla destinazione appartenenti a suddetta popolazione.
 
-Grazie a queste definizioni ed a (\ref{eq:4}), introduciamo:
+Grazie a queste definizioni ed a (\ref{eq:3}), introduciamo:
 
 \begin{definition}\label{def:3}
     Uno stato di equilibrio $\theta^{*}$ è un \textit{equilibrio di Nash} se:
@@ -139,6 +138,54 @@ a suddetto equilibrio, perciò:
     \forall i,j\in\{1,...,\widecheck{n}\}\text{ }\widecheck{\theta}_i^{*}=0,\text{ }\widecheck{\theta}_j^*\neq0\implies\widecheck{T}_i(\theta^*)\geq\widecheck{T}_j(\theta^*).
     \end{split}
 \end{equation*}
+
+Non è detto, però, che esista un equilibrio di Nash in ogni rete. Introduciamo quindi:
+\begin{theorem}\label{th:1}
+    Supponiamo che $\forall i\in\{1,...,N\}$ $(\widehat{\tau}_i,\widecheck{\tau}_i)\in C^0([0,1]^2;(\mathbb{R}_+\cup\{+\infty\})^2)$.
+    Allora esiste un equilibrio di Nash $\theta^*\in S^{\widehat{n}}\times S^{\widecheck{n}}$, al senso della Definizione \ref{def:3}.
+\end{theorem}
+
+Introduciamo le funzioni:
+\begin{equation}
+    \begin{split}
+    \begin{array}{l c c c}
+        \bar{\varphi}:\text{ } & \mathbb{R}_+\cup\{+\infty\} & \to & [0,1]\\
+        & \xi & \mapsto &
+        \begin{cases}
+            \xi/(1-\xi)&\xi\in\mathbb{R}_+\\
+            1 & \xi=+\infty
+        \end{cases}
+    \end{array}\\
+    \begin{array}{l c c c}
+        \varphi:\text{ } & (\mathbb{R}_+\cup\{+\infty\})^n & \to & [0,1]^n\\
+        & (\xi_1,...,\xi_n) & \mapsto & (\bar{\varphi}(\xi_1),...,\bar{\varphi}(\xi_n)).
+    \end{array}
+    \end{split}
+    \label{eq:4}
+\end{equation}
+Chiamiamo $C_+^n$ l'insieme dei $\theta\in\mathbb{R}$ tale che $\theta_i>0$ per almeno un $i\in\{1,...,n\}$.
+Definiamo quindi la normalizzazione $\mathscr{N}:C_+^n\to S^n$, le cui componenti sono:
+\begin{equation}
+    \mathscr{N}(\theta)_i=\frac{\max\{0,\theta_i\}}{\sum_{j=1}^{n}\max\{0,\theta_j\}}\text{, per }i\in\{1,...,n\}
+    \label{eq:5}
+\end{equation}
+Useremo $\varphi$ e $\bar{\varphi}$ indipendentemente che siano definite su $\mathbb{R}^{\widehat{n}}\cup\{+\infty\}$ o
+su $\mathbb{R}^{\widecheck{n}}\cup\{+\infty\}$. Vale lo stesso per $\mathscr{N}$.
+
+Nella dimostrazione del Teorema \ref{th:1} presente in \cite[Cap. 4]{MR4911797} si fa utilizzo della seguente funzione:
+\begin{equation}
+    \begin{split}
+    \begin{array}{l c c c}
+        \widehat{\mathcal{F}}:\text{ } & S^{\widehat{n}}\times S^{\widecheck{n}} & \to & S^{\widehat{n}}\\
+        & \theta & \mapsto & \mathscr{N}(\widehat{\theta} - \lambda((\varphi\circ\widehat{T})(\theta)-\widehat{\theta}^{\intercal}(\varphi\circ\widehat{T})(\theta)\mathds{1}_{\widehat{n}})) 
+    \end{array}\\
+    \begin{array}{l c c c}
+        \widecheck{\mathcal{F}}:\text{ } & S^{\widehat{n}}\times S^{\widecheck{n}} & \to & S^{\widecheck{n}}\\
+        & \theta & \mapsto & \mathscr{N}(\widecheck{\theta} - \lambda((\varphi\circ\widecheck{T})(\theta)-\widecheck{\theta}^{\intercal}(\varphi\circ\widecheck{T})(\theta)\mathds{1}_{\widecheck{n}})) 
+    \end{array}
+    \end{split}
+    \label{eq:6}
+\end{equation}
 
 \subsection{Esempi}
 
