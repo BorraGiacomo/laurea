@@ -119,7 +119,7 @@ arrivare dall'origine alla destinazione appartenenti a suddetta popolazione.
 Grazie a queste definizioni ed a (\ref{eq:3}), introduciamo:
 
 \begin{definition}\label{def:3}
-    Uno stato di equilibrio $\theta^{*}$ è un \textit{equilibrio di Nash} se:
+    Uno stato di equilibrio $\theta^{*}$ è un \textit{Equilibrio di Nash} se:
     \begin{equation*}
         \begin{split}
         \forall i\in\{1,...,\widehat{n}\}\text{ }\widehat{\theta}_i^{*}=0\implies\widehat{T}_i(\theta^*)\geq\widehat{T}_M(\theta^*);\\
@@ -172,7 +172,12 @@ Definiamo quindi la normalizzazione $\mathscr{N}:C_+^n\to S^n$, le cui component
 Useremo $\varphi$ e $\bar{\varphi}$ indipendentemente che siano definite su $\mathbb{R}^{\widehat{n}}\cup\{+\infty\}$ o
 su $\mathbb{R}^{\widecheck{n}}\cup\{+\infty\}$. Vale lo stesso per $\mathscr{N}$.
 
-Nella dimostrazione del Teorema \ref{th:1} presente in \cite[Cap. 4]{MR4911797} si fa utilizzo della seguente funzione:
+Nella dimostrazione del Teorema \ref{th:1} presente in \cite[Cap. 4]{MR4911797} si fa utilizzo della funzione:
+\begin{equation}
+    \mathcal{F}:\text{ } S^{\widehat{n}}\times S^{\widecheck{n}} \to S^{\widehat{n}}\times S^{\widecheck{n}},
+    \label{eq:6}
+\end{equation}
+che ha componenti:
 \begin{equation}
     \begin{split}
     \begin{array}{l c c c}
@@ -184,8 +189,25 @@ Nella dimostrazione del Teorema \ref{th:1} presente in \cite[Cap. 4]{MR4911797} 
         & \theta & \mapsto & \mathscr{N}(\widecheck{\theta} - \lambda((\varphi\circ\widecheck{T})(\theta)-\widecheck{\theta}^{\intercal}(\varphi\circ\widecheck{T})(\theta)\mathds{1}_{\widecheck{n}})) 
     \end{array}
     \end{split}
-    \label{eq:6}
+    \label{eq:7}
 \end{equation}
+con:
+\begin{equation}
+    \lambda=\frac{1}{2}\min\left\{\frac{1}{\widehat{n}},\frac{1}{\widecheck{n}}\right\}.
+    \label{eq:8}
+\end{equation}
+
+Per la dimostrazione del Teorema \ref{th:1} ci si serve del Teorema del Punto Fisso di Brouwer, usato anche da John Nash nella sua tesi di
+dottorato \cite[Cap. 3]{nash1950noncooperative} per dimostrare che \textit{"Every finite game has an equilibrium point"}, punto di equilibrio
+denominato in seguito Equilibrio di Nash.
+
+In \cite[Cap. 4]{MR4911797} viene dunque verificato che (\ref{eq:6}), per Brouwer, ammette almeno un punto fisso:
+\begin{equation}
+    \exists\theta^*\in S^{\widehat{n}}\times S^{\widecheck{n}}:\text{ } \mathcal{F}(\theta^*)=\theta^*
+    \label{eq:9}
+\end{equation}
+e che ogni punto fisso di $\mathcal{F}$ è un Equilibrio di Nash per la rete stradale, al senso della Definizione \ref{def:3}.
+
 
 \subsection{Esempi}
 
