@@ -2,7 +2,7 @@
 \subsection{Descrizione del modello}
 
 Rappresentiamo il modello di una rete stradale $\mathcal{N}$ come un grafo avente per archi le $N$ strade $r_1,...,r_N$,
-le cui proprietà verranno descritte in seguito. Le due popolazioni presenti nella suddetta rete saranno 
+le cui proprietà verranno descritte in seguito. Le due popolazioni presenti nella suddetta rete sono 
 la popolazione \textit{hat} e la popolazione \textit{check}. Entrambe hanno un'origine e una destinazione, rappresentate
 dalle coppie di intersezioni di archi $(\widehat{O}, \widehat{D})$ e $(\widecheck{O}, \widecheck{D})$, non per forza distinte.
 Introduciamo infine il concetto di percorso, ovvero una tupla composta da $m$ strade adiacenti e distinte
@@ -101,7 +101,7 @@ e per quella \textit{check}:
 \end{definition}
 
 \begin{definition}\label{def:2}
-    Dato uno stato $\theta^{*}\in S^{\widehat{n}}\times S^{\widecheck{n}}$ è uno \textit{stato di equilibrio}
+    Uno stato $\theta^{*}\in S^{\widehat{n}}\times S^{\widecheck{n}}$ è uno \textit{stato di equilibrio}
     se tutti i tempi di viaggio rilevanti, come da Definizione \ref{def:1}, di ogni popolazione coincidono, ovvero se:
     \begin{equation*}
         \begin{split}
@@ -128,10 +128,10 @@ Grazie a queste definizioni ed a (\ref{eq:3}), introduciamo:
     \end{equation*}
 \end{definition}
 Notiamo che, in uno stato di equilibrio $\theta^*$, $\widehat{T}_M(\theta^*)=\widehat{T}_i(\theta^*)$ $\forall i\in\{0,...,\widehat{n}\}$ (analogo per la popolazione \textit{check}),
-dato che, per la Definizione \ref{def:2}, tutti i tempi di percorrenza dei percorsi sono uguali. Perciò la Definizione \ref{def:3}
-implica che un equilibrio di Nash è uno stato di equilibrio in cui a nessun guidatore di nessuna popolazione conviene cambiare percorso,
-in quanto il tempo di attraversamento dei percorsi non rilevanti è maggiore del tempo medio di attraversamento della rete
-a suddetto equilibrio, perciò:
+dato che, per la Definizione \ref{def:2}, tutti i tempi di attraversamento dei percorsi sono uguali. Perciò la Definizione \ref{def:3}
+implica che un equilibrio di Nash è uno stato di equilibrio in cui a nessun guidatore di nessuna popolazione conviene cambiare percorso.
+Ciò è dato dal fatto che in suddetto equilibrio il tempo di attraversamento dei percorsi non rilevanti è 
+maggiore del tempo medio di attraversamento della rete, di conseguenza:
 \begin{equation*}
     \begin{split}
     \forall i,j\in\{1,...,\widehat{n}\}\text{ }\widehat{\theta}_i^{*}=0,\text{ }\widehat{\theta}_j^*\neq0\implies\widehat{T}_i(\theta^*)\geq\widehat{T}_j(\theta^*);\\

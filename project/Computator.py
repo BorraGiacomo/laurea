@@ -25,12 +25,12 @@ class Computator:
     
     def phi(self, x):
         """
-        Funzione φ applicata elemento per elemento:
+        Funzione bar{varphi} applicata elemento per elemento:
         - xi = inf → 1
         - altrimenti → xi / (1 - xi)
         Restituisce sempre un array colonna (n,1)
         """
-        vectorized = np.vectorize(lambda xi: 1 if xi == np.inf else xi / (1 - xi))
+        vectorized = np.vectorize(lambda xi: 1. if xi == np.inf else xi / (1. - xi))
         return vectorized(x).reshape(-1, 1)
     
     def T_hat(self, theta_hat, theta_check):

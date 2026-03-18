@@ -1,4 +1,5 @@
 import numpy as np
+from utility.SafeArray import SafeArray
 import importlib
 from pathlib import Path
 
@@ -8,10 +9,10 @@ def main():
     param = Param.Parameters()
     
     #Given theta (distribution of the hat and check population on the routes):
-    theta_hat = np.array([[1/2],
+    theta_hat = SafeArray([[1/2],
                           [1/2]])
     
-    theta_check = np.array([[0],
+    theta_check = SafeArray([[0],
                             [1]])
     
     #Population on each road:

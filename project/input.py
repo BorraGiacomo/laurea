@@ -1,38 +1,44 @@
-import numpy as np
+from utility.SafeArray import SafeArray
 import importlib
 from pathlib import Path
 from Computator import Computator
+import numpy as np
+
+
 
 def main():
+    np.seterr(divide='ignore')
     Param = importlib.import_module(f"{getParam()}.Parameters")
     
     param = Param.Parameters()
     
     computator = Computator(param)
     
-    theta_hat = np.array([[0.25],
-                          [0.75]])
-    theta_check = np.array([[0.4],
-                            [0.6]])
-    limit = np.array([[1e-100],
-                      [1e-100]])
+    theta_hat = SafeArray([[0.5],
+                          [0.5]])
+    theta_check = SafeArray([[0.5],
+                            [0.5]])
+    limit = SafeArray([[1.e-20],
+                      [1.e-20]])
     
     theta_hat, theta_check = computator.compute(theta_hat, theta_check, limit)
     
-    print(theta_hat)
-    print(theta_check)
+    print("Equilibrio di Nash:")
+    print("theta_hat:\n", theta_hat)
+    print("theta_check:\n", theta_check)
     
-    #Population on each road:
+    #Popolazione su ogni strada:
     nu_hat = param.Gamma_hat @ theta_hat
     
     nu_check = param.Gamma_check @ theta_check
     
-    #Travel times for every route
+    #Tempi di viaggio su ogni strada:
     T_hat = param.Gamma_hat.T @ param.tau_hat(nu_hat, nu_check)
     T_check = param.Gamma_check.T @ param.tau_check(nu_hat, nu_check)
     
-    print(T_hat)
-    print(T_check)
+    print("Tempi di attraversamento dei percorsi:")
+    print("T_hat:\n", T_hat)
+    print("T_check:\n", T_check)
     
     
 def getParam():
