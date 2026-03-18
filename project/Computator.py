@@ -1,19 +1,19 @@
 import numpy as np
-
+from utility.SafeArray import SafeArray
 class Computator:    
-    def __init__(self, parameters):
-        self.param = parameters
+    def __init__(self, param):
+        self.param = param
         self.lmbda = 0.5*np.min([1/self.param.n_routes_hat, 1/self.param.n_routes_check])
-        self.one_n_hat = np.ones((self.param.n_routes_hat, 1))
-        self.one_n_check = np.ones((self.param.n_routes_check, 1))
+        self.one_n_hat = SafeArray(np.ones((self.param.n_routes_hat, 1)))
+        self.one_n_check = SafeArray(np.ones((self.param.n_routes_check, 1)))
     
-    def compute(self, theta_hat, theta_check, limit):
-        prev_hat = np.ones((self.param.n_routes_hat, 1))*np.inf
-        prev_check = np.ones((self.param.n_routes_check, 1))*np.inf
+    def getNashEquilibria(self, theta_hat, theta_check, limit_hat, limit_check):
+        prev_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*np.inf)
+        prev_check = SafeArray(np.ones((self.param.n_routes_check, 1))*np.inf)
         
         count = 0
         
-        while np.any(np.abs(theta_hat-prev_hat) > limit) or np.any(np.abs(theta_check-prev_check) > limit):
+        while np.any(np.abs(theta_hat-prev_hat) > limit_hat) or np.any(np.abs(theta_check-prev_check) > limit_check):
             prev_hat = theta_hat
             prev_check = theta_check
             
@@ -31,7 +31,7 @@ class Computator:
         Restituisce sempre un array colonna (n,1)
         """
         vectorized = np.vectorize(lambda xi: 1. if xi == np.inf else xi / (1. - xi))
-        return vectorized(x).reshape(-1, 1)
+        return SafeArray(vectorized(x).reshape(-1, 1))
     
     def T_hat(self, theta_hat, theta_check):
         nu_hat = self.param.Gamma_hat @ theta_hat
@@ -65,3 +65,9 @@ class Computator:
     def f_check(self, theta_hat, theta_check):
         composition = self.phi(self.T_check(theta_hat, theta_check))
         return self.normalize(theta_check - self.lmbda*(composition - (theta_check.T @ composition)[0]*self.one_n_check))
+    
+    def setParameters(self, param):
+        self.param = param
+        self.lmbda = 0.5*np.min([1/self.param.n_routes_hat, 1/self.param.n_routes_check])
+        self.one_n_hat = SafeArray(np.ones((self.param.n_routes_hat, 1)))
+        self.one_n_check = SafeArray(np.ones((self.param.n_routes_check, 1)))

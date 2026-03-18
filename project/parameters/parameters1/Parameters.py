@@ -1,29 +1,28 @@
 from utility.SafeArray import SafeArray
 import numpy as np
+
 class Parameters:
     
-    
-    n_roads = 7
-    n_routes_hat = 2
-    n_routes_check = 2
+    def __init__(self):
+        self.n_roads = 5
+        self.n_routes_hat = 2
+        self.n_routes_check = 2
+        self.variation_hat = SafeArray(np.zeros(self.n_roads))
+        self.variation_check = SafeArray(np.zeros(self.n_roads))
 
     #Percorsi per la popolazione hat
-    Gamma_hat = SafeArray([ [0., 1.],
+    Gamma_hat = SafeArray([ [1., 0.],
+                            [0., 1.],
                             [1., 0.],
                             [0., 0.],
-                            [0., 0.],
-                            [1., 0.],
-                            [0., 0.],
-                            [1., 0.]])
+                            [0., 0.]])
     
     #Percorsi per la popolazione check
     Gamma_check = SafeArray([   [0., 0.],
                                 [0., 0.],
                                 [1., 0.],
-                                [0., 1.],
                                 [1., 0.],
-                                [1., 0.],
-                                [0., 0.]])  
+                                [0., 1.]])
     
     
     def tau_hat(self, eta_hat, eta_check):
@@ -37,7 +36,7 @@ class Parameters:
         """
         eta_hat_t = eta_hat.flatten()
         eta_check_t = eta_check.flatten()
-        return SafeArray([5/2+eta_hat_t[0], 1, np.inf, np.inf, (eta_hat_t[4]+eta_check_t[4])/(1-(eta_hat_t[4]+eta_check_t[4])), np.inf, 1])
+        return SafeArray([1.+eta_hat_t[0], 3.+eta_hat_t[1], 1.+eta_hat_t[2]+eta_check_t[2], np.inf, np.inf]) + self.variation_hat
     
     def tau_check(self, eta_hat, eta_check):
         """
@@ -50,4 +49,4 @@ class Parameters:
         """
         eta_hat_t = eta_hat.flatten()
         eta_check_t = eta_check.flatten()
-        return SafeArray([np.inf, np.inf, 1, 2+eta_check_t[3], (eta_hat_t[4]+eta_check_t[4])/(1-(eta_hat_t[4]+eta_check_t[4])), 1, np.inf])
+        return SafeArray([np.inf, np.inf, 1.+eta_hat_t[2]+eta_check_t[2], 1.+eta_check_t[3], 3.+eta_check_t[4]]) + self.variation_check
