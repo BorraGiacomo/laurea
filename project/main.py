@@ -37,14 +37,14 @@ def eqNash(param):
     vec_frac = np.vectorize(lambda x: str(Fraction(x).limit_denominator(1000000)))
     
     print("Equilibrio di Nash:")
-    print("theta_hat:\n", str(vec_frac(theta_hat)).replace("'", ""))
-    print("theta_check:\n", str(vec_frac(theta_check)).replace("'", ""))
+    print("theta_hat:\n", theta_hat)
+    print("theta_check:\n", theta_check)
     
     print()
     
     print("Tempi di attraversamento dei percorsi:")
-    print("T_hat:\n", str(vec_frac(T_hat)).replace("'", ""))
-    print("T_check:\n", str(vec_frac(T_check)).replace("'", ""))
+    print("T_hat:\n", T_hat)
+    print("T_check:\n", T_check)
     
 def graphVariations(param):
     MAX = getMaxVariation()
@@ -59,6 +59,8 @@ def graphVariations(param):
     init = Initializer(param)
     
     for idx, i in enumerate(variation_values):
+        print("Current step: " + str(idx+1)+"/"+str(N))
+        
         theta_hat, theta_check, T_hat, T_check = init.getNashEquilibria()
         index_hat = np.argmax(theta_hat > 0)
         index_check = np.argmax(theta_check > 0)

@@ -12,7 +12,6 @@
 %sorting=ynt
 %]{biblatex}
 
-
 \hypersetup{
 bookmarksopen=true,	
 pdfauthor=Giacomo Borra
@@ -78,7 +77,14 @@ pdfauthor=Giacomo Borra
 }
 
 \theoremstyle{definition}
-\newtheorem{theorem}{Teorema}
-\newtheorem{proposition}{Proposizione}
-\newtheorem{lemma}{Lemma}
-\newtheorem{definition}{Definizione}
+\newtheorem{proposition}{Proposizione}[section]
+\newtheorem{theorem}[proposition]{Teorema}
+\newtheorem{notation}[proposition]{Notation}
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{definition}[proposition]{Definizione}
+\newtheorem{corollary}[proposition]{Corollario}
+\newtheorem{remark}[proposition]{Remark}
+\newtheorem{example}[proposition]{Esempio}
+\newtheorem{conjecture}[proposition]{Conjecture}
+
+\numberwithin{equation}{section}

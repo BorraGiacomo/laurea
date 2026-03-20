@@ -38,7 +38,7 @@ class Parameters:
         """
         eta_hat_t = eta_hat.flatten()
         eta_check_t = eta_check.flatten()
-        return SafeArray([4., 1.+eta_hat_t[1], np.inf, 5.*eta_hat_t[3]+5.*eta_check_t[3], 1.+eta_hat_t[4]+eta_check_t[4], 1]) + self.variation_hat
+        return SafeArray([4., 1.+eta_hat_t[1], np.inf, 5.*eta_hat_t[3]+5.*eta_check_t[3], 1.+eta_hat_t[4]+eta_check_t[4], 0]) + self.variation_hat
     
     def tau_check(self, eta_hat, eta_check):
         """

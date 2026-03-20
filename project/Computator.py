@@ -20,7 +20,7 @@ class Computator:
             theta_hat = self.f_hat(theta_hat, theta_check)
             theta_check = self.f_check(theta_hat, theta_check)
             count+=1
-        print(count)
+        print("Iterazioni: " + str(count))
         return theta_hat, theta_check
     
     def phi(self, x):
