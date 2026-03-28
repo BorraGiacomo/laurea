@@ -1,9 +1,6 @@
 from pathlib import Path
 import importlib
-import numpy as np
-from fractions import Fraction
 from Initializer import Initializer
-from utility.SafeArray import SafeArray
 
 def main():
     
@@ -11,7 +8,7 @@ def main():
     param = Param.Parameters()
     
     init = Initializer(param)
-    init.printNashEq(*init.start())
+    init.start()
 
 def getParam():
     cartella = Path(__file__).parent.joinpath("parameters")
