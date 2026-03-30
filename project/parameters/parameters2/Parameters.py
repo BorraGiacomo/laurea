@@ -93,7 +93,7 @@ class Parameters(AbstractParam):
                 temp / (1 - temp),
                 np.inf,
                 1
-            ]) + self.variation_hat
+            ])
         )
 
     @override
@@ -109,5 +109,5 @@ class Parameters(AbstractParam):
                 temp / (1 - temp),
                 1,
                 np.inf
-            ]) + self.variation_check
+            ])
         )

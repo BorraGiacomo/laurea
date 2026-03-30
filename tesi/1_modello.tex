@@ -9,7 +9,7 @@ Introduciamo infine il concetto di percorso, ovvero una tupla composta da $m$ st
 a coppie $\gamma\equiv(r_{h_1},...,r_{h_m})$, tale che il punto finale di $r_{h_l}$ è il punto iniziale di 
 $r_{h_{l+1}}$, con $l\in(1,...,m-1)$.
 
-Viene utile introdurre una suddivisione di $\mathcal{N}$ in due sottoreti, $\widehat{\mathcal{N}}$,
+Viene utile introdurre, come in \cite[Cap. 2]{MR4911797}, una suddivisione di $\mathcal{N}$ in due sottoreti, $\widehat{\mathcal{N}}$,
 costituita dai percorsi $\widehat{\gamma}_1,...,\widehat{\gamma}_{\widehat{n}}$ che collegano $\widehat{O}$ a $\widehat{D}$, e
 $\widecheck{\mathcal{N}}$, costituita dai percorsi $\widecheck{\gamma}_1,...,\widecheck{\gamma}_{\widecheck{n}}$ che collegano $\widecheck{O}$ a $\widecheck{D}$.
 Queste due sottoreti devono essere grafi orientati aciclici (DAG) connessi. Si noti che non è necessario imporre queste condizioni
@@ -54,7 +54,7 @@ Sappiamo dunque che:
 
 Introduciamo ora $\widehat{\tau}_h=\widehat{\tau}_h(\widehat{\eta},\widecheck{\eta})$ e $\widecheck{\tau}_h=\widecheck{\tau}_h(\widehat{\eta},\widecheck{\eta})$,
 rispettivamente i costi della strada $r_h$, $h\in\{1,...,N\}$, per la popolazione \textit{hat} e per la popolazione \textit{check}. I costi possono rappresentare, per esempio,
-il tempo necessario a percorrere la strada, il consumo di benzina oppure l'emissione di inquinanti. In questa trattazione considereremo i costi come tempi di viaggio,
+il tempo necessario a percorrere la strada, il consumo di benzina oppure l'emissione di inquinanti. In questa trattazione, similmente a \cite{MR4911797}, considereremo i costi come tempi di viaggio,
 in quanto ciò permette di aggiungere $+\infty$ ai valori che le funzioni di costo possono assumere, rappresentante una strada
 completamente congestionata o, comunque, bloccata/non percorribile:
 \begin{equation*}
@@ -94,6 +94,7 @@ e per quella \textit{check}:
 
 \subsection{Equilibrio di Nash}
 
+Si riportano alcune definizioni utili da \cite[Cap. 2]{MR4911797}
 \begin{definition}\label{def:1}
     Dato uno stato $\theta\in S^{\widehat{n}}\times S^{\widecheck{n}}$ chiamiamo \textit{hat}-rilevante, rispettivamente
     \textit{check}-rilevante, un tempo di viaggio $\widehat{T}_i(\theta)$, rispettivamente $\widecheck{T}_i(\theta)$, tale 
@@ -139,7 +140,7 @@ maggiore del tempo medio di attraversamento della rete, di conseguenza:
     \end{split}
 \end{equation*}
 
-Non è detto, però, che esista un equilibrio di Nash in ogni rete. Introduciamo quindi:
+Non è detto, però, che esista un equilibrio di Nash in ogni rete. Si riporta, dunque, da \cite[Cap. 2]{MR4911797}:
 \begin{theorem}\label{th:1}
     Supponiamo che $\forall i\in\{1,...,N\}$ $(\widehat{\tau}_i,\widecheck{\tau}_i)\in C^0([0,1]^2;(\mathbb{R}_+\cup\{+\infty\})^2)$.
     Allora esiste un equilibrio di Nash $\theta^*\in S^{\widehat{n}}\times S^{\widecheck{n}}$, al senso della Definizione \ref{def:3}.

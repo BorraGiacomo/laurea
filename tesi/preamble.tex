@@ -1,0 +1,48 @@
+\usepackage[english,italian]{babel}
+\usepackage{amsmath, inconsolata, dsfont, mathrsfs, amsthm, amssymb, pifont, tikz, hyperref, newlfont, mathabx, mathtools, graphicx, caption, array, multirow, tabularx, svg, pdfpages, setspace}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[]{geometry}
+\renewcommand{\lstlistingname}{Listato}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{csquotes}
+%\usepackage[
+%backend=bibtex,
+%style=numeric,
+%sorting=ynt
+%]{biblatex}
+
+\hypersetup{
+bookmarksopen=true,	
+pdfauthor=Giacomo Borra
+}
+
+\lstdefinestyle{myStile}{
+    language=Python,
+    basicstyle=\ttfamily\scriptsize,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    showstringspaces=false,
+    aboveskip=0.8em,
+    belowskip=0.8em
+}
+
+\theoremstyle{definition}
+\newtheorem{proposition}{Proposizione}[section]
+\newtheorem{theorem}[proposition]{Teorema}
+\newtheorem{notation}[proposition]{Notation}
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{definition}[proposition]{Definizione}
+\newtheorem{corollary}[proposition]{Corollario}
+\newtheorem{remark}[proposition]{Remark}
+\newtheorem{example}[proposition]{Esempio}
+\newtheorem{conjecture}[proposition]{Conjecture}
+
+\numberwithin{equation}{section}
+
+\newcommand{\norm}[1]{\left\|#1\right\|}

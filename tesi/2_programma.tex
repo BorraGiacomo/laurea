@@ -1,19 +1,199 @@
 \section{Programma}
 
-\begin{lstlisting}[style=py, caption=Script Python.]
-#for loop that traverses numbers from 1 to 100
-for i in range(1,101):
-  #check if number is divisible by both 3 and 5
-  if(i%3==0 and i%5==0):
-    print("FizzBuzz")
-  #check if number is divisible by 3
-  elif(i%3 == 0):
-    print("Fizz")
-  #check if number is divisible by 5
-  elif(i%5 == 0):
-    print("Buzz")
-  #if not divisible by either of them print the i
-  else:
-    print(i)
+Di seguito viene riportato il codice sorgente del programma utilizzato per la trattazione.
+
+
+\subsection{Contratto Parameters}
+Per il corretto utilizzo del programma è necessario creare una classe che estende \textbf{AbstractParam}:
+\begin{lstlisting}[style=myStile, caption={Parameters}, label={script:1}]
+class AbstractParam(ABC):
+    """
+    Contratto obbligatorio per i Parametri
+    """
+
+    # ===== PARAMETRI BASE =====
+    
+    @property
+    @abstractmethod
+    def n_roads(self) -> int:
+        pass
+
+    @property
+    @abstractmethod
+    def n_routes_hat(self) -> int:
+        pass
+
+    @property
+    @abstractmethod
+    def n_routes_check(self) -> int:
+        pass
+
+    @property
+    @abstractmethod
+    def operation(self) -> Operation:
+        pass
+
+    @property
+    def show_result(self) -> bool:
+        return False
+    
+    @property
+    def show_iterations(self) -> bool:
+        return True
+
+    #Utilizzato solo se self.operation==Operation.NASH_EQ
+    @property
+    def print_as_fraction(self) -> bool:
+        return False
+
+    # ===== MATRICI =====
+    
+    @property
+    @abstractmethod
+    def Gamma_hat(self) -> SafeArray:
+        pass
+
+    @property
+    @abstractmethod
+    def Gamma_check(self) -> SafeArray:
+        pass
+
+    @property
+    @abstractmethod
+    def variation_hat(self) -> SafeArray:
+        pass
+
+    @property
+    @abstractmethod
+    def variation_check(self) -> SafeArray:
+        pass
+
+    # ===== COSTI =====
+    
+    @abstractmethod
+    def tau_hat(self, eta_hat, eta_check) -> SafeArray:
+        """
+        Ritorna il costo delle strade per la popolazione hat
+        """
+        pass
+
+    @abstractmethod
+    def tau_check(self, eta_hat, eta_check) -> SafeArray:
+        """
+        Ritorna il costo delle strade per la popolazione check
+        """
+        pass
+    
+    def tau_hat_variated(self, eta_hat, eta_check, variation) -> SafeArray:
+        return self.tau_hat(eta_hat, eta_check) + self.variation_hat * variation
+
+    def tau_check_variated(self, eta_hat, eta_check, variation) -> SafeArray:
+        return self.tau_check(eta_hat, eta_check) + self.variation_check * variation
 \end{lstlisting}
-\label{script}
+Le proprietà e i metodi contrassegnati da \textbf{@abstractmethod} devono essere istanziati nella classe dei parametri creata dall'utente, mentre gli altri
+hanno valori base che possono essere reistanziati o meno.
+
+\subsection{Utility}
+Viene introdotta una Enum per permettere all'utente di definire quale operazione eseguire (tramite il Listato~\ref{script:1}): calcolo dell'equilibrio di Nash oppure computazione del grafico
+dei tempi di percorrenza della rete dipendenti dalla variazione dei costi delle strade definiti nel Listato~\ref{script:1}.
+
+\begin{lstlisting}[style=myStile, caption={Operation}, label={script:2}]
+  class Operation(Enum):
+    NASH_EQ = 1 #Calcolo equilibrio di Nash
+    NASH_EQ_VARIATIONS = 2 #Computazione del Grafico delle variazioni
+\end{lstlisting}
+
+Estendiamo anche la classe \textbf{np.ndarray} (vedi \cite{numpy_docs}) per gestire i casi in cui un valore di un array/matrice posto ad \textbf{np.inf} viene moltiplicato per 0.
+Ciò può capitare soprattutto durante il calcolo dell'Equazione \ref{eq:2}
+
+\begin{lstlisting}[style=myStile, caption={Operation}, label={script:3}]
+  class SafeArray(np.ndarray):
+    def __new__(cls, input_array):
+        obj = np.asarray(input_array, dtype=float).view(cls)
+        return obj
+    
+    def __matmul__(self, other):
+        selfChanged = False
+        otherChanged = True        
+        
+        if np.isinf(self).any():
+            self[np.isinf(self)] = 1.e200
+            selfChanged = True
+        if np.isinf(other).any():
+            other[np.isinf(other)] = 1.e200
+            otherChanged = False
+            
+        result = np.matmul(self, other)
+        
+        result[result > 1.e100] = np.inf
+        
+        if selfChanged:
+            self[self>1.e100] = np.inf
+        if otherChanged:
+            other[other>1.e100] = np.inf
+
+        return result.view(type(self))
+\end{lstlisting}
+
+
+\subsection{Classe Initializer}
+Una volta creata una classe che estende \textbf{AbstractParam}, per eseguire il programma è sufficiente creare un'istanza di \textbf{Initializer} e invocare il metodo 
+\textbf{Initializer::start}:
+
+\begin{lstlisting}[style=myStile, caption={Initializer}, label={script:4}]
+class Initializer:
+    
+    def __init__(self, param: AbstractParam):
+        np.seterr(divide='ignore')
+        
+        if not isinstance(param, AbstractParam):
+            raise TypeError("param deve essere un'istanza di BaseParameters")
+        
+        self.param = param
+        self.computator = Computator(self.param)
+        self.initial_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*(1/self.param.n_routes_hat))
+        self.initial_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*(1/self.param.n_routes_check))
+        self.limit_hat = 1e-11
+        self.limit_check = 1e-11
+        
+        
+    def start(self):
+        """
+            In base a operation in param, decide se calcolare l'equilibrio di Nash (senza variazioni) o costruire il grafico
+            variando i costi delle strade
+        """
+        if self.param.operation == Operation.NASH_EQ:
+            return self.getNashEquilibria()
+        elif self.param.operation == Operation.NASH_EQ_VARIATIONS:
+            return self.graphVariations()
+\end{lstlisting}
+
+Il metodo \textbf{Initializer::getNashEquilibria} calcola l'equilibrio di Nash
+
+\subsection{Calcolo dell'equilibrio di Nash}
+
+Per calcolare l'equlibrio di Nash si sfrutta la dimostrazione, \cite[Cap. 4]{MR4911797}, del Teorema \ref{th:1}, ovvero cercando un punto fisso della funzione $\mathcal{F}$.
+Per fare ciò si parte da un $(\widehat{\theta}, \widecheck{\theta})\in S^{\widehat{n}}\times S^{\widecheck{\theta}}$ generico. Si ricava $\mathcal{F}(\widehat{\theta}, \widecheck{\theta})$,
+che va a sostituire il valore di $(\widehat{\theta}, \widecheck{\theta})$, salvato invece come $(\widehat{\theta}_{prev}, \widecheck{\theta}_{prev})$. Questa operazione viene ripetuta finché
+$\norm{\widehat{\theta} - \widehat{\theta}_{prev}} < \widehat{limit}$ e $\norm{\widecheck{\theta} - \widecheck{\theta}_{prev}} < \widecheck{limit}$, dove i $limit$ sono limiti di precisione
+definiti in !!!!!. È utile introdurre anche un coefficiente di variazione, utile per !!!!, che verrà applicato a !!!!.
+
+\begin{lstlisting}[style=myStile, caption={Equilibrio di Nash}, label={script:5}]
+def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, variation):
+        prev_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*np.inf)
+        prev_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*np.inf)
+        
+        count = 0
+        
+        while np.linalg.norm(theta_hat-prev_theta_hat) > limit_hat or np.linalg.norm(theta_check-prev_theta_check) > limit_check:
+            prev_theta_hat[:] = theta_hat
+            prev_theta_check[:] = theta_check
+            
+            theta_hat = self.f_hat(theta_hat, theta_check, variation)
+            theta_check = self.f_check(theta_hat, theta_check, variation)
+            count+=1
+        
+        if self.param.show_iterations: print("Iterazioni: " + str(count))
+        return theta_hat, theta_check
+\end{lstlisting}
+

@@ -93,10 +93,10 @@ class AbstractParam(ABC):
         """
         Ritorna il costo (tempo di viaggio) delle strade per la popolazione hat
 
-        :param eta_hat: array dove `eta_hat[i, 0]` è il numero di viaggiatori della popolazione hat sulla strada `i+1`
-        :param eta_check: array dove `eta_check[i, 0]` è il numero di viaggiatori della popolazione check sulla strada `i+1`
-        :return: array di dimensione `n_roads` con il costo (tempo di viaggio) delle strade per la popolazione hat. 
-                Se la strada `i+1` non è in widehat{mathcal{N}}, `return[i]` è impostato di base a +infty
+        :param eta_hat: array dove 'eta_hat[i, 0]' è il numero di viaggiatori della popolazione hat sulla strada 'i+1'
+        :param eta_check: array dove 'eta_check[i, 0]' è il numero di viaggiatori della popolazione check sulla strada 'i+1'
+        :return: array di dimensione 'n_roads' con il costo (tempo di viaggio) delle strade per la popolazione hat. 
+                Se la strada 'i+1' non è in widehat{mathcal{N}}, 'return[i]' è impostato di base a +infty
         """
         pass
 
@@ -105,10 +105,10 @@ class AbstractParam(ABC):
         """
         Ritorna il costo (tempo di viaggio) delle strade per la popolazione check
 
-        :param eta_hat: array dove `eta_hat[i, 0]` è il numero di viaggiatori della popolazione hat sulla strada `i+1`
-        :param eta_check: array dove `eta_check[i, 0]` è il numero di viaggiatori della popolazione check sulla strada `i+1`
-        :return: array di dimensione `n_roads` con il costo (tempo di viaggio) delle strade per la popolazione check. 
-                Se la strada `i+1` non è in widecheck{mathcal{N}}, `return[i]` è impostato di base a +infty
+        :param eta_hat: array dove 'eta_hat[i, 0]' è il numero di viaggiatori della popolazione hat sulla strada 'i+1'
+        :param eta_check: array dove 'eta_check[i, 0]' è il numero di viaggiatori della popolazione check sulla strada 'i+1'
+        :return: array di dimensione 'n_roads' con il costo (tempo di viaggio) delle strade per la popolazione check. 
+                Se la strada 'i+1' non è in widecheck{mathcal{N}}, 'return[i]' è impostato di base a +infty
         """
         pass
     
@@ -117,12 +117,12 @@ class AbstractParam(ABC):
         """
             Ritorna il costo (tempo di viaggio) delle strade per la popolazione hat sommandovi la variazione per le strade indicate in variation_hat
             
-            :param eta_hat: array dove `eta_hat[i, 0]` è il numero di viaggiatori della popolazione hat sulla strada `i+1`
-            :param eta_check: array dove `eta_check[i, 0]` è il numero di viaggiatori della popolazione check sulla strada `i+1`
+            :param eta_hat: array dove 'eta_hat[i, 0]' è il numero di viaggiatori della popolazione hat sulla strada 'i+1'
+            :param eta_check: array dove 'eta_check[i, 0]' è il numero di viaggiatori della popolazione check sulla strada 'i+1'
             :param variation: float che rappresenta il coefficiente di variazione della strada
-            :return: array di dimensione `n_roads` con il costo (tempo di viaggio) delle strade per la popolazione hat a cui è stato
+            :return: array di dimensione 'n_roads' con il costo (tempo di viaggio) delle strade per la popolazione hat a cui è stato
                     sommato variation_hat*variation
-                    Se la strada `i+1` non è in widehat{mathcal{N}}, `return[i]` è impostato di base a +infty
+                    Se la strada 'i+1' non è in widehat{mathcal{N}}, 'return[i]' è impostato di base a +infty
         """
         return self.tau_hat(eta_hat, eta_check) + self.variation_hat * variation
 
@@ -130,11 +130,11 @@ class AbstractParam(ABC):
         """
             Ritorna il costo (tempo di viaggio) delle strade per la popolazione check sommandovi la variazione per le strade indicate in variation_check
             
-            :param eta_hat: array dove `eta_hat[i, 0]` è il numero di viaggiatori della popolazione hat sulla strada `i+1`
-            :param eta_check: array dove `eta_check[i, 0]` è il numero di viaggiatori della popolazione check sulla strada `i+1`
+            :param eta_hat: array dove 'eta_hat[i, 0]' è il numero di viaggiatori della popolazione hat sulla strada 'i+1'
+            :param eta_check: array dove 'eta_check[i, 0]' è il numero di viaggiatori della popolazione check sulla strada 'i+1'
             :param variation: float che rappresenta il coefficiente di variazione della strada
-            :return: array di dimensione `n_roads` con il costo (tempo di viaggio) delle strade per la popolazione check a cui è stato
+            :return: array di dimensione 'n_roads' con il costo (tempo di viaggio) delle strade per la popolazione check a cui è stato
                     sommato variation_check*variation
-                    Se la strada `i+1` non è in widehat{mathcal{N}}, `return[i]` è impostato di base a +infty
+                    Se la strada 'i+1' non è in widehat{mathcal{N}}, 'return[i]' è impostato di base a +infty
         """
         return self.tau_check(eta_hat, eta_check) + self.variation_check * variation
