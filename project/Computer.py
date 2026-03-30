@@ -1,13 +1,15 @@
 import numpy as np
 from utility.AbstractParam import AbstractParam
 from utility.SafeArray import SafeArray
-class Computator:    
+
+class Computer:    
     def __init__(self, param: AbstractParam):
         self.param = param
         
+        #Parametro utile durante il calcolo di f_hat e f_check
         self.lmbda = 0.5*np.min([1/self.param.n_routes_hat, 1/self.param.n_routes_check])
         
-        #Array colonna di 1 con dimensioni n_routes_hat ed n_routes_check
+        #Array colonna di 1 con dimensioni n_routes_hat ed n_routes_check (utile durante il calcolo di f_hat e f_check)
         self.one_n_hat = SafeArray(np.ones((self.param.n_routes_hat, 1)))
         self.one_n_check = SafeArray(np.ones((self.param.n_routes_check, 1)))
     

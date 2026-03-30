@@ -4,8 +4,8 @@ Di seguito viene riportato il codice sorgente del programma utilizzato per la tr
 
 
 \subsection{Contratto Parameters}
-Per il corretto utilizzo del programma è necessario creare una classe che estende \textbf{AbstractParam}:
-\begin{lstlisting}[style=myStile, caption={Parameters}, label={script:1}]
+Per il corretto utilizzo del programma e' necessario creare una classe che estende \textbf{AbstractParam}:
+\begin{lstlisting}[style=myStile, caption={AbstractParam}, label={script:1}, escapeinside={(*@}{@*)}]
 class AbstractParam(ABC):
     """
     Contratto obbligatorio per i Parametri
@@ -15,17 +15,17 @@ class AbstractParam(ABC):
     
     @property
     @abstractmethod
-    def n_roads(self) -> int:
+    def n_roads(self) -> int:           #(*@$N$@*)
         pass
 
     @property
     @abstractmethod
-    def n_routes_hat(self) -> int:
+    def n_routes_hat(self) -> int:      #(*@$\widehat{n}$@*)
         pass
 
     @property
     @abstractmethod
-    def n_routes_check(self) -> int:
+    def n_routes_check(self) -> int:    #(*@$\widecheck{n}$@*)
         pass
 
     @property
@@ -46,26 +46,51 @@ class AbstractParam(ABC):
     def print_as_fraction(self) -> bool:
         return False
 
+    #Valore minimo della variazione mostrato nel grafico
+    @property
+    def MIN(self) -> float:
+        return 0
+
+    #Valore massimo della variazione mostrato nel grafico
+    @property
+    def MAX(self) -> float:
+        return 1
+
+    #Step della variazione usato nel grafico
+    @property
+    def step(self) -> float:
+        return 0.01
+
     # ===== MATRICI =====
     
     @property
     @abstractmethod
-    def Gamma_hat(self) -> SafeArray:
+    def Gamma_hat(self) -> SafeArray:   #(*@$\widehat{\Gamma}$@*)
         pass
 
     @property
     @abstractmethod
-    def Gamma_check(self) -> SafeArray:
+    def Gamma_check(self) -> SafeArray: #(*@$\widecheck{\Gamma}$@*)
         pass
 
     @property
     @abstractmethod
     def variation_hat(self) -> SafeArray:
+        """
+            Ritorna array di dimensione (*@$N$@*), i cui elementi sono 1 o 0:
+                - 'return[i]'==1: se viene utilizzata una variazione, i costi della strada 'i' variano per la popolazione (*@$\textit{hat}$@*)
+                - 'return[i]'==0: se viene utilizzata una variazione, i costi della strada 'i' non variano per la popolazione (*@$\textit{hat}$@*)
+        """
         pass
 
     @property
     @abstractmethod
     def variation_check(self) -> SafeArray:
+        """
+            Ritorna array di dimensione (*@$N$@*), i cui elementi sono 1 o 0:
+                - 'return[i]'==1: se viene utilizzata una variazione, i costi della strada 'i' variano per la popolazione (*@$\textit{check}$@*)
+                - 'return[i]'==0: se viene utilizzata una variazione, i costi della strada 'i' non variano per la popolazione (*@$\textit{check}$@*)
+        """
         pass
 
     # ===== COSTI =====
@@ -73,21 +98,41 @@ class AbstractParam(ABC):
     @abstractmethod
     def tau_hat(self, eta_hat, eta_check) -> SafeArray:
         """
-        Ritorna il costo delle strade per la popolazione hat
+            Ritorna un array di dimensione (*@$N$@*), in cui 'return[i]' indica il costo della strada 'i' per la popolazione (*@$\textit{hat}$@*)
         """
         pass
 
     @abstractmethod
     def tau_check(self, eta_hat, eta_check) -> SafeArray:
         """
-        Ritorna il costo delle strade per la popolazione check
+            Ritorna un array di dimensione (*@$N$@*), in cui 'return[i]' indica il costo della strada 'i' per la popolazione (*@$\textit{check}$@*)
         """
         pass
     
     def tau_hat_variated(self, eta_hat, eta_check, variation) -> SafeArray:
+        """
+            Ritorna il costo (tempo di viaggio) delle strade per la popolazione (*@$\textit{hat}$@*) sommandovi la variazione per le strade indicate in variation_hat
+            
+            :param eta_hat: array dove 'eta_hat[i, 0]' e' il numero di viaggiatori della popolazione (*@$\textit{hat}$@*) sulla strada 'i+1'
+            :param eta_check: array dove 'eta_check[i, 0]' e' il numero di viaggiatori della popolazione (*@$\textit{check}$@*) sulla strada 'i+1'
+            :param variation: float che rappresenta il coefficiente di variazione della strada
+            :return: array di dimensione (*@$N$@*) con il costo (tempo di viaggio) delle strade per la popolazione (*@$\textit{hat}$@*) a cui e' stato
+                    sommato variation_hat*variation
+                    Se la strada 'i+1' non e' in (*@$\widehat{\mathcal{N}}$@*), 'return[i]' e' impostato di base a (*@$\infty$@*)
+        """
         return self.tau_hat(eta_hat, eta_check) + self.variation_hat * variation
 
     def tau_check_variated(self, eta_hat, eta_check, variation) -> SafeArray:
+        """
+            Ritorna il costo (tempo di viaggio) delle strade per la popolazione (*@$\textit{check}$@*) sommandovi la variazione per le strade indicate in variation_check
+            
+            :param eta_hat: array dove 'eta_hat[i, 0]' e' il numero di viaggiatori della popolazione (*@$\textit{hat}$@*) sulla strada 'i+1'
+            :param eta_check: array dove 'eta_check[i, 0]' e' il numero di viaggiatori della popolazione (*@$\textit{check}$@*) sulla strada 'i+1'
+            :param variation: float che rappresenta il coefficiente di variazione della strada
+            :return: array di dimensione (*@$N$@*) con il costo (tempo di viaggio) delle strade per la popolazione (*@$\textit{check}$@*) a cui e' stato
+                    sommato variation_check*variation
+                    Se la strada 'i+1' non e' in (*@$\widecheck{\mathcal{N}}$@*), 'return[i]' e' impostato di base a (*@$\infty$@*)
+        """
         return self.tau_check(eta_hat, eta_check) + self.variation_check * variation
 \end{lstlisting}
 Le proprietà e i metodi contrassegnati da \textbf{@abstractmethod} devono essere istanziati nella classe dei parametri creata dall'utente, mentre gli altri
@@ -95,7 +140,7 @@ hanno valori base che possono essere reistanziati o meno.
 
 \subsection{Utility}
 Viene introdotta una Enum per permettere all'utente di definire quale operazione eseguire (tramite il Listato~\ref{script:1}): calcolo dell'equilibrio di Nash oppure computazione del grafico
-dei tempi di percorrenza della rete dipendenti dalla variazione dei costi delle strade definiti nel Listato~\ref{script:1}.
+dei tempi di percorrenza della rete dipendenti dalla variazione dei costi delle strade, definiti sempre nel Listato~\ref{script:1}.
 
 \begin{lstlisting}[style=myStile, caption={Operation}, label={script:2}]
   class Operation(Enum):
@@ -106,7 +151,9 @@ dei tempi di percorrenza della rete dipendenti dalla variazione dei costi delle 
 Estendiamo anche la classe \textbf{np.ndarray} (vedi \cite{numpy_docs}) per gestire i casi in cui un valore di un array/matrice posto ad \textbf{np.inf} viene moltiplicato per 0.
 Ciò può capitare soprattutto durante il calcolo dell'Equazione \ref{eq:2}
 
-\begin{lstlisting}[style=myStile, caption={Operation}, label={script:3}]
+\begin{lstlisting}[style=myStile, caption={SafeArray}, label={script:3}]
+  import numpy as np
+
   class SafeArray(np.ndarray):
     def __new__(cls, input_array):
         obj = np.asarray(input_array, dtype=float).view(cls)
@@ -137,10 +184,10 @@ Ciò può capitare soprattutto durante il calcolo dell'Equazione \ref{eq:2}
 
 
 \subsection{Classe Initializer}
-Una volta creata una classe che estende \textbf{AbstractParam}, per eseguire il programma è sufficiente creare un'istanza di \textbf{Initializer} e invocare il metodo 
+Una volta creata una classe che estende \textbf{AbstractParam}, per eseguire il programma e' sufficiente creare un'istanza di \textbf{Initializer} e invocare il metodo 
 \textbf{Initializer::start}:
 
-\begin{lstlisting}[style=myStile, caption={Initializer}, label={script:4}]
+\begin{lstlisting}[style=myStile, caption={Initializer}, label={script:4}, escapeinside={(*@}{@*)}]
 class Initializer:
     
     def __init__(self, param: AbstractParam):
@@ -150,7 +197,7 @@ class Initializer:
             raise TypeError("param deve essere un'istanza di BaseParameters")
         
         self.param = param
-        self.computator = Computator(self.param)
+        self.computer = Computer(self.param) #Vedi (*@Listato~\ref{script:8}@*)
         self.initial_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*(1/self.param.n_routes_hat))
         self.initial_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*(1/self.param.n_routes_check))
         self.limit_hat = 1e-11
@@ -159,7 +206,7 @@ class Initializer:
         
     def start(self):
         """
-            In base a operation in param, decide se calcolare l'equilibrio di Nash (senza variazioni) o costruire il grafico
+            In base a operation in param (vedi (*@Listato~\ref{script:1}@*)), decide se calcolare l'equilibrio di Nash (senza variazioni) o costruire il grafico
             variando i costi delle strade
         """
         if self.param.operation == Operation.NASH_EQ:
@@ -168,17 +215,123 @@ class Initializer:
             return self.graphVariations()
 \end{lstlisting}
 
-Il metodo \textbf{Initializer::getNashEquilibria} calcola l'equilibrio di Nash
+Il metodo \textbf{Initializer::getNashEquilibria} calcola l'equilibrio di Nash utilizzando i dati forniti tramite \textbf{param} (istanza di Listato~\ref{script:1}), senza variare
+i costi delle strade. Decide inoltre se stampare il ristulato su terminale verificando il valore attribuito a \textbf{param.show\_result}. Ritorna, in ogni
+caso, i valori che descrivono l'equilibrio di Nash della rete.
 
-\subsection{Calcolo dell'equilibrio di Nash}
+\begin{lstlisting}[style=myStile, caption={Initializer::getNashEquilibria}, label={script:5}, escapeinside={(*@}{@*)}]
+def getNashEquilibria(self):
+        """
+            Calcola l'Equilibrio di Nash al senso della (*@Definizione \ref{def:2}@*) 
+            e ritorna la distribuzione della popolazione (*@$\textit{hat}$@*) e (*@$\textit{check}$@*) sulla rete, 
+            insieme ai tempi di percorrenza della stessa.
+            Se param.show_result==True, stampa tali risultati
+        """     
+        #Equilibrio di Nash (vedi (*@Listato~\ref{script:10}@*)):
+        theta_hat, theta_check = self.computer
+            .getNashEquilibria(self.initial_theta_hat, self.initial_theta_check, self.limit_hat, self.limit_check)
+        
+        #Tempi di viaggio su ogni strada, vedi (*@Listato~\ref{script:11}@*):
+        T_hat = self.computer.T_hat(theta_hat, theta_check, 0)
+        T_check = self.computer.T_check(theta_hat, theta_check, 0)
+        
+        if self.param.show_result: self.printNashEq(theta_hat, theta_check, T_hat, T_check)
+        
+        return theta_hat, theta_check, T_hat, T_check
+\end{lstlisting}
 
-Per calcolare l'equlibrio di Nash si sfrutta la dimostrazione, \cite[Cap. 4]{MR4911797}, del Teorema \ref{th:1}, ovvero cercando un punto fisso della funzione $\mathcal{F}$.
-Per fare ciò si parte da un $(\widehat{\theta}, \widecheck{\theta})\in S^{\widehat{n}}\times S^{\widecheck{\theta}}$ generico. Si ricava $\mathcal{F}(\widehat{\theta}, \widecheck{\theta})$,
+Il metodo \textbf{Initializer::graphVariations} calcola i parametri utili alla costruzione del grafico rappresentante la variazione del tempo di 
+attraversamento della rete rispetto alla variazione dei costi delle strade definiti in \textbf{param}. Decide se costruire tale grafico e presentarlo all'utente
+verificando il valore attribuito a \textbf{param.show\_result}. Ritorna, in ogni caso, i valori utili a disegnarlo.
+
+\begin{lstlisting}[style=myStile, caption={Initializer::graphVariations}, label={script:6}]
+    def graphVariations(self):
+        """
+            Calcola gli array per costruire il grafico dei tempi di percorrenza della rete per le due popolazioni, che dipendono dalla
+            variazione nei costi delle strade. Ritorna tali array. Se show_result==True, mostra il grafico 
+        """
+
+        MIN = self.param.MIN
+        MAX = self.param.MAX
+        step = self.param.step
+        
+        variation_values = np.arange(MIN, MAX+step, step)
+        N = len(variation_values)
+
+        time_of_travel_hat = np.zeros(N)
+        time_of_travel_check = np.zeros(N)
+        
+        theta_hat = self.initial_theta_hat
+        theta_check = self.initial_theta_check
+        
+        for idx, i in enumerate(variation_values):
+            if self.param.show_iterations: print("Current step: " + str(idx+1)+"/"+str(N))
+            
+            theta_hat, theta_check = self.computer
+                    .getNashEquilibriaVariation(theta_hat,
+                                                theta_check, 
+                                                self.limit_hat, 
+                                                self.limit_check,
+                                                i)
+            T_hat = self.computer.T_hat(theta_hat, theta_check, i)
+            T_check = self.computer.T_check(theta_hat, theta_check, i)
+            
+            index_hat = np.argmax(theta_hat > 0)
+            index_check = np.argmax(theta_check > 0)
+            
+            time_of_travel_hat[idx] = T_hat[index_hat]
+            time_of_travel_check[idx] = T_check[index_check]
+            
+        if self.param.show_result: self.showResultPlot(variation_values, time_of_travel_hat, time_of_travel_check)
+        
+        return variation_values, time_of_travel_hat, time_of_travel_check
+\end{lstlisting}
+
+Per disegnare il grafico calcolato nel Listato~\ref{script:6} si fa uso della libreria \textbf{matplotlib.pyplot} (vedi \cite{matplotlib_docs}).
+
+\begin{lstlisting}[style=myStile, caption={Initializer::showResultPlot}, label={script:7}]
+    import matplotlib.pyplot as plt
+
+    ...
+
+    def showResultPlot(self, variation_values, time_of_travel_hat, time_of_travel_check):
+        plt.plot(variation_values, time_of_travel_hat, label='Hat', color='blue')
+        plt.plot(variation_values, time_of_travel_check, label='Check', color='red')
+        plt.xlabel('Variazione del costo delle strade')
+        plt.ylabel('Tempo di attraversamento della rete')
+        plt.title('Tempo di attraversamento della rete in funzione della variazione')
+        plt.legend()
+        plt.grid(True)
+        plt.show()
+\end{lstlisting}
+
+\subsection{Classe Computer}
+
+Per calcolare gli equilibri di Nash e' necessario creare un'istanza della classe \textbf{Computer}. Tale operazione non deve, durante un utilizzo standard, essere effettuata dall'utente,
+bensì viene mascherata ad esso dall'utilizzo di \textbf{Initializer}, Listato~\ref{script:4}
+
+\begin{lstlisting}[style=myStile, caption={Computer}, label={script:8}]
+    class Computer:    
+    def __init__(self, param: AbstractParam):
+        self.param = param
+        
+        #Parametro utile durante il calcolo di f_hat e f_check, vedi (*@Listato~\ref{script:12}@*)
+        self.lmbda = 0.5*np.min([1/self.param.n_routes_hat, 1/self.param.n_routes_check])
+        
+        #Array colonna di 1 con dimensioni n_routes_hat ed n_routes_check 
+        #Utile durante il calcolo di f_hat e f_check, vedi (*@Listato~\ref{script:12}@*)
+        self.one_n_hat = SafeArray(np.ones((self.param.n_routes_hat, 1)))
+        self.one_n_check = SafeArray(np.ones((self.param.n_routes_check, 1)))
+\end{lstlisting}
+
+Per calcolare l'equlibrio di Nash sfruttiamo la dimostrazione (vedi \cite[Cap. 4]{MR4911797}) del Teorema \ref{th:1}: individuiamo un punto fisso della funzione $\mathcal{F}$.
+Cominciamo da un $(\widehat{\theta}, \widecheck{\theta})\in S^{\widehat{n}}\times S^{\widecheck{\theta}}$ generico; si ricava $\mathcal{F}(\widehat{\theta}, \widecheck{\theta})$,
 che va a sostituire il valore di $(\widehat{\theta}, \widecheck{\theta})$, salvato invece come $(\widehat{\theta}_{prev}, \widecheck{\theta}_{prev})$. Questa operazione viene ripetuta finché
 $\norm{\widehat{\theta} - \widehat{\theta}_{prev}} < \widehat{limit}$ e $\norm{\widecheck{\theta} - \widecheck{\theta}_{prev}} < \widecheck{limit}$, dove i $limit$ sono limiti di precisione
-definiti in !!!!!. È utile introdurre anche un coefficiente di variazione, utile per !!!!, che verrà applicato a !!!!.
+definiti in \textbf{param}, vedi Lisato~\ref{script:1}. È utile introdurre anche un coefficiente di variazione, utile per il calcolo effettuato nel Listato~\ref{script:6}, che verrà applicato ai costi delle strade in
+durante il calcolo dei tempi di percorrenza della rete, vedi Listato~\ref{script:11}.
 
-\begin{lstlisting}[style=myStile, caption={Equilibrio di Nash}, label={script:5}]
+\begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibriaVariation}, label={script:9}]
 def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, variation):
         prev_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*np.inf)
         prev_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*np.inf)
@@ -197,3 +350,66 @@ def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_ch
         return theta_hat, theta_check
 \end{lstlisting}
 
+Si può sfruttare la funzione \textbf{getNashEquilibria} per calcolare l'equilibrio di Nash senza introdurre una variazione ai costi delle strade:
+
+\begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibria}, label={script:10}]
+    def getNashEquilibria(self, theta_hat, theta_check, limit_hat, limit_check):
+        """
+            Ritorna l'Equilibrio di Nash al senso della (*@Definizione \ref{def:2}@*)
+            usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni), usando come
+            punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
+            :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            :param limit_hat, limit_check: float
+        """
+        return self.getNashEquilibriaVariation(theta_hat, theta_check, limit_hat, limit_check, 0)
+\end{lstlisting}
+
+Vengono introdotte le seguenti funzioni ausiliarie:
+
+\begin{lstlisting}[style=myStile, caption={Funzioni ausiliarie di Computer}, label={script:11}, escapeinside={(*@}{@*)}]
+    #(*@Equazione \cite{eq:4}@*)
+    def phi(self, x):
+        x = np.asarray(x)
+        res = np.empty_like(x)
+
+        mask = np.isinf(x)
+        res[mask] = 1.
+        res[~mask] = x[~mask] / (1. - x[~mask])
+
+        return SafeArray(res.reshape(-1, 1))
+    
+    #(*@Equazione \cite{eq:2}@*)
+    def T_hat(self, theta_hat, theta_check, variation):
+        nu_hat = self.param.Gamma_hat @ theta_hat
+
+        nu_check = self.param.Gamma_check @ theta_check
+
+        return self.param.Gamma_hat.T @ self.param.tau_hat_variated(nu_hat, nu_check, variation)
+    
+    #(*@Equazione \cite{eq:2}@*)
+    def T_check(self, theta_hat, theta_check, variation):
+        nu_hat = self.param.Gamma_hat @ theta_hat
+
+        nu_check = self.param.Gamma_check @ theta_check
+
+        return self.param.Gamma_check.T @ self.param.tau_check_variated(nu_hat, nu_check, variation)
+    
+    #(*@Equazione \cite{eq:5}@*)
+    def normalize(self, theta):
+        theta_max = np.maximum(theta, 0)
+        sum = np.sum(theta_max)
+        return theta_max / sum
+\end{lstlisting}
+
+Infine, vengono definite le funzioni per il calcolo di f\_hat e f\_check (vedi Equazione \ref{eq:7}):
+
+\begin{lstlisting}[style=myStile, caption={Computer::f\_hat, Computer::f\_check}, label={script:12}]
+    def f_hat(self, theta_hat, theta_check, variation):
+        composition = self.phi(self.T_hat(theta_hat, theta_check, variation))
+        return self.normalize(theta_hat - self.lmbda*(composition - (theta_hat.T @ composition)[0]*self.one_n_hat))
+    
+    
+    def f_check(self, theta_hat, theta_check, variation):
+        composition = self.phi(self.T_check(theta_hat, theta_check, variation))
+        return self.normalize(theta_check - self.lmbda*(composition - (theta_check.T @ composition)[0]*self.one_n_check))
+\end{lstlisting}

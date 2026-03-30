@@ -1,5 +1,5 @@
 from utility.SafeArray import SafeArray
-from Computator import Computator
+from Computer import Computer
 import numpy as np
 import matplotlib.pyplot as plt
 from fractions import Fraction
@@ -15,7 +15,7 @@ class Initializer:
             raise TypeError("param deve essere un'istanza di BaseParameters")
         
         self.param = param
-        self.computator = Computator(self.param)
+        self.computer = Computer(self.param)
         self.initial_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*(1/self.param.n_routes_hat))
         self.initial_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*(1/self.param.n_routes_check))
         self.limit_hat = 1e-11
@@ -39,11 +39,11 @@ class Initializer:
             Se show_result==True, stampa tali risultati
         """     
         #Equilibrio di Nash:
-        theta_hat, theta_check = self.computator.getNashEquilibria(self.initial_theta_hat, self.initial_theta_check, self.limit_hat, self.limit_check)
+        theta_hat, theta_check = self.computer.getNashEquilibria(self.initial_theta_hat, self.initial_theta_check, self.limit_hat, self.limit_check)
         
         #Tempi di viaggio su ogni strada:
-        T_hat = self.computator.T_hat(theta_hat, theta_check, 0)
-        T_check = self.computator.T_check(theta_hat, theta_check, 0)
+        T_hat = self.computer.T_hat(theta_hat, theta_check, 0)
+        T_check = self.computer.T_check(theta_hat, theta_check, 0)
         
         if self.param.show_result: self.printNashEq(theta_hat, theta_check, T_hat, T_check)
         
@@ -53,7 +53,7 @@ class Initializer:
     def graphVariations(self):
         """
             Calcola gli array per costruire il grafico dei tempi di percorrenza della rete per le due popolazioni, che dipende dalla
-            variazione nei costi delle strade. Se show_result==True, mostra il grafico 
+            variazione nei costi delle strade. In ogni caso ritorna tali array. Se show_result==True, mostra il grafico
         """
         MIN = self.param.MIN
         MAX = self.param.MAX
@@ -71,13 +71,13 @@ class Initializer:
         for idx, i in enumerate(variation_values):
             if self.param.show_iterations: print("Current step: " + str(idx+1)+"/"+str(N))
             
-            theta_hat, theta_check = self.computator.getNashEquilibriaVariation(theta_hat,
+            theta_hat, theta_check = self.computer.getNashEquilibriaVariation(theta_hat,
                                                                                 theta_check, 
                                                                                 self.limit_hat, 
                                                                                 self.limit_check,
                                                                                 i)
-            T_hat = self.computator.T_hat(theta_hat, theta_check, i)
-            T_check = self.computator.T_check(theta_hat, theta_check, i)
+            T_hat = self.computer.T_hat(theta_hat, theta_check, i)
+            T_check = self.computer.T_check(theta_hat, theta_check, i)
             
             index_hat = np.argmax(theta_hat > 0)
             index_check = np.argmax(theta_check > 0)
@@ -93,9 +93,9 @@ class Initializer:
     def showResultPlot(self, variation_values, time_of_travel_hat, time_of_travel_check):
         plt.plot(variation_values, time_of_travel_hat, label='Hat', color='blue')
         plt.plot(variation_values, time_of_travel_check, label='Check', color='red')
-        plt.xlabel('Variazione del tempo di viaggio')
-        plt.ylabel('Tempo di viaggio')
-        plt.title('Tempo di viaggio in funzione della variazione')
+        plt.xlabel('Variazione del costo delle strade')
+        plt.ylabel('Tempo di attraversamento della rete')
+        plt.title('Tempo di attraversamento della rete in funzione della variazione')
         plt.legend()
         plt.grid(True)
         plt.show()
