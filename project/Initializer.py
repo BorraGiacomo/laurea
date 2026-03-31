@@ -65,6 +65,9 @@ class Initializer:
         time_of_travel_hat = np.zeros(N)
         time_of_travel_check = np.zeros(N)
         
+        thetas_hat = np.zeros((self.param.n_routes_hat, N))
+        thetas_check = np.zeros((self.param.n_routes_check, N))
+        
         theta_hat = self.initial_theta_hat
         theta_check = self.initial_theta_check
         
@@ -85,19 +88,61 @@ class Initializer:
             time_of_travel_hat[idx] = T_hat[index_hat]
             time_of_travel_check[idx] = T_check[index_check]
             
-        if self.param.show_result: self.showResultPlot(variation_values, time_of_travel_hat, time_of_travel_check)
+            thetas_hat[:, idx] = theta_hat[:, 0]
+            thetas_check[:, idx] = theta_check[:, 0]
+            
+        if self.param.show_result: self.showResultTimeVariation(variation_values, time_of_travel_hat, time_of_travel_check)
+        if self.param.show_result: 
+            self.showResultEqVariation(variation_values, thetas_hat, "hat")
+            self.showResultEqVariation(variation_values, thetas_check, "check")
         
         return variation_values, time_of_travel_hat, time_of_travel_check
     
     
-    def showResultPlot(self, variation_values, time_of_travel_hat, time_of_travel_check):
+    def showResultTimeVariation(self, variation_values, time_of_travel_hat, time_of_travel_check):
         plt.plot(variation_values, time_of_travel_hat, label='Hat', color='blue')
         plt.plot(variation_values, time_of_travel_check, label='Check', color='red')
         plt.xlabel('Variazione del costo delle strade')
         plt.ylabel('Tempo di attraversamento della rete')
-        plt.title('Tempo di attraversamento della rete in funzione della variazione')
+        plt.title('Tempo di attraversamento della rete\nin funzione della variazione dei costi')
         plt.legend()
         plt.grid(True)
+        plt.show()
+        
+    def showResultEqVariation(self, variation_values, thetas, pop):
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        n = thetas.shape[0]
+        # determinare dimensioni griglia
+        cols = int(np.ceil(np.sqrt(n)))
+        rows = int(np.ceil(n / cols))
+
+        # calcolo minimo e massimo di tutti i dati
+        y_min = np.min(thetas)
+        y_max = np.max(thetas)
+
+        fig, axes = plt.subplots(rows, cols, figsize=(4 * cols, 3 * rows))
+        axes = axes.flatten()
+
+        for i in range(n):
+            ax = axes[i]
+            ax.plot(variation_values, thetas[i, :], linewidth=1.8)
+
+            ax.set_title(f'Theta_{pop}_{i}')
+            ax.set_xlabel('Variazione del costo delle strade')
+            ax.set_ylabel('Distribuzione popolazione')
+
+            # usa la stessa scala su tutti i subplot
+            ax.set_ylim(y_min, y_max)
+
+            ax.grid(True)
+
+        # rimuovere eventuali subplot vuoti
+        for j in range(n, len(axes)):
+            fig.delaxes(axes[j])
+
+        plt.tight_layout()
         plt.show()
  
  

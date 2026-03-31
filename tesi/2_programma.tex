@@ -78,7 +78,7 @@ class AbstractParam(ABC):
     def variation_hat(self) -> SafeArray:
         """
             Ritorna array di dimensione (*@$N$@*), i cui elementi sono 1 o 0:
-                - 'return[i]'==1: se viene utilizzata una variazione, i costi della strada 'i' variano per la popolazione (*@$\textit{hat}$@*)
+                - 'return[i]'!=0: se viene utilizzata una variazione, i costi della strada 'i' variano per la popolazione (*@$\textit{check}$@*) di un coefficiente 'return[i]', maggiore o minore di 0
                 - 'return[i]'==0: se viene utilizzata una variazione, i costi della strada 'i' non variano per la popolazione (*@$\textit{hat}$@*)
         """
         pass
@@ -87,8 +87,8 @@ class AbstractParam(ABC):
     @abstractmethod
     def variation_check(self) -> SafeArray:
         """
-            Ritorna array di dimensione (*@$N$@*), i cui elementi sono 1 o 0:
-                - 'return[i]'==1: se viene utilizzata una variazione, i costi della strada 'i' variano per la popolazione (*@$\textit{check}$@*)
+            Ritorna array di dimensione (*@$N$@*), i cui elementi sono:
+                - 'return[i]'!=0: se viene utilizzata una variazione, i costi della strada 'i' variano per la popolazione (*@$\textit{check}$@*) di un coefficiente 'return[i]', maggiore o minore di 0
                 - 'return[i]'==0: se viene utilizzata una variazione, i costi della strada 'i' non variano per la popolazione (*@$\textit{check}$@*)
         """
         pass
@@ -241,7 +241,7 @@ def getNashEquilibria(self):
 \end{lstlisting}
 
 Il metodo \textbf{Initializer::graphVariations} calcola i parametri utili alla costruzione del grafico rappresentante la variazione del tempo di 
-attraversamento della rete rispetto alla variazione dei costi delle strade definiti in \textbf{param}. Decide se costruire tale grafico e presentarlo all'utente
+attraversamento della rete rispetto alla variazione dei costi delle strade definita in \textbf{param}, Listato~\ref{script:1}. Decide se costruire tale grafico e presentarlo all'utente
 verificando il valore attribuito a \textbf{param.show\_result}. Ritorna, in ogni caso, i valori utili a disegnarlo.
 
 \begin{lstlisting}[style=myStile, caption={Initializer::graphVariations}, label={script:6}]
@@ -328,7 +328,7 @@ Per calcolare l'equlibrio di Nash sfruttiamo la dimostrazione (vedi \cite[Cap. 4
 Cominciamo da un $(\widehat{\theta}, \widecheck{\theta})\in S^{\widehat{n}}\times S^{\widecheck{\theta}}$ generico; si ricava $\mathcal{F}(\widehat{\theta}, \widecheck{\theta})$,
 che va a sostituire il valore di $(\widehat{\theta}, \widecheck{\theta})$, salvato invece come $(\widehat{\theta}_{prev}, \widecheck{\theta}_{prev})$. Questa operazione viene ripetuta finché
 $\norm{\widehat{\theta} - \widehat{\theta}_{prev}} < \widehat{limit}$ e $\norm{\widecheck{\theta} - \widecheck{\theta}_{prev}} < \widecheck{limit}$, dove i $limit$ sono limiti di precisione
-definiti in \textbf{param}, vedi Lisato~\ref{script:1}. È utile introdurre anche un coefficiente di variazione, utile per il calcolo effettuato nel Listato~\ref{script:6}, che verrà applicato ai costi delle strade in
+definiti in \textbf{Initializer}, vedi Lisato~\ref{script:4}. È utile introdurre anche un coefficiente di variazione, utile per il calcolo effettuato nel Listato~\ref{script:6}, che verrà applicato ai costi delle strade
 durante il calcolo dei tempi di percorrenza della rete, vedi Listato~\ref{script:11}.
 
 \begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibriaVariation}, label={script:9}]

@@ -9,18 +9,6 @@ from utility.AbstractParam import AbstractParam
 class Parameters(AbstractParam):
 
     @property
-    def n_roads(self):
-        return 5
-
-    @property
-    def n_routes_hat(self):
-        return 3
-
-    @property
-    def n_routes_check(self):
-        return 3
-
-    @property
     def operation(self):
         return Operation.NASH_EQ_VARIATIONS
 

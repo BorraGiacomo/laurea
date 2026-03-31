@@ -8,20 +8,8 @@ from utility.AbstractParam import AbstractParam
 class Parameters(AbstractParam):
 
     @property
-    def n_roads(self):
-        return 6
-
-    @property
-    def n_routes_hat(self):
-        return 8
-
-    @property
-    def n_routes_check(self):
-        return 2
-
-    @property
     def operation(self):
-        return Operation.NASH_EQ_VARIATIONS
+        return Operation.NASH_EQ
     
     @property
     def show_result(self):
@@ -50,11 +38,13 @@ class Parameters(AbstractParam):
     @property
     def Gamma_hat(self):
         return SafeArray([[1., 1., 1., 1., 0., 0., 0., 0.],
-                          [1., 1., 0., 0., 1., 1., 0., 0.],
+                          [1., 1., 0., 0., 0., 0., 1., 1.],
                           [1., 0., 1., 0., 1., 0., 1., 0.],
                           [0., 0., 0., 0., 1., 1., 1., 1.],
-                          [0., 0., 1., 1., 0., 0., 1., 1.],
-                          [0., 1., 0., 1., 0., 1., 0., 1.]])
+                          [0., 0., 1., 1., 1., 1., 0., 0.],
+                          [0., 1., 0., 1., 0., 1., 0., 1.],
+                          [0., 0., 1., 1., 0., 0., 0., 0.],
+                          [0., 0., 0., 0., 0., 0., 1., 1.]])
     
     @property
     def Gamma_check(self) -> SafeArray:
@@ -63,26 +53,30 @@ class Parameters(AbstractParam):
                           [1., 0.],
                           [0., 0.],
                           [0., 0.],
-                          [0., 1.]])
+                          [0., 1.],
+                          [0., 0.],
+                          [0., 0.]])
     
     @property
     def variation_hat(self):
-        return SafeArray([0., 0., 1., 0., 0., 0.])
+        return SafeArray([0., 0., -1., 0., 0., 0., 0., 0.])
     
     @property
     def variation_check(self):
-        return SafeArray([0., 0., 1., 0., 0., 0.])
+        return SafeArray([0., 0., -1., 0., 0., 1., 0., 0.])
     
     @override
     def tau_hat(self, eta_hat, eta_check):
         return (
             SafeArray([
-                2.+eta_hat[0, 0]+2*eta_check[0, 0],
-                2.+eta_hat[1, 0]+2*eta_check[1, 0],
-                2.+eta_hat[2, 0]+2*eta_check[2, 0],
+                3.+eta_hat[0, 0]+eta_check[0, 0],
+                3.+eta_hat[1, 0]+eta_check[1, 0],
+                3.+eta_hat[2, 0]+eta_check[2, 0] + self.MAX,
                 4.+eta_hat[3, 0],
-                4.+eta_hat[4, 0],
-                4.+eta_hat[5, 0]+2*eta_check[5, 0]
+                5.+eta_hat[4, 0],
+                4.+eta_hat[5, 0]+2*eta_check[5, 0],
+                0,
+                0
             ])
         )
     
@@ -90,11 +84,13 @@ class Parameters(AbstractParam):
     def tau_check(self, eta_hat, eta_check):
         return (
             SafeArray([
-                5,
-                5,
-                5,
+                4,
+                4,
+                4 + self.MAX,
                 np.inf,
                 np.inf,
-                4.+eta_hat[5, 0]+2*eta_check[5, 0]
+                4.+eta_hat[5, 0]+2*eta_check[5, 0],
+                np.inf,
+                np.inf
             ])
         )

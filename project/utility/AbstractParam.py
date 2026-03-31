@@ -10,19 +10,16 @@ class AbstractParam(ABC):
     # ===== PARAMETRI BASE =====
     
     @property
-    @abstractmethod
     def n_roads(self) -> int:
-        pass
+        return self.Gamma_hat.shape[0]
 
     @property
-    @abstractmethod
     def n_routes_hat(self) -> int:
-        pass
+        return self.Gamma_hat.shape[1]
 
     @property
-    @abstractmethod
     def n_routes_check(self) -> int:
-        pass
+        return self.Gamma_check.shape[1]
 
     @property
     @abstractmethod
