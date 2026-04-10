@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from utility.SafeArray import SafeArray
 from utility.Operation import Operation
+import numpy as np
 
 class AbstractParam(ABC):
     """
@@ -71,15 +72,13 @@ class AbstractParam(ABC):
 
     #Strade i cui costi variano per la popolazione hat
     @property
-    @abstractmethod
     def variation_hat(self) -> SafeArray:
-        pass
+        return SafeArray(np.zeros(self.n_roads))
 
     #Strade i cui costi variano per la popolazione check
     @property
-    @abstractmethod
     def variation_check(self) -> SafeArray:
-        pass
+        return SafeArray(np.zeros(self.n_roads))
 
 
 

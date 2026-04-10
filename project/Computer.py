@@ -14,12 +14,12 @@ class Computer:
         self.one_n_check = SafeArray(np.ones((self.param.n_routes_check, 1)))
     
     
-    def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, variation):
+    def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, totPopulation, variationTime):
         """
             Ritorna l'Equilibrio di Nash variando i costi delle strade selezionate in param di un coefficiente variation, usando come
             punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
             :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
-            :param limit_hat, limit_check, variation: float
+            :param limit_hat, limit_check, variation, totPopulation: float
         """
         prev_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*np.inf)
         prev_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*np.inf)
@@ -30,22 +30,40 @@ class Computer:
             prev_theta_hat[:] = theta_hat
             prev_theta_check[:] = theta_check
             
-            theta_hat = self.f_hat(theta_hat, theta_check, variation)
-            theta_check = self.f_check(theta_hat, theta_check, variation)
+            theta_hat = self.f_hat(theta_hat, theta_check, totPopulation, variationTime)
+            theta_check = self.f_check(theta_hat, theta_check, totPopulation, variationTime)
             count+=1
         
         if self.param.show_iterations: print("Iterazioni: " + str(count))
         return theta_hat, theta_check
     
+    def getNashEquilibriaCostVariation(self, theta_hat, theta_check, limit_hat, limit_check, variation):
+        """
+            Ritorna l'Equilibrio di Nash variando i costi delle strade selezionate in param di un coefficiente variation (con popolazione totale 1), usando come
+            punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
+            :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            :param limit_hat, limit_check, variation, totPopulation: float
+        """
+        return self.getNashEquilibriaVariation(theta_hat, theta_check, limit_hat, limit_check, 1, variation)
+    
+    def getNashEquilibriaPopVariation(self, theta_hat, theta_check, limit_hat, limit_check, totPopulation):
+        """
+            Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni),
+            con popolaione totale totPopulation ed usando come punto di partenza theta_hat, 
+            theta_check e come limite di precisione limit_hat, limit_check
+            :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            :param limit_hat, limit_check, totPopulation: float
+        """
+        return self.getNashEquilibriaVariation(theta_hat, theta_check, limit_hat, limit_check, totPopulation, 0)
     
     def getNashEquilibria(self, theta_hat, theta_check, limit_hat, limit_check):
         """
-            Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni), usando come
-            punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
+            Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni e con popolaione totale 1),
+            usando come punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
             :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
             :param limit_hat, limit_check: float
         """
-        return self.getNashEquilibriaVariation(theta_hat, theta_check, limit_hat, limit_check, 0)
+        return self.getNashEquilibriaVariation(theta_hat, theta_check, limit_hat, limit_check, 1, 0)
     
     
     def phi(self, x):
@@ -59,20 +77,20 @@ class Computer:
         return SafeArray(res.reshape(-1, 1))
     
     
-    def T_hat(self, theta_hat, theta_check, variation):
+    def T_hat(self, theta_hat, theta_check, totPopulation, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
         nu_check = self.param.Gamma_check @ theta_check
 
-        return self.param.Gamma_hat.T @ self.param.tau_hat_variated(nu_hat, nu_check, variation)
+        return self.param.Gamma_hat.T @ self.param.tau_hat_variated(nu_hat*totPopulation, nu_check*totPopulation, variation)
     
     
-    def T_check(self, theta_hat, theta_check, variation):
+    def T_check(self, theta_hat, theta_check, totPopulation, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
         nu_check = self.param.Gamma_check @ theta_check
 
-        return self.param.Gamma_check.T @ self.param.tau_check_variated(nu_hat, nu_check, variation)
+        return self.param.Gamma_check.T @ self.param.tau_check_variated(nu_hat*totPopulation, nu_check*totPopulation, variation)
     
     
     def normalize(self, theta):
@@ -81,12 +99,12 @@ class Computer:
         return theta_max / sum
     
     
-    def f_hat(self, theta_hat, theta_check, variation):
-        composition = self.phi(self.T_hat(theta_hat, theta_check, variation))
+    def f_hat(self, theta_hat, theta_check, totPopulation, variation):
+        composition = self.phi(self.T_hat(theta_hat, theta_check, totPopulation, variation))
         return self.normalize(theta_hat - self.lmbda*(composition - (theta_hat.T @ composition)[0]*self.one_n_hat))
     
     
-    def f_check(self, theta_hat, theta_check, variation):
-        composition = self.phi(self.T_check(theta_hat, theta_check, variation))
+    def f_check(self, theta_hat, theta_check, totPopulation, variation):
+        composition = self.phi(self.T_check(theta_hat, theta_check, totPopulation, variation))
         return self.normalize(theta_check - self.lmbda*(composition - (theta_check.T @ composition)[0]*self.one_n_check))
     
