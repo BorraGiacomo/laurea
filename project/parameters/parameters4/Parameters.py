@@ -9,7 +9,7 @@ class Parameters(AbstractParam):
 
     @property
     def operation(self):
-        return Operation.NASH_EQ
+        return Operation.NASH_EQ_TIME_VARIATIONS
     
     @property
     def show_result(self):

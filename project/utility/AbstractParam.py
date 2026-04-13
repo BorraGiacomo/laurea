@@ -2,82 +2,225 @@ from abc import ABC, abstractmethod
 from utility.SafeArray import SafeArray
 from utility.Operation import Operation
 import numpy as np
+from typing import final
+
 
 class AbstractParam(ABC):
     """
-    Contratto obbligatorio per i Parametri
+    Contratto obbligatorio per i Parametri.
+    Definisce struttura, matrici e funzioni di costo per modelli di traffico.
     """
+    
+    
 
     # ===== PARAMETRI BASE =====
     
     @property
+    @final
     def n_roads(self) -> int:
+        """
+        Numero totale di strade del grafo.
+        
+        Returns:
+            int: numero di righe di Gamma_hat (una per ogni strada)
+        """
         return self.Gamma_hat.shape[0]
 
     @property
+    @final
     def n_routes_hat(self) -> int:
+        """
+        Numero di percorsi disponibili per la popolazione hat.
+        
+        Returns:
+            int: numero di colonne di Gamma_hat
+        """
         return self.Gamma_hat.shape[1]
 
     @property
+    @final
     def n_routes_check(self) -> int:
+        """
+        Numero di percorsi disponibili per la popolazione check.
+        
+        Returns:
+            int: numero di colonne di Gamma_check
+        """
         return self.Gamma_check.shape[1]
 
     @property
     @abstractmethod
     def operation(self) -> Operation:
+        """
+        Tipo di operazione da eseguire (es. Nash equilibrium).
+        
+        Returns:
+            Operation: tipo di operazione
+        """
         pass
 
     @property
-    def show_result(self) -> bool:
-        return False
+    @abstractmethod
+    def output_directory(self) -> str:
+        """
+        Directory dove salvare i risultati.
+        
+        Returns:
+            str: percorso della directory di output
+        """
+        pass
+
+    @property
+    def save_result(self) -> bool:
+        """
+        Indica se salvare i risultati su file.
+        
+        Returns:
+            bool: True se i risultati devono essere salvati
+        """
+        return True
     
     @property
     def show_iterations(self) -> bool:
+        """
+        Indica se mostrare le iterazioni durante il calcolo.
+        
+        Returns:
+            bool: True se si vogliono stampare a terminale le iterazioni
+        """
         return True
 
     @property
-    def print_as_fraction(self) -> bool:
-        return False
+    def save_as_fraction(self) -> bool:
+        """
+        Indica se salvare i valori come frazioni.
+        Utilizzato solo nel caso in cui self.operation==Operation.NASH_EQ
+        
+        Returns:
+            bool: True se i numeri devono essere convertiti in frazioni
+        """
+        return True
 
-    #Valore minimo della variazione mostrato nel grafico
     @property
     def MIN(self) -> float:
+        """
+        Valore minimo della variazione nei grafici.
+        
+        Returns:
+            float: limite inferiore
+        """
         return 0
 
-    #Valore massimo della variazione mostrato nel grafico
     @property
     def MAX(self) -> float:
+        """
+        Valore massimo della variazione nei grafici.
+        
+        Returns:
+            float: limite superiore
+        """
         return 1
 
-    #Step della variazione usato nel grafico
     @property
     def step(self) -> float:
+        """
+        Passo della variazione nei grafici.
+        
+        Returns:
+            float: incremento della variazione
+        """
         return 0.01
-
-
+    
+    @property
+    def entity_number_hat(self) -> float:
+        """
+        Numero totale di entità nella popolazione hat.
+        Nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS, viene
+        utilizzato solo se self.variate_pop_hat==False
+        
+        Returns:
+            float: numero di entità hat
+        """
+        return 1.
+    
+    @property
+    def entity_number_check(self) -> float:
+        """
+        Numero totale di entità nella popolazione check. 
+        Nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS, viene
+        utilizzato solo se self.variate_pop_check==False
+                
+        Returns:
+            float: numero di entità check
+        """
+        return 1.
+    
+    @property
+    def variate_pop_hat(self) -> bool:
+        """
+        Indica se variare il numero di entità della popolazione hat durante il calcolo,
+        nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS
+        
+        Returns:
+            bool: True se si deve variare il numero di entità della popolazione hat
+        """
+        return True
+    
+    @property
+    def variate_pop_check(self) -> bool:
+        """
+        Indica se variare il numero di entità della popolazione check durante il calcolo,
+        nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS
+        
+        Returns:
+            bool: True se si deve variare il numero di entità della popolazione check
+        """
+        return True
+    
+    
 
     # ===== MATRICI =====
     
-    #Percorsi per la popolazione hat
     @property
     @abstractmethod
     def Gamma_hat(self) -> SafeArray:
+        """
+        Matrice dei percorsi per la popolazione hat.
+        
+        Returns:
+            SafeArray: matrice (n_roads x n_routes_hat)
+        """
         pass
 
-    #Percorsi per la popolazione check
     @property
     @abstractmethod
     def Gamma_check(self) -> SafeArray:
+        """
+        Matrice dei percorsi per la popolazione check.
+        
+        Returns:
+            SafeArray: matrice (n_roads x n_routes_check)
+        """
         pass
 
-    #Strade i cui costi variano per la popolazione hat
     @property
     def variation_hat(self) -> SafeArray:
+        """
+        Vettore delle variazioni di costo per la popolazione hat.
+        
+        Returns:
+            SafeArray: array di zeri (default)
+        """
         return SafeArray(np.zeros(self.n_roads))
 
-    #Strade i cui costi variano per la popolazione check
     @property
     def variation_check(self) -> SafeArray:
+        """
+        Vettore delle variazioni di costo per la popolazione check.
+        
+        Returns:
+            SafeArray: array di zeri (default)
+        """
         return SafeArray(np.zeros(self.n_roads))
 
 
@@ -87,50 +230,63 @@ class AbstractParam(ABC):
     @abstractmethod
     def tau_hat(self, eta_hat, eta_check) -> SafeArray:
         """
-        Ritorna il costo (tempo di viaggio) delle strade per la popolazione hat
-
-        :param eta_hat: array dove 'eta_hat[i, 0]' è il numero di viaggiatori della popolazione hat sulla strada 'i+1'
-        :param eta_check: array dove 'eta_check[i, 0]' è il numero di viaggiatori della popolazione check sulla strada 'i+1'
-        :return: array di dimensione 'n_roads' con il costo (tempo di viaggio) delle strade per la popolazione hat. 
-                Se la strada 'i+1' non è in widehat{mathcal{N}}, 'return[i]' è impostato di base a +infty
+        Calcola il costo (tempo di viaggio) per la popolazione hat.
+        
+        Args:
+            eta_hat: entità hat presenti su ogni strada
+            eta_check: entità check presenti su ogni strada
+        
+        Returns:
+            SafeArray: costo per ogni strada (dimensione n_roads)
         """
         pass
 
     @abstractmethod
     def tau_check(self, eta_hat, eta_check) -> SafeArray:
         """
-        Ritorna il costo (tempo di viaggio) delle strade per la popolazione check
-
-        :param eta_hat: array dove 'eta_hat[i, 0]' è il numero di viaggiatori della popolazione hat sulla strada 'i+1'
-        :param eta_check: array dove 'eta_check[i, 0]' è il numero di viaggiatori della popolazione check sulla strada 'i+1'
-        :return: array di dimensione 'n_roads' con il costo (tempo di viaggio) delle strade per la popolazione check. 
-                Se la strada 'i+1' non è in widecheck{mathcal{N}}, 'return[i]' è impostato di base a +infty
+        Calcola il costo (tempo di viaggio) per la popolazione check.
+        
+        Args:
+            eta_hat: entità hat presenti su ogni strada
+            eta_check: entità check presenti su ogni strada
+        
+        Returns:
+            SafeArray: costo per ogni strada (dimensione n_roads)
         """
         pass
     
-    
+    @final
     def tau_hat_variated(self, eta_hat, eta_check, variation) -> SafeArray:
         """
-            Ritorna il costo (tempo di viaggio) delle strade per la popolazione hat sommandovi la variazione per le strade indicate in variation_hat
-            
-            :param eta_hat: array dove 'eta_hat[i, 0]' è il numero di viaggiatori della popolazione hat sulla strada 'i+1'
-            :param eta_check: array dove 'eta_check[i, 0]' è il numero di viaggiatori della popolazione check sulla strada 'i+1'
-            :param variation: float che rappresenta il coefficiente di variazione della strada
-            :return: array di dimensione 'n_roads' con il costo (tempo di viaggio) delle strade per la popolazione hat a cui è stato
-                    sommato variation_hat*variation
-                    Se la strada 'i+1' non è in widehat{mathcal{N}}, 'return[i]' è impostato di base a +infty
+        Calcola il costo per la popolazione hat includendo una variazione lineare.
+        
+        Il costo restituito è:
+            tau_hat + variation_hat * variation
+        
+        Args:
+            eta_hat: entità hat presenti su ogni strada
+            eta_check: entità check presenti su ogni strada
+            variation: coefficiente scalare di variazione
+        
+        Returns:
+            SafeArray: costo modificato per ogni strada
         """
         return self.tau_hat(eta_hat, eta_check) + self.variation_hat * variation
 
+    @final
     def tau_check_variated(self, eta_hat, eta_check, variation) -> SafeArray:
         """
-            Ritorna il costo (tempo di viaggio) delle strade per la popolazione check sommandovi la variazione per le strade indicate in variation_check
-            
-            :param eta_hat: array dove 'eta_hat[i, 0]' è il numero di viaggiatori della popolazione hat sulla strada 'i+1'
-            :param eta_check: array dove 'eta_check[i, 0]' è il numero di viaggiatori della popolazione check sulla strada 'i+1'
-            :param variation: float che rappresenta il coefficiente di variazione della strada
-            :return: array di dimensione 'n_roads' con il costo (tempo di viaggio) delle strade per la popolazione check a cui è stato
-                    sommato variation_check*variation
-                    Se la strada 'i+1' non è in widecheck{mathcal{N}}, 'return[i]' è impostato di base a +infty
+        Calcola il costo per la popolazione check includendo una variazione lineare.
+        
+        Il costo restituito è:
+            tau_check + variation_check * variation
+        
+        Args:
+            eta_hat: entità hat presenti su ogni strada
+            eta_check: entità check presenti su ogni strada
+            variation: coefficiente scalare di variazione
+        
+        Returns:
+            SafeArray: costo modificato per ogni strada
         """
         return self.tau_check(eta_hat, eta_check) + self.variation_check * variation

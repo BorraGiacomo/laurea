@@ -30,6 +30,10 @@ class Parameters(AbstractParam):
     @property
     def step(self):
         return 0.5
+    
+    @property
+    def output_directory(self):
+        return "parameters\\parameters6"
 
     @property
     def Gamma_hat(self):

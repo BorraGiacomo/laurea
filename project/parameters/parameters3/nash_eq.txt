@@ -1,0 +1,15 @@
+Equilibrio di Nash:
+theta_hat:
+[['1/2']
+ ['1/2']
+ ['0']]
+theta_check:
+[['1/2']
+ ['1/2']
+ ['0']]
+
+Tempi di attraversamento dei percorsi:
+T_hat:
+['65' '65' 'inf']
+T_check:
+['44' '44' 'inf']

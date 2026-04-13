@@ -10,31 +10,19 @@ class Parameters(AbstractParam):
 
     @property
     def operation(self):
-        return Operation.NASH_EQ_VARIATIONS
-
+        return Operation.NASH_EQ
+    
     @property
-    def show_result(self):
-        return True
-
+    def output_directory(self):
+        return "parameters\\parameters3"
+    
     @property
-    def print_as_fraction(self):
-        return True
-
+    def entity_number_hat(self) -> float:
+        return 1.
+    
     @property
-    def show_iterations(self):
-        return True
-
-    @property
-    def MIN(self):
-        return 0
-
-    @property
-    def MAX(self):
-        return 50
-
-    @property
-    def step(self):
-        return 0.5
+    def entity_number_check(self) -> float:
+        return 1.
 
     @property
     def Gamma_hat(self):
@@ -56,14 +44,6 @@ class Parameters(AbstractParam):
             [0., 0., 1.]
         ])
 
-    @property
-    def variation_hat(self):
-        return SafeArray([0., 0., 0., 0., 1.])
-
-    @property
-    def variation_check(self):
-        return SafeArray([0., 0., 0., 0., 1.])
-
     @override
     def tau_hat(self, eta_hat, eta_check):
         return (
@@ -72,7 +52,7 @@ class Parameters(AbstractParam):
                 40. * eta_hat[1, 0],
                 45.,
                 40. * eta_hat[3, 0],
-                0
+                np.inf
             ])
         )
 
@@ -84,6 +64,6 @@ class Parameters(AbstractParam):
                 20. * eta_check[1, 0] + 8. * eta_hat[1, 0],
                 30.,
                 20. * eta_check[1, 0] + 8. * eta_hat[1, 0],
-                0
+                np.inf
             ])
         )
