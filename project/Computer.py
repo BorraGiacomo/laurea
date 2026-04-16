@@ -9,7 +9,7 @@ class Computer:
         #Parametro utile durante il calcolo di f_hat e f_check
         self.lmbda = 0.5*np.min([1/self.param.n_routes_hat, 1/self.param.n_routes_check])
         
-        #Array colonna di 1 con dimensioni n_routes_hat ed n_routes_check (utile durante il calcolo di f_hat e f_check)
+        #Vettore colonna di 1 con dimensioni n_routes_hat ed n_routes_check (utile durante il calcolo di f_hat e f_check)
         self.one_n_hat = SafeArray(np.ones((self.param.n_routes_hat, 1)))
         self.one_n_check = SafeArray(np.ones((self.param.n_routes_check, 1)))
     
@@ -17,9 +17,9 @@ class Computer:
     def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, PopulationHat, PopulationCheck, variationTime):
         """
             Ritorna l'Equilibrio di Nash variando i costi delle strade selezionate in param di un coefficiente variation, usando come
-            punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
-            :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
-            :param limit_hat, limit_check, variation, totPopulation: float
+            punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità PopulationHat e PopulationCheck
+            :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            :param limit_hat, limit_check, variation, PopulationHat, PopulationCheck: float
         """
         prev_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*np.inf)
         prev_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*np.inf)
@@ -39,9 +39,9 @@ class Computer:
     
     def getNashEquilibriaCostVariation(self, theta_hat, theta_check, limit_hat, limit_check, variation):
         """
-            Ritorna l'Equilibrio di Nash variando i costi delle strade selezionate in param di un coefficiente variation (con popolazione totale 1), usando come
-            punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
-            :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            Ritorna l'Equilibrio di Nash variando i costi delle strade selezionate in param di un coefficiente variation, usando come
+            punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità i self.param.entity_number
+            :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
             :param limit_hat, limit_check, variation, totPopulation: float
         """
         return self.getNashEquilibriaVariation(theta_hat, 
@@ -54,11 +54,10 @@ class Computer:
     
     def getNashEquilibriaPopVariation(self, theta_hat, theta_check, limit_hat, limit_check, PopulationHat, PopulationCheck):
         """
-            Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni),
-            con popolaione totale totPopulation ed usando come punto di partenza theta_hat, 
-            theta_check e come limite di precisione limit_hat, limit_check
-            :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
-            :param limit_hat, limit_check, totPopulation: float
+            Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni), come
+            punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità PopulationHat e PopulationCheck
+            :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            :param limit_hat, limit_check, totPopulation, PopulationHat, PopulationCheck: float
         """
         return self.getNashEquilibriaVariation(theta_hat,
                                                theta_check,
@@ -70,9 +69,9 @@ class Computer:
     
     def getNashEquilibria(self, theta_hat, theta_check, limit_hat, limit_check):
         """
-            Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni e con popolaione totale 1),
-            usando come punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
-            :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni e con numero di entità
+            nelle popolazioni 1), come punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
+            :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
             :param limit_hat, limit_check: float
         """
         return self.getNashEquilibriaVariation(theta_hat, 

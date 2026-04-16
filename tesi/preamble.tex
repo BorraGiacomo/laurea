@@ -8,6 +8,8 @@
 \usepackage{xcolor}
 \usepackage{setspace}
 \usepackage{csquotes}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
 %\usepackage[
 %backend=bibtex,
 %style=numeric,
@@ -17,6 +19,16 @@
 \hypersetup{
 bookmarksopen=true,	
 pdfauthor=Giacomo Borra
+}
+
+\lstset{
+    literate=
+        {à}{{\`a}}1
+        {è}{{\`e}}1
+        {é}{{\'e}}1
+        {ì}{{\`i}}1
+        {ò}{{\`o}}1
+        {ù}{{\`u}}1
 }
 
 \lstdefinestyle{myStile}{

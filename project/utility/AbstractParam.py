@@ -109,7 +109,7 @@ class AbstractParam(ABC):
         Returns:
             float: limite inferiore
         """
-        return 0
+        return 0.
 
     @property
     def MAX(self) -> float:
@@ -119,7 +119,7 @@ class AbstractParam(ABC):
         Returns:
             float: limite superiore
         """
-        return 1
+        return 1.
 
     @property
     def step(self) -> float:
@@ -206,20 +206,18 @@ class AbstractParam(ABC):
     @property
     def variation_hat(self) -> SafeArray:
         """
-        Vettore delle variazioni di costo per la popolazione hat.
-        
-        Returns:
-            SafeArray: array di zeri (default)
+            Ritorna array di dimensione (*@$N$@*), i cui elementi sono 1 o 0:
+                - 'return[i]'!=0: se viene utilizzata una variazione, i costi della strada 'i' variano per la popolazione (*@$\textit{check}$@*) di un coefficiente 'return[i]', maggiore o minore di 0
+                - 'return[i]'==0: se viene utilizzata una variazione, i costi della strada 'i' non variano per la popolazione (*@$\textit{hat}$@*)
         """
         return SafeArray(np.zeros(self.n_roads))
 
     @property
     def variation_check(self) -> SafeArray:
         """
-        Vettore delle variazioni di costo per la popolazione check.
-        
-        Returns:
-            SafeArray: array di zeri (default)
+            Ritorna array di dimensione (*@$N$@*), i cui elementi sono:
+                - 'return[i]'!=0: se viene utilizzata una variazione, i costi della strada 'i' variano per la popolazione (*@$\textit{check}$@*) di un coefficiente 'return[i]', maggiore o minore di 0
+                - 'return[i]'==0: se viene utilizzata una variazione, i costi della strada 'i' non variano per la popolazione (*@$\textit{check}$@*)
         """
         return SafeArray(np.zeros(self.n_roads))
 

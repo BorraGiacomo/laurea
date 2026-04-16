@@ -38,7 +38,7 @@ class Initializer:
     def getNashEquilibria(self):
         """
             Calcola l'Equilibrio di Nash e ritorna la distribuzione della popolazione hat e check sulla rete, insieme ai tempi di percorrenza della stessa.
-            Se show_result==True, stampa tali risultati
+            Se save_result==True, stampa tali risultati
         """     
         #Equilibrio di Nash:
         theta_hat, theta_check = self.computer.getNashEquilibria(self.initial_theta_hat, self.initial_theta_check, self.limit_hat, self.limit_check)
@@ -54,80 +54,71 @@ class Initializer:
         
     def graphVariations(self):
         """
-            Calcola gli array per costruire il grafico dei tempi di percorrenza della rete per le due popolazioni, che dipende dalla
-            variazione nei costi delle strade. In ogni caso ritorna tali array. Se show_result==True, mostra il grafico
+        Calcola gli array per costruire il grafico dei tempi di percorrenza della rete
+        per le due popolazioni in funzione della variazione (costi o popolazione).
+        Restituisce gli array per costruire i grafici e opzionalmente salva i risultati.
         """
-        MIN = self.param.MIN
-        MAX = self.param.MAX
-        step = self.param.step
-        
-        variation_values = np.arange(MIN, MAX+step, step)
+        p = self.param
+        variation_values = np.arange(p.MIN, p.MAX + p.step, p.step)
         N = len(variation_values)
 
-        time_of_travel_hat = np.zeros(N)
-        time_of_travel_check = np.zeros(N)
-        
-        thetas_hat = np.zeros((self.param.n_routes_hat, N))
-        thetas_check = np.zeros((self.param.n_routes_check, N))
-        
-        theta_hat = self.initial_theta_hat
-        theta_check = self.initial_theta_check
-        
-        for idx, i in enumerate(variation_values):
-            if self.param.show_iterations: print("Current step: " + str(idx+1)+"/"+str(N))
-            
-            if self.param.operation == Operation.NASH_EQ_TIME_VARIATIONS:
-                theta_hat, theta_check = self.computer.getNashEquilibriaCostVariation(theta_hat,
-                                                                                    theta_check, 
-                                                                                    self.limit_hat, 
-                                                                                    self.limit_check,
-                                                                                    i)
-                T_hat = self.computer.T_hat(theta_hat, 
-                                            theta_check,
-                                            self.param.entity_number_hat,
-                                            self.param.entity_number_check,
-                                            i)
-                T_check = self.computer.T_check(theta_hat,
-                                                theta_check,
-                                                self.param.entity_number_hat,
-                                                self.param.entity_number_check,
-                                                i)
-                   
-            elif self.param.operation == Operation.NASH_EQ_POP_VARIATIONS:
-                pop_hat = i if self.param.variate_pop_hat else self.param.entity_number_hat
-                pop_check = i if self.param.variate_pop_check else self.param.entity_number_check
-                
-                theta_hat, theta_check = self.computer.getNashEquilibriaPopVariation(theta_hat,
-                                                                                    theta_check, 
-                                                                                    self.limit_hat, 
-                                                                                    self.limit_check,
-                                                                                    pop_hat,
-                                                                                    pop_check)
-                T_hat = self.computer.T_hat(theta_hat, theta_check, pop_hat, pop_check, 0)
-                T_check = self.computer.T_check(theta_hat, theta_check, pop_hat, pop_check, 0)
+        time_hat = np.zeros(N)
+        time_check = np.zeros(N)
+        thetas_hat = np.zeros((p.n_routes_hat, N))
+        thetas_check = np.zeros((p.n_routes_check, N))
 
-            
-            index_hat = np.argmax(theta_hat > 0)
-            index_check = np.argmax(theta_check > 0)
-            
-            time_of_travel_hat[idx] = T_hat[index_hat]
-            time_of_travel_check[idx] = T_check[index_check]
-            
+        theta_hat, theta_check = self.initial_theta_hat, self.initial_theta_check
+
+        for idx, v in enumerate(variation_values):
+            if p.show_iterations:
+                print(f"Current step: {idx+1}/{N}")
+
+            theta_hat, theta_check, T_hat, T_check = self._compute_step(
+                theta_hat, theta_check, v
+            )
+
+            i_hat = np.argmax(theta_hat > 0)
+            i_check = np.argmax(theta_check > 0)
+
+            time_hat[idx] = T_hat[i_hat]
+            time_check[idx] = T_check[i_check]
             thetas_hat[:, idx] = theta_hat[:, 0]
             thetas_check[:, idx] = theta_check[:, 0]
-            
-        if self.param.save_result: 
-            if self.param.operation == Operation.NASH_EQ_TIME_VARIATIONS:
-                self.saveResultVariation(variation_values, time_of_travel_hat, time_of_travel_check, 'Variazione del costo delle strade')
-                self.saveResultThetaVariation(variation_values, thetas_hat, 'hat', 'Variazione del costo delle strade')
-                self.saveResultThetaVariation(variation_values, thetas_check, 'check', 'Variazione del costo delle strade')
-            else:
-                self.saveResultVariation(variation_values, time_of_travel_hat, time_of_travel_check, 'Numero di individui nella popolazione (hat e check)')
-                self.saveResultThetaVariation(variation_values, thetas_hat, 'hat', 'Numero di individui nella popolazione (hat e check)')
-                self.saveResultThetaVariation(variation_values, thetas_check, 'check', 'Numero di individui nella popolazione (hat e check)')
-        
-        return variation_values, time_of_travel_hat, time_of_travel_check, thetas_hat, thetas_check
+
+        if p.save_result:
+            label = ('Variazione del costo delle strade'
+                    if p.operation == Operation.NASH_EQ_TIME_VARIATIONS
+                    else 'Numero di individui nella popolazione')
+
+            self.saveResultVariation(variation_values, time_hat, time_check, label)
+            self.saveResultThetaVariation(variation_values, thetas_hat, 'hat', label)
+            self.saveResultThetaVariation(variation_values, thetas_check, 'check', label)
+
+        return variation_values, time_hat, time_check, thetas_hat, thetas_check
     
+    def _compute_step(self, theta_hat, theta_check, v):
+        p = self.param
+        c = self.computer
+
+        if p.operation == Operation.NASH_EQ_TIME_VARIATIONS:
+            theta_hat, theta_check = c.getNashEquilibriaCostVariation(
+                theta_hat, theta_check, self.limit_hat, self.limit_check, v
+            )
+            pop_hat, pop_check, var = p.entity_number_hat, p.entity_number_check, v
+
+        else:
+            pop_hat = p.entity_number_hat + (v if p.variate_pop_hat else 0)
+            pop_check = p.entity_number_check + (v if p.variate_pop_check else 0)
+
+            theta_hat, theta_check = c.getNashEquilibriaPopVariation(
+                theta_hat, theta_check, self.limit_hat, self.limit_check, pop_hat, pop_check
+            )
+            var = 0
+
+        T_hat = c.T_hat(theta_hat, theta_check, pop_hat, pop_check, var)
+        T_check = c.T_check(theta_hat, theta_check, pop_hat, pop_check, var)
+
+        return theta_hat, theta_check, T_hat, T_check
     
     def saveResultVariation(self, variation_values, time_of_travel_hat, time_of_travel_check, xLabel):
         plt.plot(variation_values, time_of_travel_hat, label='Hat', color='blue')
@@ -141,6 +132,7 @@ class Initializer:
         
     def saveResultThetaVariation(self, variation_values, thetas, pop, xLabel):
         n = thetas.shape[0]
+        
         # determinare dimensioni griglia
         cols = int(np.ceil(np.sqrt(n)))
         rows = int(np.ceil(n / cols))
@@ -150,7 +142,7 @@ class Initializer:
 
         for i in range(n):
             ax = axes[i]
-            ax.plot(variation_values, thetas[i, :], linewidth=1.8)
+            ax.plot(variation_values, thetas[i, :], linewidth=1.8, color='red')
 
             ax.set_title(f'Theta_{pop}_{i}')
             ax.set_xlabel(xLabel)
@@ -174,7 +166,7 @@ class Initializer:
 
         file_path = Path(self.param.output_directory) / file_name
 
-        plt.savefig(file_path, dpi=300, bbox_inches='tight')
+        plt.savefig(file_path, dpi=300, bbox_inches='tight', pad_inches=0.5)
  
  
     def _format_nash_eq(self, theta_hat, theta_check, T_hat, T_check):

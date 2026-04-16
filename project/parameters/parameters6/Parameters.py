@@ -10,30 +10,34 @@ class Parameters(AbstractParam):
     @property
     def operation(self):
         return Operation.NASH_EQ_POP_VARIATIONS
-    
-    @property
-    def show_result(self):
-        return True
-
-    @property
-    def show_iterations(self):
-        return True
 
     @property
     def MIN(self):
-        return 1
+        return 50.
 
     @property
     def MAX(self):
-        return 60
+        return 150.
 
     @property
     def step(self):
-        return 0.5
+        return 1.
     
     @property
     def output_directory(self):
         return "parameters\\parameters6"
+    
+    @property
+    def variate_pop_hat(self) -> bool:
+        return True
+    
+    @property
+    def variate_pop_check(self) -> bool:
+        return False
+    
+    @property
+    def entity_number_check(self) -> float:
+        return 30.
 
     @property
     def Gamma_hat(self):

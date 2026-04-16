@@ -61,6 +61,23 @@ completamente congestionata o, comunque, bloccata/non percorribile:
     \widehat{\tau}, \widecheck{\tau}: [0,1]^N\times[0,1]^N \to \mathbb{R}_+^N \cup \{+\infty\}
 \end{equation*}
 
+Per completezza, possiamo definire $\widehat{\zeta}$ e $\widecheck{\zeta}$, numero totale di entità, rispettivamente della popolazione \textit{hat} e \textit{check},
+presenti sulla rete. Allora possiamo estendere il dominio delle funzioni:
+\begin{equation*}
+    \widehat{\tau}, \widecheck{\tau}: \mathbb{R}_+^N\times\mathbb{R}_+^N \to \mathbb{R}_+^N \cup \{+\infty\}
+\end{equation*}
+dimodoché si possano ottenere i costi delle strade, applicando:
+\begin{equation}
+    \begin{split}
+    \widehat{\tau}(\widehat{\zeta}\widehat{\theta}, \widecheck{\zeta}\widecheck{\theta})\\
+    \widecheck{\tau}(\widehat{\zeta}\widehat{\theta}, \widecheck{\zeta}\widecheck{\theta})
+    \end{split}
+    \label{eq:10}
+\end{equation}
+Con un lieve abuso di notazione, indicheremo con $\widehat{\tau}$ e $\widecheck{\tau}$
+anche l’estensione delle funzioni di costo a $\mathbb{R}_+^N \times \mathbb{R}_+^N$,
+in modo da poterle applicare direttamente a $\widehat{\zeta}\widehat{\theta}$ e $\widecheck{\zeta}\widecheck{\theta}$.
+
 Denotiamo con $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ i tempi di viaggio dei percorsi $\widehat{\gamma}_i$ e $\widecheck{\gamma}_j$.
 $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ sono componenti dei vettori $\widehat{T}(\theta)$ e $\widecheck{T}(\theta)$.
 Sfruttando anche (\ref{eq:1}):
@@ -91,6 +108,9 @@ e per quella \textit{check}:
     \end{split}
     \label{eq:3}
 \end{equation}
+
+Notiamo che l'Equazione \ref{eq:1} e l'Equazione \ref{eq:1} non cambiano anche nel caso in cui si utilizzino le funzioni di costo 
+come nell'Equazione \ref{eq:10}.
 
 \subsection{Equilibrio di Nash}
 
@@ -209,6 +229,7 @@ In \cite[Cap. 4]{MR4911797} viene dunque verificato che (\ref{eq:6}), per Brouwe
 \end{equation}
 e che ogni punto fisso di $\mathcal{F}$ è un Equilibrio di Nash per la rete stradale, al senso della Definizione \ref{def:3}.
 
+Notiamo che l'analisi effettuata in questa sezione non cambia se si utilizzano le funzioni di costo come nell'Equazione \ref{eq:10}.
 
 \subsection{Esempi}
 
