@@ -14,12 +14,12 @@ class Computer:
         self.one_n_check = SafeArray(np.ones((self.param.n_routes_check, 1)))
     
     
-    def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, PopulationHat, PopulationCheck, variationTime):
+    def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, zeta_hat, zeta_check, variationTime):
         """
             Ritorna l'Equilibrio di Nash variando i costi delle strade selezionate in param di un coefficiente variation, usando come
-            punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità PopulationHat e PopulationCheck
+            punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità zeta_hat e zeta_check
             :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
-            :param limit_hat, limit_check, variation, PopulationHat, PopulationCheck: float
+            :param limit_hat, limit_check, variation, zeta_hat, zeta_check: float
         """
         prev_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*np.inf)
         prev_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*np.inf)
@@ -30,8 +30,8 @@ class Computer:
             prev_theta_hat[:] = theta_hat
             prev_theta_check[:] = theta_check
             
-            theta_hat = self.f_hat(theta_hat, theta_check, PopulationHat, PopulationCheck, variationTime)
-            theta_check = self.f_check(theta_hat, theta_check, PopulationHat, PopulationCheck, variationTime)
+            theta_hat = self.f_hat(theta_hat, theta_check, zeta_hat, zeta_check, variationTime)
+            theta_check = self.f_check(theta_hat, theta_check, zeta_hat, zeta_check, variationTime)
             count+=1
         
         if self.param.show_iterations: print("Iterazioni: " + str(count))
@@ -52,19 +52,19 @@ class Computer:
                                                self.param.entity_number_check, 
                                                variation)
     
-    def getNashEquilibriaPopVariation(self, theta_hat, theta_check, limit_hat, limit_check, PopulationHat, PopulationCheck):
+    def getNashEquilibriaPopVariation(self, theta_hat, theta_check, limit_hat, limit_check, zeta_hat, zeta_check):
         """
             Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni), come
-            punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità PopulationHat e PopulationCheck
+            punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità zeta_hat e zeta_check
             :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
-            :param limit_hat, limit_check, totPopulation, PopulationHat, PopulationCheck: float
+            :param limit_hat, limit_check, totPopulation, zeta_hat, zeta_check: float
         """
         return self.getNashEquilibriaVariation(theta_hat,
                                                theta_check,
                                                limit_hat,
                                                limit_check,
-                                               PopulationHat,
-                                               PopulationCheck,
+                                               zeta_hat,
+                                               zeta_check,
                                                0)
     
     def getNashEquilibria(self, theta_hat, theta_check, limit_hat, limit_check):
@@ -94,20 +94,20 @@ class Computer:
         return SafeArray(res.reshape(-1, 1))
     
     
-    def T_hat(self, theta_hat, theta_check, PopulationHat, PopulationCheck, variation):
+    def T_hat(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
         nu_check = self.param.Gamma_check @ theta_check
 
-        return self.param.Gamma_hat.T @ self.param.tau_hat_variated(nu_hat*PopulationHat, nu_check*PopulationCheck, variation)
+        return self.param.Gamma_hat.T @ self.param.tau_hat_variated(nu_hat*zeta_hat, nu_check*zeta_check, variation)
     
     
-    def T_check(self, theta_hat, theta_check, PopulationHat, PopulationCheck, variation):
+    def T_check(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
         nu_check = self.param.Gamma_check @ theta_check
 
-        return self.param.Gamma_check.T @ self.param.tau_check_variated(nu_hat*PopulationHat, nu_check*PopulationCheck, variation)
+        return self.param.Gamma_check.T @ self.param.tau_check_variated(nu_hat*zeta_hat, nu_check*zeta_check, variation)
     
     
     def normalize(self, theta):
@@ -116,12 +116,12 @@ class Computer:
         return theta_max / sum
     
     
-    def f_hat(self, theta_hat, theta_check, PopulationHat, PopulationCheck, variation):
-        composition = self.phi(self.T_hat(theta_hat, theta_check, PopulationHat, PopulationCheck, variation))
+    def f_hat(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
+        composition = self.phi(self.T_hat(theta_hat, theta_check, zeta_hat, zeta_check, variation))
         return self.normalize(theta_hat - self.lmbda*(composition - (theta_hat.T @ composition)[0]*self.one_n_hat))
     
     
-    def f_check(self, theta_hat, theta_check, PopulationHat, PopulationCheck, variation):
-        composition = self.phi(self.T_check(theta_hat, theta_check, PopulationHat, PopulationCheck, variation))
+    def f_check(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
+        composition = self.phi(self.T_check(theta_hat, theta_check, zeta_hat, zeta_check, variation))
         return self.normalize(theta_check - self.lmbda*(composition - (theta_check.T @ composition)[0]*self.one_n_check))
     

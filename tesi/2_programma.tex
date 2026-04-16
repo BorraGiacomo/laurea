@@ -379,20 +379,49 @@ caso, i valori che descrivono l'equilibrio di Nash della rete.
 
 \begin{lstlisting}[style=myStile, caption={Initializer::getNashEquilibria}, label={script:5}, escapeinside={(*@}{@*)}]
 def getNashEquilibria(self):
-        """
-            Calcola l'Equilibrio di Nash e ritorna la distribuzione della popolazione hat e check sulla rete, insieme ai tempi di percorrenza della stessa.
-            Se save_result==True, stampa tali risultati
-        """     
-        #Equilibrio di Nash:
-        theta_hat, theta_check = self.computer.getNashEquilibria(self.initial_theta_hat, self.initial_theta_check, self.limit_hat, self.limit_check)
-        
-        #Tempi di viaggio su ogni strada:
-        T_hat = self.computer.T_hat(theta_hat, theta_check, self.param.entity_number_hat, self.param.entity_number_check, 0)
-        T_check = self.computer.T_check(theta_hat, theta_check, self.param.entity_number_hat, self.param.entity_number_check, 0)
-        
-        if self.param.save_result: self.saveNashEq(theta_hat, theta_check, T_hat, T_check)
-        
-        return theta_hat, theta_check, T_hat, T_check
+    """
+        Calcola l'Equilibrio di Nash e ritorna la distribuzione della popolazione hat e check sulla rete, insieme ai tempi di percorrenza della stessa.
+        Se save_result==True, stampa tali risultati
+    """     
+    #Equilibrio di Nash:
+    theta_hat, theta_check = self.computer.getNashEquilibria(self.initial_theta_hat, self.initial_theta_check, self.limit_hat, self.limit_check)
+    
+    #Tempi di viaggio su ogni strada:
+    T_hat = self.computer.T_hat(theta_hat, theta_check, self.param.entity_number_hat, self.param.entity_number_check, 0)
+    T_check = self.computer.T_check(theta_hat, theta_check, self.param.entity_number_hat, self.param.entity_number_check, 0)
+    
+    if self.param.save_result: self.saveNashEq(theta_hat, theta_check, T_hat, T_check)
+    
+    return theta_hat, theta_check, T_hat, T_check
+\end{lstlisting}
+
+Con: 
+
+\begin{lstlisting}[style=myStile, caption={Initializer::saveNashEq}, label={script:14}, escapeinside={(*@}{@*)}]
+def saveNashEq(self, theta_hat, theta_check, T_hat, T_check, file_name="nash_eq.txt"):
+    content = self._format_nash_eq(theta_hat, theta_check, T_hat, T_check)
+
+    file_path = Path(self.param.output_directory) / file_name
+
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+def _format_nash_eq(self, theta_hat, theta_check, T_hat, T_check):
+    vec_frac = np.vectorize(
+        lambda x: str(x) if np.isinf(x) or not self.param.save_as_fraction 
+        else str(Fraction(x).limit_denominator(1000000))
+    )
+
+    lines = []
+    lines.append("Equilibrio di Nash:")
+    lines.append(f"theta_hat:\n{vec_frac(theta_hat)}")
+    lines.append(f"theta_check:\n{vec_frac(theta_check)}")
+    lines.append("")
+    lines.append("Tempi di attraversamento dei percorsi:")
+    lines.append(f"T_hat:\n{vec_frac(T_hat)}")
+    lines.append(f"T_check:\n{vec_frac(T_check)}")
+
+    return "\n".join(lines)
 \end{lstlisting}
 
 Il metodo \textbf{Initializer::graphVariations} calcola i parametri utili alla costruzione dei grafici rappresentanti la variazione del tempo di 
@@ -552,12 +581,12 @@ definiti in \textbf{Initializer}, vedi Lisato~\ref{script:4}. Introduciamo anche
 nel Listato~\ref{script:13}, che verrà applicato ai costi delle strade durante il calcolo dei tempi di percorrenza della rete, vedi Listato~\ref{script:11}. 
 
 \begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibriaVariation}, label={script:9}]
-def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, PopulationHat, PopulationCheck, variationTime):
+def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, zeta_hat, zeta_check, variationTime):
     """
         Ritorna l'Equilibrio di Nash variando i costi delle strade selezionate in param di un coefficiente variation, usando come
-        punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità PopulationHat e PopulationCheck
+        punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità zeta_hat e zeta_check
         :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
-        :param limit_hat, limit_check, variation, PopulationHat, PopulationCheck: float
+        :param limit_hat, limit_check, variation, zeta_hat, zeta_check: float
     """
     prev_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*np.inf)
     prev_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*np.inf)
@@ -568,12 +597,48 @@ def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_ch
         prev_theta_hat[:] = theta_hat
         prev_theta_check[:] = theta_check
         
-        theta_hat = self.f_hat(theta_hat, theta_check, PopulationHat, PopulationCheck, variationTime)
-        theta_check = self.f_check(theta_hat, theta_check, PopulationHat, PopulationCheck, variationTime)
+        theta_hat = self.f_hat(theta_hat, theta_check, zeta_hat, zeta_check, variationTime)
+        theta_check = self.f_check(theta_hat, theta_check, zeta_hat, zeta_check, variationTime)
         count+=1
     
     if self.param.show_iterations: print("Iterazioni: " + str(count))
     return theta_hat, theta_check
+\end{lstlisting}
+
+Per calcolare l'equilibrio di Nash data unicamente una variazione sui tempi di percorrenza:
+\begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibriaCostVariation}, label={script:15}]
+    def getNashEquilibriaCostVariation(self, theta_hat, theta_check, limit_hat, limit_check, variation):
+        """
+            Ritorna l'Equilibrio di Nash variando i costi delle strade selezionate in param di un coefficiente variation, usando come
+            punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità i self.param.entity_number
+            :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            :param limit_hat, limit_check, variation, totPopulation: float
+        """
+        return self.getNashEquilibriaVariation(theta_hat, 
+                                               theta_check, 
+                                               limit_hat, 
+                                               limit_check, 
+                                               self.param.entity_number_hat, 
+                                               self.param.entity_number_check, 
+                                               variation)
+\end{lstlisting}
+
+Mentre per calcolarlo specificando una popolazione diversa da quella in \textbf{param}:
+\begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibriaCostVariation}, label={script:16}]
+    def getNashEquilibriaPopVariation(self, theta_hat, theta_check, limit_hat, limit_check, zeta_hat, zeta_check):
+        """
+            Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni), come
+            punto di partenza theta_hat, theta_check, come limite di precisione limit_hat, limit_check e come numero di entità zeta_hat e zeta_check
+            :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            :param limit_hat, limit_check, totPopulation, zeta_hat, zeta_check: float
+        """
+        return self.getNashEquilibriaVariation(theta_hat,
+                                               theta_check,
+                                               limit_hat,
+                                               limit_check,
+                                               zeta_hat,
+                                               zeta_check,
+                                               0)
 \end{lstlisting}
 
 Si può sfruttare la funzione \textbf{getNashEquilibria} per calcolare l'equilibrio di Nash senza introdurre una variazione ai costi delle strade:
@@ -581,13 +646,18 @@ Si può sfruttare la funzione \textbf{getNashEquilibria} per calcolare l'equilib
 \begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibria}, label={script:10}]
     def getNashEquilibria(self, theta_hat, theta_check, limit_hat, limit_check):
         """
-            Ritorna l'Equilibrio di Nash al senso della (*@Definizione \ref{def:2}@*)
-            usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni), usando come
-            punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
-            :param theta_hat, theta_check: array di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
+            Ritorna l'Equilibrio di Nash usando come costi delle strade i tau delle rispettive popolazioni presenti in param (senza variazioni e con numero di entità
+            nelle popolazioni 1), come punto di partenza theta_hat, theta_check e come limite di precisione limit_hat, limit_check
+            :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
             :param limit_hat, limit_check: float
         """
-        return self.getNashEquilibriaVariation(theta_hat, theta_check, limit_hat, limit_check, 0)
+        return self.getNashEquilibriaVariation(theta_hat, 
+                                               theta_check, 
+                                               limit_hat, 
+                                               limit_check, 
+                                               self.param.entity_number_hat, 
+                                               self.param.entity_number_check,
+                                               0)
 \end{lstlisting}
 
 Vengono introdotte le seguenti funzioni ausiliarie:
@@ -604,21 +674,21 @@ Vengono introdotte le seguenti funzioni ausiliarie:
 
         return SafeArray(res.reshape(-1, 1))
     
-    #(*@Equazione \cite{eq:2}@*)
-    def T_hat(self, theta_hat, theta_check, variation):
+    #(*@Equazione \cite{eq:2}@*) utilizzando i tau come in \ref{eq:10}
+    def T_hat(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
         nu_check = self.param.Gamma_check @ theta_check
 
-        return self.param.Gamma_hat.T @ self.param.tau_hat_variated(nu_hat, nu_check, variation)
+        return self.param.Gamma_hat.T @ self.param.tau_hat_variated(nu_hat*zeta_hat, nu_check*zeta_check, variation)
     
-    #(*@Equazione \cite{eq:2}@*)
-    def T_check(self, theta_hat, theta_check, variation):
+    #(*@Equazione \cite{eq:2}@*) utilizzando i tau come in \ref{eq:10}
+    def T_check(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
         nu_check = self.param.Gamma_check @ theta_check
 
-        return self.param.Gamma_check.T @ self.param.tau_check_variated(nu_hat, nu_check, variation)
+        return self.param.Gamma_check.T @ self.param.tau_check_variated(nu_hat*zeta_hat, nu_check*zeta_check, variation)
     
     #(*@Equazione \cite{eq:5}@*)
     def normalize(self, theta):
@@ -630,12 +700,12 @@ Vengono introdotte le seguenti funzioni ausiliarie:
 Infine, vengono definite le funzioni per il calcolo di f\_hat e f\_check (vedi Equazione \ref{eq:7}):
 
 \begin{lstlisting}[style=myStile, caption={Computer::f\_hat, Computer::f\_check}, label={script:12}]
-    def f_hat(self, theta_hat, theta_check, variation):
-        composition = self.phi(self.T_hat(theta_hat, theta_check, variation))
+    def f_hat(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
+        composition = self.phi(self.T_hat(theta_hat, theta_check, zeta_hat, zeta_check, variation))
         return self.normalize(theta_hat - self.lmbda*(composition - (theta_hat.T @ composition)[0]*self.one_n_hat))
     
     
-    def f_check(self, theta_hat, theta_check, variation):
-        composition = self.phi(self.T_check(theta_hat, theta_check, variation))
+    def f_check(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
+        composition = self.phi(self.T_check(theta_hat, theta_check, zeta_hat, zeta_check, variation))
         return self.normalize(theta_check - self.lmbda*(composition - (theta_check.T @ composition)[0]*self.one_n_check))
 \end{lstlisting}
