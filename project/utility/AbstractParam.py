@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from utility.SafeArray import SafeArray
-from utility.Operation import Operation
+from utility.Operations import Operations
 import numpy as np
 from typing import final
 
@@ -50,7 +50,7 @@ class AbstractParam(ABC):
 
     @property
     @abstractmethod
-    def operation(self) -> Operation:
+    def operation(self) -> Operations:
         """
         Tipo di operazione da eseguire (es. Nash equilibrium).
         

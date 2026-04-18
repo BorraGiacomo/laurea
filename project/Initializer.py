@@ -5,7 +5,7 @@ from Computer import Computer
 import numpy as np
 import matplotlib.pyplot as plt
 from fractions import Fraction
-from utility.Operation import Operation
+from utility.Operations import Operations
 from utility.AbstractParam import AbstractParam
 
 class Initializer:
@@ -29,7 +29,7 @@ class Initializer:
             In base a operation in param, decide se calcolare l'equilibrio di Nash (senza variazioni) o costruire il grafico
             variando i costi delle strade
         """
-        if self.param.operation == Operation.NASH_EQ:
+        if self.param.operation == Operations.NASH_EQ:
             return self.getNashEquilibria()
         else:
             return self.graphVariations()
@@ -87,8 +87,8 @@ class Initializer:
 
         if p.save_result:
             label = ('Variazione del costo delle strade'
-                    if p.operation == Operation.NASH_EQ_TIME_VARIATIONS
-                    else 'Numero di individui nella popolazione')
+                    if p.operation == Operations.NASH_EQ_TIME_VARIATIONS
+                    else 'Variazione del numero di individui nella popolazione')
 
             self.saveResultVariation(variation_values, time_hat, time_check, label)
             self.saveResultThetaVariation(variation_values, thetas_hat, 'hat', label)
@@ -100,7 +100,7 @@ class Initializer:
         p = self.param
         c = self.computer
 
-        if p.operation == Operation.NASH_EQ_TIME_VARIATIONS:
+        if p.operation == Operations.NASH_EQ_TIME_VARIATIONS:
             theta_hat, theta_check = c.getNashEquilibriaCostVariation(
                 theta_hat, theta_check, self.limit_hat, self.limit_check, v
             )
@@ -144,7 +144,7 @@ class Initializer:
             ax = axes[i]
             ax.plot(variation_values, thetas[i, :], linewidth=1.8, color='red')
 
-            ax.set_title(f'Theta_{pop}_{i}')
+            ax.set_title(f'Theta_{pop}_{i+1}')
             ax.set_xlabel(xLabel)
             ax.set_ylabel('Distribuzione popolazione')
 

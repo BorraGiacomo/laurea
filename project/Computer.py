@@ -1,3 +1,5 @@
+from math import fabs
+
 import numpy as np
 from utility.AbstractParam import AbstractParam
 from utility.SafeArray import SafeArray
@@ -27,14 +29,18 @@ class Computer:
         count = 0
         
         while np.linalg.norm(theta_hat-prev_theta_hat) > limit_hat or np.linalg.norm(theta_check-prev_theta_check) > limit_check:
-            prev_theta_hat[:] = theta_hat
+            prev_theta_hat[:] = theta_hat 
             prev_theta_check[:] = theta_check
             
             theta_hat = self.f_hat(theta_hat, theta_check, zeta_hat, zeta_check, variationTime)
             theta_check = self.f_check(theta_hat, theta_check, zeta_hat, zeta_check, variationTime)
             count+=1
+            
+            if count%200000 == 0:
+                theta_hat = 1.-theta_hat
+                theta_check = 1.-theta_check
         
-        if self.param.show_iterations: print("Iterazioni: " + str(count))
+        if self.param.show_iterations: print("Iterations: " + str(count))
         return theta_hat, theta_check
     
     def getNashEquilibriaCostVariation(self, theta_hat, theta_check, limit_hat, limit_check, variation):

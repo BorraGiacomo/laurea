@@ -2,14 +2,14 @@ from typing import override
 
 from utility.SafeArray import SafeArray
 import numpy as np
-from utility.Operation import Operation
+from utility.Operations import Operations
 from utility.AbstractParam import AbstractParam
 
 class Parameters(AbstractParam):
 
     @property
     def operation(self):
-        return Operation.NASH_EQ_POP_VARIATIONS
+        return Operations.NASH_EQ_POP_VARIATIONS
 
     @property
     def MIN(self):

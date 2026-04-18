@@ -2,38 +2,38 @@ from typing import override
 
 from utility.SafeArray import SafeArray
 import numpy as np
-from utility.Operation import Operation
+from utility.Operations import Operations
 from utility.AbstractParam import AbstractParam
 
 class Parameters(AbstractParam):
 
     @property
     def operation(self):
-        return Operation.NASH_EQ_TIME_VARIATIONS
+        return Operations.NASH_EQ_POP_VARIATIONS
     
     @property
-    def show_result(self):
-        return True
-
-    @property
-    def print_as_fraction(self):
-        return True
-
-    @property
-    def show_iterations(self):
-        return True
+    def output_directory(self) -> str:
+        return "parameters\\parameters4"
 
     @property
     def MIN(self):
-        return 0
+        return 0.
 
     @property
     def MAX(self):
-        return 0.5
+        return 5.
 
     @property
     def step(self):
-        return 0.01
+        return 0.05
+    
+    @property
+    def variate_pop_hat(self) -> bool:
+        return False
+    
+    @property
+    def variate_pop_check(self) -> bool:
+        return True
 
     @property
     def Gamma_hat(self):
@@ -52,14 +52,6 @@ class Parameters(AbstractParam):
                           [0., 1.],
                           [1., 0.],
                           [0., 0.]])
-    
-    @property
-    def variation_hat(self):
-        return SafeArray([0., 0., 0., 0., 0., 1.])
-    
-    @property
-    def variation_check(self):
-        return SafeArray([0., 0., 0., 0., 0., 0.])
     
     @override
     def tau_hat(self, eta_hat, eta_check):

@@ -1,9 +1,11 @@
 \section{Programma}
+\label{sec:Programma}
 
 Di seguito viene riportato il codice sorgente del programma utilizzato per la trattazione.
 
+\subsection{Contratto AbstractParam}
+\label{subsec:AbstractParam}
 
-\subsection{Contratto Parameters}
 Per il corretto utilizzo del programma e' necessario creare una classe che estende \textbf{AbstractParam}:
 \begin{lstlisting}[style=myStile, caption={AbstractParam}, label={script:1}, escapeinside={(*@}{@*)}]
 class AbstractParam(ABC):
@@ -48,12 +50,12 @@ class AbstractParam(ABC):
 
     @property
     @abstractmethod
-    def operation(self) -> Operation:
+    def operation(self) -> Operations:
         """
         Tipo di operazione da eseguire (es. Nash equilibrium).
         
         Returns:
-            Operation: tipo di operazione
+            Operations: tipo di operazione
         """
         pass
 
@@ -92,7 +94,7 @@ class AbstractParam(ABC):
     def save_as_fraction(self) -> bool:
         """
         Indica se salvare i valori come frazioni.
-        Utilizzato solo nel caso in cui self.operation==Operation.NASH_EQ
+        Utilizzato solo nel caso in cui self.operation==Operations.NASH_EQ
         
         Returns:
             bool: True se i numeri devono essere convertiti in frazioni
@@ -133,7 +135,7 @@ class AbstractParam(ABC):
     def entity_number_hat(self) -> float:   #(*@$\widehat{\zeta}$@*)
         """
         Numero totale di entità nella popolazione hat.
-        Nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS, viene
+        Nel caso in cui self.operation==Operations.NASH_EQ_POP_VARIATIONS, viene
         utilizzato solo se self.variate_pop_hat==False
         
         Returns:
@@ -145,7 +147,7 @@ class AbstractParam(ABC):
     def entity_number_check(self) -> float: #(*@$\widecheck{\zeta}$@*)
         """
         Numero totale di entità nella popolazione check. 
-        Nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS, viene
+        Nel caso in cui self.operation==Operations.NASH_EQ_POP_VARIATIONS, viene
         utilizzato solo se self.variate_pop_check==False
                 
         Returns:
@@ -157,7 +159,7 @@ class AbstractParam(ABC):
     def variate_pop_hat(self) -> bool:
         """
         Indica se variare il numero di entità della popolazione hat durante il calcolo,
-        nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS
+        nel caso in cui self.operation==Operations.NASH_EQ_POP_VARIATIONS
         
         Returns:
             bool: True se si deve variare il numero di entità della popolazione hat
@@ -168,7 +170,7 @@ class AbstractParam(ABC):
     def variate_pop_check(self) -> bool:
         """
         Indica se variare il numero di entità della popolazione check durante il calcolo,
-        nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS
+        nel caso in cui self.operation==Operations.NASH_EQ_POP_VARIATIONS
         
         Returns:
             bool: True se si deve variare il numero di entità della popolazione check
@@ -289,25 +291,27 @@ class AbstractParam(ABC):
         """
         return self.tau_check(eta_hat, eta_check) + self.variation_check * variation
 \end{lstlisting}
-Le proprietà e i metodi in \ref{script:1} contrassegnati da \textbf{@abstractmethod} devono essere istanziati nella classe dei parametri creata dall'utente, quelli
+Le proprietà e i metodi in \autoref{script:1} contrassegnati da \textbf{@abstractmethod} devono essere istanziati nella classe dei parametri creata dall'utente, quelli
 contrassegnati da \textbf{@final} non devono essere instanziati, mentre i restanti hanno valori base che possono essere reistanziati o meno.
 
 \subsection{Utility}
-Viene introdotta una Enum per permettere all'utente di definire quale operazione eseguire (tramite il Listato~\ref{script:1}):
+\label{subsec:Utility}
+
+Viene introdotta una Enum per permettere all'utente di definire quale operazione eseguire (tramite il \autoref{script:1}):
 \begin{itemize}
     \item Calcolo dell'equilibrio di Nash
-    \item Computazione dei grafici del tempo di percorrenza della rete e dell'equilibrio di Nash dipendenti dalla variazione dei costi delle strade (definita sempre nel Listato~\ref{script:1})
-    \item Computazione del grafico del tempo di percorrenza della rete e dell'equilibrio di Nash dipendenti dalla variazione delle popolazioni (definita sempre nel Listato~\ref{script:1})
+    \item Computazione dei grafici del tempo di percorrenza della rete e dell'equilibrio di Nash dipendenti dalla variazione dei costi delle strade (definita sempre nel \autoref{script:1})
+    \item Computazione del grafico del tempo di percorrenza della rete e dell'equilibrio di Nash dipendenti dalla variazione delle popolazioni (definita sempre nel \autoref{script:1})
 \end{itemize}
-\begin{lstlisting}[style=myStile, caption={Operation}, label={script:2}]
-  class Operation(Enum):
+\begin{lstlisting}[style=myStile, caption={Operations}, label={script:2}]
+  class Operations(Enum):
     NASH_EQ = 1
     NASH_EQ_TIME_VARIATIONS = 2
     NASH_EQ_POP_VARIATIONS = 3
 \end{lstlisting}
 
 Estendiamo anche la classe \textbf{np.ndarray} (vedi \cite{numpy_docs}) per gestire i casi in cui un valore di un array/matrice posto ad \textbf{np.inf} viene moltiplicato per 0.
-Ciò può capitare soprattutto durante il calcolo dell'Equazione \ref{eq:2}
+Ciò può capitare soprattutto durante il calcolo dell'\autoref{eq:2}
 
 \begin{lstlisting}[style=myStile, caption={SafeArray}, label={script:3}]
   import numpy as np
@@ -342,6 +346,8 @@ Ciò può capitare soprattutto durante il calcolo dell'Equazione \ref{eq:2}
 
 
 \subsection{Classe Initializer}
+\label{subsec:Initializer}
+
 Una volta creata una classe che estende \textbf{AbstractParam}, per eseguire il programma è sufficiente creare un'istanza di \textbf{Initializer} e invocare il metodo 
 \textbf{Initializer::start}:
 
@@ -355,7 +361,7 @@ class Initializer:
             raise TypeError("param deve essere un'istanza di BaseParameters")
         
         self.param = param
-        self.computer = Computer(self.param) #Vedi (*@Listato~\ref{script:8}@*)
+        self.computer = Computer(self.param) #Vedi (*@\autoref{script:8}@*)
         self.initial_theta_hat = SafeArray(np.ones((self.param.n_routes_hat, 1))*(1/self.param.n_routes_hat))
         self.initial_theta_check = SafeArray(np.ones((self.param.n_routes_check, 1))*(1/self.param.n_routes_check))
         self.limit_hat = 1e-11
@@ -364,16 +370,16 @@ class Initializer:
         
     def start(self):
         """
-            In base a operation in param (vedi (*@Listato~\ref{script:1}@*)), decide se calcolare l'equilibrio di Nash (senza variazioni) o costruire il grafico
+            In base a operation in param (vedi (*@\autoref{script:1}@*)), decide se calcolare l'equilibrio di Nash (senza variazioni) o costruire il grafico
             variando i costi delle strade
         """
-        if self.param.operation == Operation.NASH_EQ:
+        if self.param.operation == Operations.NASH_EQ:
             return self.getNashEquilibria()
         else:
             return self.graphVariations()
 \end{lstlisting}
 
-Il metodo \textbf{Initializer::getNashEquilibria} calcola l'equilibrio di Nash utilizzando i dati forniti tramite \textbf{param} (istanza di Listato~\ref{script:1}), senza variare
+Il metodo \textbf{Initializer::getNashEquilibria} calcola l'equilibrio di Nash utilizzando i dati forniti tramite \textbf{param} (istanza di \autoref{script:1}), senza variare
 i costi delle strade e le entità nelle popolazioni. Decide inoltre se salvare il risultati su file verificando il valore attribuito a \textbf{param.save\_result}. Ritorna, in ogni
 caso, i valori che descrivono l'equilibrio di Nash della rete.
 
@@ -426,7 +432,7 @@ def _format_nash_eq(self, theta_hat, theta_check, T_hat, T_check):
 
 Il metodo \textbf{Initializer::graphVariations} calcola i parametri utili alla costruzione dei grafici rappresentanti la variazione del tempo di 
 attraversamento della rete e la variazione dell'equilibrio di Nash rispetto alla variazione dei costi delle strade o del numero di entità delle 
-popolazioni definite in \textbf{param}, Listato~\ref{script:1}. Decide se costruire tali grafici e salvarli in \textbf{param.output\_directory}
+popolazioni definite in \textbf{param}, \autoref{script:1}. Decide se costruire tali grafici e salvarli in \textbf{param.output\_directory}
 verificando il valore attribuito a \textbf{param.save\_result}. Ritorna, in ogni caso, i valori utili a disegnarli.
 
 \begin{lstlisting}[style=myStile, caption={Initializer::graphVariations}, label={script:6}]
@@ -466,8 +472,8 @@ verificando il valore attribuito a \textbf{param.save\_result}. Ritorna, in ogni
 
         if p.save_result:
             label = ('Variazione del costo delle strade'
-                    if p.operation == Operation.NASH_EQ_TIME_VARIATIONS
-                    else 'Numero di individui nella popolazione')
+                    if p.operation == Operations.NASH_EQ_TIME_VARIATIONS
+                    else 'Variazione del numero di individui nella popolazione')
 
             #Grafico del tempo di percorrenza della rete in funzione dalla variazione
             self.saveResultVariation(variation_values, time_hat, time_check, label)
@@ -485,8 +491,8 @@ def _compute_step(self, theta_hat, theta_check, v):
     p = self.param
     c = self.computer
 
-    if p.operation == Operation.NASH_EQ_TIME_VARIATIONS:
-        theta_hat, theta_check = c.getNashEquilibriaCostVariation(  #Vedi (*@Listato~\ref{script:10}@*)
+    if p.operation == Operations.NASH_EQ_TIME_VARIATIONS:
+        theta_hat, theta_check = c.getNashEquilibriaCostVariation(  #Vedi (*@\autoref{script:10}@*)
             theta_hat, theta_check, self.limit_hat, self.limit_check, v
         )
         pop_hat, pop_check, var = p.entity_number_hat, p.entity_number_check, v
@@ -495,7 +501,7 @@ def _compute_step(self, theta_hat, theta_check, v):
         pop_hat = p.entity_number_hat + (v if p.variate_pop_hat else 0)
         pop_check = p.entity_number_check + (v if p.variate_pop_check else 0)
 
-        theta_hat, theta_check = c.getNashEquilibriaPopVariation(   #Vedi (*@Listato~\ref{script:10}@*)
+        theta_hat, theta_check = c.getNashEquilibriaPopVariation(   #Vedi (*@\autoref{script:10}@*)
             theta_hat, theta_check, self.limit_hat, self.limit_check, pop_hat, pop_check
         )
         var = 0
@@ -506,7 +512,7 @@ def _compute_step(self, theta_hat, theta_check, v):
     return theta_hat, theta_check, T_hat, T_check
 \end{lstlisting}
 
-Per disegnare i grafici calcolati nel Listato~\ref{script:6} si fa uso della libreria \textbf{matplotlib.pyplot} (vedi \cite{matplotlib_docs}).
+Per disegnare i grafici calcolati nel \autoref{script:6} si fa uso della libreria \textbf{matplotlib.pyplot} (vedi \cite{matplotlib_docs}).
 
 \begin{lstlisting}[style=myStile, caption={Initializer::showResultPlot}, label={script:7}]
     import matplotlib.pyplot as plt
@@ -555,30 +561,31 @@ Per disegnare i grafici calcolati nel Listato~\ref{script:6} si fa uso della lib
 \end{lstlisting}
 
 \subsection{Classe Computer}
+\label{subsec:Computer}
 
 Per calcolare gli equilibri di Nash e' necessario creare un'istanza della classe \textbf{Computer}. Tale operazione non deve, durante un utilizzo standard, essere effettuata dall'utente,
-bensì viene mascherata ad esso dall'utilizzo di \textbf{Initializer}, Listato~\ref{script:4}
+bensì viene mascherata ad esso dall'utilizzo di \textbf{Initializer}, \autoref{script:4}
 
 \begin{lstlisting}[style=myStile, caption={Computer}, label={script:8}]
     class Computer:    
     def __init__(self, param: AbstractParam):
         self.param = param
         
-        #Parametro utile durante il calcolo di f_hat e f_check, vedi (*@Listato~\ref{script:12}@*)
+        #Parametro utile durante il calcolo di f_hat e f_check, vedi (*@\autoref{script:12}@*)
         self.lmbda = 0.5*np.min([1/self.param.n_routes_hat, 1/self.param.n_routes_check])
         
         #Array colonna di 1 con dimensioni n_routes_hat ed n_routes_check 
-        #Utile durante il calcolo di f_hat e f_check, vedi (*@Listato~\ref{script:12}@*)
+        #Utile durante il calcolo di f_hat e f_check, vedi (*@\autoref{script:12}@*)
         self.one_n_hat = SafeArray(np.ones((self.param.n_routes_hat, 1)))
         self.one_n_check = SafeArray(np.ones((self.param.n_routes_check, 1)))
 \end{lstlisting}
 
-Per calcolare l'equlibrio di Nash sfruttiamo la dimostrazione (vedi \cite[Cap. 4]{MR4911797}) del Teorema \ref{th:1}: individuiamo un punto fisso della funzione $\mathcal{F}$.
+Per calcolare l'equlibrio di Nash sfruttiamo la dimostrazione (vedi \cite[Cap. 4]{MR4911797}) del \autoref{th:1}: individuiamo un punto fisso della funzione $\mathcal{F}$.
 Cominciamo da un $(\widehat{\theta}, \widecheck{\theta})\in S^{\widehat{n}}\times S^{\widecheck{\theta}}$ generico; si ricava $\mathcal{F}(\widehat{\theta}, \widecheck{\theta})$,
 che va a sostituire il valore di $(\widehat{\theta}, \widecheck{\theta})$, salvato invece come $(\widehat{\theta}_{prev}, \widecheck{\theta}_{prev})$. Questa operazione viene ripetuta finché
 $\norm{\widehat{\theta} - \widehat{\theta}_{prev}} < \widehat{limit}$ e $\norm{\widecheck{\theta} - \widecheck{\theta}_{prev}} < \widecheck{limit}$, dove i $limit$ sono limiti di precisione
-definiti in \textbf{Initializer}, vedi Lisato~\ref{script:4}. Introduciamo anche un coefficiente di variazione e il numero di entità nelle popolazioni, utili per il calcolo effettuato
-nel Listato~\ref{script:13}, che verrà applicato ai costi delle strade durante il calcolo dei tempi di percorrenza della rete, vedi Listato~\ref{script:11}. 
+definiti in \textbf{Initializer}, vedi Lisato~\autoref{script:4}. Introduciamo anche un coefficiente di variazione e il numero di entità nelle popolazioni, utili per il calcolo effettuato
+nel \autoref{script:13}, che verrà applicato ai costi delle strade durante il calcolo dei tempi di percorrenza della rete, vedi \autoref{script:11}. 
 
 \begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibriaVariation}, label={script:9}]
 def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_check, zeta_hat, zeta_check, variationTime):
@@ -601,7 +608,7 @@ def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_ch
         theta_check = self.f_check(theta_hat, theta_check, zeta_hat, zeta_check, variationTime)
         count+=1
     
-    if self.param.show_iterations: print("Iterazioni: " + str(count))
+    if self.param.show_iterations: print("Iterations: " + str(count))
     return theta_hat, theta_check
 \end{lstlisting}
 
@@ -663,7 +670,7 @@ Si può sfruttare la funzione \textbf{getNashEquilibria} per calcolare l'equilib
 Vengono introdotte le seguenti funzioni ausiliarie:
 
 \begin{lstlisting}[style=myStile, caption={Funzioni ausiliarie di Computer}, label={script:11}, escapeinside={(*@}{@*)}]
-    #(*@Equazione \cite{eq:4}@*)
+    #(*@\autoref{eq:4}@*)
     def phi(self, x):
         x = np.asarray(x)
         res = np.empty_like(x)
@@ -674,7 +681,7 @@ Vengono introdotte le seguenti funzioni ausiliarie:
 
         return SafeArray(res.reshape(-1, 1))
     
-    #(*@Equazione \cite{eq:2}@*) utilizzando i tau come in \ref{eq:10}
+    #(*@\autoref{eq:2}@*) utilizzando i tau come nell'(*@\autoref{eq:10}@*)
     def T_hat(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
@@ -682,7 +689,7 @@ Vengono introdotte le seguenti funzioni ausiliarie:
 
         return self.param.Gamma_hat.T @ self.param.tau_hat_variated(nu_hat*zeta_hat, nu_check*zeta_check, variation)
     
-    #(*@Equazione \cite{eq:2}@*) utilizzando i tau come in \ref{eq:10}
+    #(*@\autoref{eq:2}@*) utilizzando i tau come nell'(*@\autoref{eq:10}@*)
     def T_check(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
@@ -690,14 +697,14 @@ Vengono introdotte le seguenti funzioni ausiliarie:
 
         return self.param.Gamma_check.T @ self.param.tau_check_variated(nu_hat*zeta_hat, nu_check*zeta_check, variation)
     
-    #(*@Equazione \cite{eq:5}@*)
+    #(*@\autoref{eq:5}@*)
     def normalize(self, theta):
         theta_max = np.maximum(theta, 0)
         sum = np.sum(theta_max)
         return theta_max / sum
 \end{lstlisting}
 
-Infine, vengono definite le funzioni per il calcolo di f\_hat e f\_check (vedi Equazione \ref{eq:7}):
+Infine, vengono definite le funzioni per il calcolo di f\_hat e f\_check (vedi \autoref{eq:7}):
 
 \begin{lstlisting}[style=myStile, caption={Computer::f\_hat, Computer::f\_check}, label={script:12}]
     def f_hat(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
