@@ -584,7 +584,7 @@ Per calcolare l'equlibrio di Nash sfruttiamo la dimostrazione (vedi \cite[Cap. 4
 Cominciamo da un $(\widehat{\theta}, \widecheck{\theta})\in S^{\widehat{n}}\times S^{\widecheck{\theta}}$ generico; si ricava $\mathcal{F}(\widehat{\theta}, \widecheck{\theta})$,
 che va a sostituire il valore di $(\widehat{\theta}, \widecheck{\theta})$, salvato invece come $(\widehat{\theta}_{prev}, \widecheck{\theta}_{prev})$. Questa operazione viene ripetuta finché
 $\norm{\widehat{\theta} - \widehat{\theta}_{prev}} < \widehat{limit}$ e $\norm{\widecheck{\theta} - \widecheck{\theta}_{prev}} < \widecheck{limit}$, dove i $limit$ sono limiti di precisione
-definiti in \textbf{Initializer}, vedi Lisato~\autoref{script:4}. Introduciamo anche un coefficiente di variazione e il numero di entità nelle popolazioni, utili per il calcolo effettuato
+definiti in \textbf{Initializer}, vedi \autoref{script:4}. Introduciamo anche un coefficiente di variazione e il numero di entità nelle popolazioni, utili per il calcolo effettuato
 nel \autoref{script:13}, che verrà applicato ai costi delle strade durante il calcolo dei tempi di percorrenza della rete, vedi \autoref{script:11}. 
 
 \begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibriaVariation}, label={script:9}]
