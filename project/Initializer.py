@@ -138,7 +138,7 @@ class Initializer:
         rows = int(np.ceil(n / cols))
 
         fig, axes = plt.subplots(rows, cols, figsize=(4 * cols, 3 * rows))
-        axes = axes.flatten()
+        axes = np.atleast_1d(axes).flatten()
 
         for i in range(n):
             ax = axes[i]
