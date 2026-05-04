@@ -107,8 +107,8 @@ class Initializer:
             pop_hat, pop_check, var = p.entity_number_hat, p.entity_number_check, v
 
         else:
-            pop_hat = p.entity_number_hat + (v if p.variate_pop_hat else 0)
-            pop_check = p.entity_number_check + (v if p.variate_pop_check else 0)
+            pop_hat = p.entity_number_hat + (v*p.variation_coefficient_pop_hat)
+            pop_check = p.entity_number_check + (v*p.variation_coefficient_pop_check)
 
             theta_hat, theta_check = c.getNashEquilibriaPopVariation(
                 theta_hat, theta_check, self.limit_hat, self.limit_check, pop_hat, pop_check

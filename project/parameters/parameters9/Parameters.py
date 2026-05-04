@@ -17,15 +17,31 @@ class Parameters(AbstractParam):
 
     @property
     def MAX(self):
-        return 100.
+        return 19.
 
     @property
     def step(self):
+        return 0.5
+    
+    @property
+    def entity_number_hat(self) -> float:
+        return 20.
+    
+    @property
+    def entity_number_check(self) -> float:
+        return 20.
+    
+    @property
+    def variation_coefficient_pop_hat(self) -> float:
+        return -1.
+    
+    @property
+    def variation_coefficient_pop_check(self) -> float:
         return 1.
     
     @property
     def output_directory(self):
-        return "parameters\\parameters7"
+        return "parameters\\parameters9"
 
     @property
     def Gamma_hat(self):
