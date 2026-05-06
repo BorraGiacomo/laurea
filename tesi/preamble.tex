@@ -1,6 +1,6 @@
 \usepackage[english,italian]{babel}
 \usepackage{amsmath, inconsolata, dsfont, mathrsfs, amsthm, amssymb, pifont, tikz, hyperref, newlfont, mathabx, mathtools, graphicx, caption, array, multirow, tabularx, svg, pdfpages, setspace}
-\usepackage{listings}
+\usepackage{listings, float, aliascnt}
 \usepackage{tikz}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -47,16 +47,42 @@ pdfauthor=Giacomo Borra
 }
 
 \theoremstyle{definition}
+
 \newtheorem{proposition}{Proposizione}[section]
-\newtheorem{theorem}[proposition]{Teorema}
-\newtheorem{notation}[proposition]{Notation}
-\newtheorem{lemma}[proposition]{Lemma}
-\newtheorem{definition}[proposition]{Definizione}
-\newtheorem{corollary}[proposition]{Corollario}
-\newtheorem{remark}[proposition]{Remark}
-\newtheorem{example}[proposition]{Esempio}
-\newtheorem{conjecture}[proposition]{Conjecture}
+
+\newaliascnt{theorem}{proposition}
+\newtheorem{theorem}[theorem]{Teorema}
+\aliascntresetthe{theorem}
+
+\newaliascnt{lemma}{proposition}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+
+\newaliascnt{definition}{proposition}
+\newtheorem{definition}[definition]{Definizione}
+\aliascntresetthe{definition}
+
+\newaliascnt{corollary}{proposition}
+\newtheorem{corollary}[corollary]{Corollario}
+\aliascntresetthe{corollary}
+
+\newaliascnt{example}{proposition}
+\newtheorem{example}[example]{Esempio}
+\aliascntresetthe{example}
+
+\newaliascnt{remark}{proposition}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
 
 \numberwithin{equation}{section}
+
+\providecommand*{\propositionautorefname}{Proposizione}
+\providecommand*{\theoremautorefname}{Teorema}
+\providecommand*{\lemmaautorefname}{Lemma}
+\providecommand*{\definitionautorefname}{Definizione}
+\providecommand*{\corollaryautorefname}{Corollario}
+\providecommand*{\exampleautorefname}{Esempio}
+\providecommand*{\remarkautorefname}{Remark}
+\providecommand*{\equationautorefname}{Equazione}
 
 \newcommand{\norm}[1]{\left\|#1\right\|}

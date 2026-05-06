@@ -1,0 +1,126 @@
+\subsection{Equilibrio di Nash}
+\label{subsec:EqNash}
+
+Di seguito sono riportate alcune definizioni utili da \cite[Cap. 2]{MR4911797}. Si noti che l'analisi effettuata in questa sezione non cambia se si utilizzano le funzioni di costo come nell'\autoref{eq:10}.
+\begin{definition}\label{def:1}
+    Dato uno stato $\theta\in S^{\widehat{n}}\times S^{\widecheck{n}}$ chiamiamo \textit{hat}-rilevante, rispettivamente
+    \textit{check}-rilevante, un tempo di viaggio $\widehat{T}_i(\theta)$, rispettivamente $\widecheck{T}_i(\theta)$, tale 
+    che $\widehat{\theta}_i\neq 0$, rispettivamente $\widecheck{\theta}_i\neq 0$.
+\end{definition}
+
+\begin{definition}\label{def:2}
+    Uno stato $\theta^{*}\in S^{\widehat{n}}\times S^{\widecheck{n}}$ è uno \textit{stato di equilibrio}
+    se tutti i tempi di viaggio rilevanti, come da \autoref{def:1}, di ogni popolazione coincidono, ovvero se:
+    \begin{equation*}
+        \begin{split}
+        \forall i,j\in\{1,...,\widehat{n}\} \text{, se }\widehat{\theta}_i^{*}\neq 0 \text{ e }\widehat{\theta}_j^{*}\neq 0
+        \text{, allora }\widehat{T}_i(\theta^{*})=\widehat{T}_j(\theta^{*});\\
+        \forall i,j\in\{1,...,\widecheck{n}\} \text{, se }\widecheck{\theta}_i^{*}\neq 0 \text{ e }\widecheck{\theta}_j^{*}\neq 0
+        \text{, allora }\widecheck{T}_i(\theta^{*})=\widecheck{T}_j(\theta^{*}).
+        \end{split}
+    \end{equation*}
+\end{definition}
+
+La \autoref{def:2} assicura che all'equilibrio tutti i guidatori di una stessa popolazione impieghino lo stesso tempo per
+arrivare dall'origine alla destinazione appartenenti a suddetta popolazione.
+
+Grazie a queste definizioni ed a (\autoref{eq:3}), introduciamo:
+
+\begin{definition}\label{def:3}
+    Uno stato di equilibrio $\theta^{*}$ è un \textit{Equilibrio di Nash} se:
+    \begin{equation*}
+        \begin{split}
+        \forall i\in\{1,...,\widehat{n}\}\text{ }\widehat{\theta}_i^{*}=0\implies\widehat{T}_i(\theta^*)\geq\widehat{T}_M(\theta^*);\\
+        \forall i\in\{1,...,\widecheck{n}\}\text{ }\widecheck{\theta}_i^{*}=0\implies\widecheck{T}_i(\theta^*)\geq\widecheck{T}_M(\theta^*).
+        \end{split}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}\label{def:4}
+    È detto \textit{tempo di attraversamento della rete}, distintamente per le due popolazioni (e quindi per le due reti $\widehat{\mathcal{N}}$ e $\widecheck{\mathcal{N}}$), il valore comune assunto dai $T$ rilevanti (\autoref{def:1})
+    che caratterizzano l'Equilibrio di Nash trovato.
+\end{definition}
+
+Notiamo che, in uno stato di equilibrio $\theta^*$, $\widehat{T}_M(\theta^*)=\widehat{T}_i(\theta^*)$ $\forall i\in\{0,...,\widehat{n}\}$ (analogo per la popolazione \textit{check}),
+dato che, per la \autoref{def:2}, tutti i tempi di attraversamento dei percorsi sono uguali. Perciò la \autoref{def:3}
+implica che un equilibrio di Nash è uno stato di equilibrio in cui a nessun guidatore di nessuna popolazione conviene cambiare percorso.
+Ciò è dato dal fatto che in suddetto equilibrio i $T$ non rilevanti sono 
+maggiori del tempo medio di attraversamento della rete, di conseguenza:
+\begin{equation*}
+    \begin{split}
+    \forall i,j\in\{1,...,\widehat{n}\}\text{ }\widehat{\theta}_i^{*}=0,\text{ }\widehat{\theta}_j^*\neq0\implies\widehat{T}_i(\theta^*)\geq\widehat{T}_j(\theta^*);\\
+    \forall i,j\in\{1,...,\widecheck{n}\}\text{ }\widecheck{\theta}_i^{*}=0,\text{ }\widecheck{\theta}_j^*\neq0\implies\widecheck{T}_i(\theta^*)\geq\widecheck{T}_j(\theta^*).
+    \end{split}
+\end{equation*}
+
+Non è detto, però, che esista un equilibrio di Nash in ogni rete. Si riporta, dunque, da \cite[Cap. 2]{MR4911797}:
+\begin{theorem}\label{th:1}
+    Supponiamo che $\forall i\in\{1,...,N\}$ $(\widehat{\tau}_i,\widecheck{\tau}_i)\in C^0([0,1]^2;(\mathbb{R}_+\cup\{+\infty\})^2)$.
+    Allora esiste un equilibrio di Nash $\theta^*\in S^{\widehat{n}}\times S^{\widecheck{n}}$, al senso della \autoref{def:3}.
+\end{theorem}
+
+\subsection{Funzioni ausiliarie}
+\label{subsec:FunzAus}
+
+Introduciamo le funzioni:
+\begin{equation}
+    \begin{split}
+    \begin{array}{l c c c}
+        \bar{\varphi}:\text{ } & \mathbb{R}_+\cup\{+\infty\} & \to & [0,1]\\
+        & \xi & \mapsto &
+        \begin{cases}
+            \xi/(1-\xi)&\xi\in\mathbb{R}_+\\
+            1 & \xi=+\infty
+        \end{cases}
+    \end{array}\\
+    \begin{array}{l c c c}
+        \varphi:\text{ } & (\mathbb{R}_+\cup\{+\infty\})^n & \to & [0,1]^n\\
+        & (\xi_1,...,\xi_n) & \mapsto & (\bar{\varphi}(\xi_1),...,\bar{\varphi}(\xi_n)).
+    \end{array}
+    \end{split}
+    \label{eq:4}
+\end{equation}
+Chiamiamo $C_+^n$ l'insieme dei $\theta\in\mathbb{R}$ tale che $\theta_i>0$ per almeno un $i\in\{1,...,n\}$.
+Definiamo quindi la normalizzazione $\mathscr{N}:C_+^n\to S^n$, le cui componenti sono:
+\begin{equation}
+    \mathscr{N}(\theta)_i=\frac{\max\{0,\theta_i\}}{\sum_{j=1}^{n}\max\{0,\theta_j\}}\text{, per }i\in\{1,...,n\}
+    \label{eq:5}
+\end{equation}
+Useremo $\varphi$ e $\bar{\varphi}$ indipendentemente che siano definite su $\mathbb{R}^{\widehat{n}}\cup\{+\infty\}$ o
+su $\mathbb{R}^{\widecheck{n}}\cup\{+\infty\}$. Vale lo stesso per $\mathscr{N}$.
+
+Nella dimostrazione del \autoref{th:1} presente in \cite[Cap. 4]{MR4911797} si fa utilizzo della funzione:
+\begin{equation}
+    \mathcal{F}:\text{ } S^{\widehat{n}}\times S^{\widecheck{n}} \to S^{\widehat{n}}\times S^{\widecheck{n}},
+    \label{eq:6}
+\end{equation}
+che ha componenti:
+\begin{equation}
+    \begin{split}
+    \begin{array}{l c c c}
+        \widehat{\mathcal{F}}:\text{ } & S^{\widehat{n}}\times S^{\widecheck{n}} & \to & S^{\widehat{n}}\\
+        & \theta & \mapsto & \mathscr{N}(\widehat{\theta} - \lambda((\varphi\circ\widehat{T})(\theta)-\widehat{\theta}^{\intercal}(\varphi\circ\widehat{T})(\theta)\mathds{1}_{\widehat{n}})) 
+    \end{array}\\
+    \begin{array}{l c c c}
+        \widecheck{\mathcal{F}}:\text{ } & S^{\widehat{n}}\times S^{\widecheck{n}} & \to & S^{\widecheck{n}}\\
+        & \theta & \mapsto & \mathscr{N}(\widecheck{\theta} - \lambda((\varphi\circ\widecheck{T})(\theta)-\widecheck{\theta}^{\intercal}(\varphi\circ\widecheck{T})(\theta)\mathds{1}_{\widecheck{n}})) 
+    \end{array}
+    \end{split}
+    \label{eq:7}
+\end{equation}
+con:
+\begin{equation}
+    \lambda=\frac{1}{2}\min\left\{\frac{1}{\widehat{n}},\frac{1}{\widecheck{n}}\right\}.
+    \label{eq:8}
+\end{equation}
+
+Per la dimostrazione del \autoref{th:1} ci si serve del Teorema del Punto Fisso di Brouwer, usato anche da John Nash nella sua tesi di
+dottorato \cite[Cap. 3]{nash1950noncooperative} per dimostrare che \textit{"Every finite game has an equilibrium point"}, punto di equilibrio
+denominato in seguito Equilibrio di Nash.
+
+In \cite[Cap. 4]{MR4911797} viene dunque verificato che (\autoref{eq:6}), per Brouwer, ammette almeno un punto fisso:
+\begin{equation}
+    \exists\theta^*\in S^{\widehat{n}}\times S^{\widecheck{n}}:\text{ } \mathcal{F}(\theta^*)=\theta^*
+    \label{eq:9}
+\end{equation}
+e che ogni punto fisso di $\mathcal{F}$ è un Equilibrio di Nash per la rete stradale, al senso della \autoref{def:3}.

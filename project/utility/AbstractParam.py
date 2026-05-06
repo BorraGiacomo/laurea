@@ -158,22 +158,22 @@ class AbstractParam(ABC):
     @property
     def variation_coefficient_pop_hat(self) -> float:
         """
-        Indica se variare il numero di entità della popolazione hat durante il calcolo,
+        Indica il coefficiente di variazione del numero di entità della popolazione hat durante il calcolo,
         nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS
         
         Returns:
-            bool: True se si deve variare il numero di entità della popolazione hat
+            float: coefficiente di variazione della popolazione hat
         """
         return 1.
     
     @property
     def variation_coefficient_pop_check(self) -> float:
         """
-        Indica se variare il numero di entità della popolazione check durante il calcolo,
+        Indica il coefficiente di variazione del numero di entità della popolazione check durante il calcolo,
         nel caso in cui self.operation==Operation.NASH_EQ_POP_VARIATIONS
         
         Returns:
-            bool: True se si deve variare il numero di entità della popolazione check
+            float: coefficiente di variazione della popolazione check
         """
         return 1.
     

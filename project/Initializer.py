@@ -121,7 +121,7 @@ class Initializer:
         return theta_hat, theta_check, T_hat, T_check
     
     def saveResultVariation(self, variation_values, time_of_travel_hat, time_of_travel_check, xLabel):
-        plt.plot(variation_values, time_of_travel_hat, label='Hat', color='blue')
+        plt.plot(variation_values, time_of_travel_hat, label=f'Hat', color='blue')
         plt.plot(variation_values, time_of_travel_check, label='Check', color='red')
         plt.xlabel(xLabel)
         plt.ylabel('Tempo di attraversamento della rete')
@@ -132,39 +132,32 @@ class Initializer:
         
     def saveResultThetaVariation(self, variation_values, thetas, pop, xLabel):
         n = thetas.shape[0]
-        
-        # determinare dimensioni griglia
-        cols = int(np.ceil(np.sqrt(n)))
-        rows = int(np.ceil(n / cols))
 
-        fig, axes = plt.subplots(rows, cols, figsize=(4 * cols, 3 * rows))
-        axes = np.atleast_1d(axes).flatten()
+        subfolder = "hat" if pop == "hat" else "check"
 
         for i in range(n):
-            ax = axes[i]
-            ax.plot(variation_values, thetas[i, :], linewidth=1.8, color='red')
+            plt.figure(figsize=(6, 4))
 
-            ax.set_title(f'Theta_{pop}_{i+1}')
-            ax.set_xlabel(xLabel)
-            ax.set_ylabel('Distribuzione popolazione')
+            plt.plot(variation_values, thetas[i, :], linewidth=1.8, color='red')
 
-            # usa la stessa scala su tutti i subplot
-            ax.set_ylim(0, 1)
+            plt.title(f'Theta_{pop}_{i+1}')
+            plt.xlabel(xLabel)
+            plt.ylabel('Distribuzione popolazione')
+            plt.ylim(0, 1)
+            plt.grid(True)
 
-            ax.grid(True)
+            file_label = f"{pop}/{subfolder}_theta_{i+1}_{xLabel}"
 
-        # rimuovere eventuali subplot vuoti
-        for j in range(n, len(axes)):
-            fig.delaxes(axes[j])
+            self.saveGraph(file_label)
 
-        plt.tight_layout()
-        self.saveGraph(f'{pop}_{xLabel}')
+            plt.close() 
  
  
     def saveGraph(self, xLabel):
         file_name = f"grafico_{xLabel}.png".replace(" ", "_")
 
         file_path = Path(self.param.output_directory) / file_name
+        file_path.parent.mkdir(parents=True, exist_ok=True)
 
         plt.savefig(file_path, dpi=300, bbox_inches='tight', pad_inches=0.5)
  

@@ -28,12 +28,12 @@ class Parameters(AbstractParam):
         return 0.05
     
     @property
-    def variate_pop_hat(self) -> bool:
-        return False
+    def variation_coefficient_pop_hat(self) -> float:
+        return 0.
     
     @property
-    def variate_pop_check(self) -> bool:
-        return True
+    def variation_coefficient_pop_check(self) -> float:
+        return 1.
 
     @property
     def Gamma_hat(self):

@@ -1,0 +1,112 @@
+\subsection{Descrizione del modello}
+\label{subsec:DescModello}
+
+Rappresentiamo una rete stradale $\mathcal{N}$ come un grafo avente per archi le $N$ strade $r_1,...,r_N$,
+le cui proprietà verranno descritte in seguito. Le due popolazioni presenti nella suddetta rete sono 
+la popolazione \textit{hat} e la popolazione \textit{check}. Se chiamiamo \textit{nodo} l'intersezione di due archi, possiamo identificare un'origine e una destinazione per entrambe le popolazioni,
+$(\widehat{\mathcal{O}}, \widehat{\mathcal{D}})$ e $(\widecheck{\mathcal{O}}, \widecheck{\mathcal{D}})$, non per forza distinte.
+Introduciamo infine il concetto di percorso, ovvero una $m$-tupla composta di strade adiacenti e distinte $\gamma\equiv(r_{h_1},...,r_{h_m})$, 
+tale che il punto finale di $r_{h_l}$ è il punto iniziale di $r_{h_{l+1}}$, con $l\in(1,...,m-1)$.
+
+Viene utile introdurre, come in \cite[Cap. 2]{MR4911797}, una suddivisione di $\mathcal{N}$ in due sottoreti, $\widehat{\mathcal{N}}$,
+costituita dagli $\widehat{n}$ percorsi $\widehat{\gamma}_1,...,\widehat{\gamma}_{\widehat{n}}$ che collegano $\widehat{\mathcal{O}}$ a $\widehat{\mathcal{D}}$, e
+$\widecheck{\mathcal{N}}$, costituita dagli $\widecheck{n}$ percorsi $\widecheck{\gamma}_1,...,\widecheck{\gamma}_{\widecheck{n}}$ che collegano $\widecheck{\mathcal{O}}$ a $\widecheck{\mathcal{D}}$.
+Queste due sottoreti devono essere grafi orientati aciclici (DAG, \textit{Directed Acyclic Graph}) connessi. Si noti che non è necessario imporre queste condizioni
+all'intera rete $\mathcal{N}$, anche se, per ottenere risultati rilevanti, in seguito si troveranno solo reti di traffico che sono 
+DAG connessi.
+
+Costruiamo ora la matrice $\widehat{\Gamma}$, di dimensioni $N\times\widehat{n}$, e la matrice $\widecheck{\Gamma}$, di dimensioni $N\times\widecheck{n}$:
+\[
+\widehat{\Gamma}_{hi} \coloneqq
+\begin{cases}
+    1 &\text{ se la strada } r_h \text{ appartiene al percorso } \widehat{\gamma}_i\\
+    0 &\text{ altrimenti}
+\end{cases} 
+\text{ con } h\in\{1,...,N\} \text{ e } i\in\{1,...,\widehat{n}\}\text{;}
+\]
+\[
+\widecheck{\Gamma}_{hi} \coloneqq
+\begin{cases}
+    1 &\text{ se la strada } r_h \text{ appartiene al percorso } \widecheck{\gamma}_i\\
+    0 &\text{ altrimenti}
+\end{cases} 
+\text{ con } h\in\{1,...,N\} \text{ e } i\in\{1,...,\widecheck{n}\}\text{.}
+\]
+
+Consideriamo la popolazione \textit{hat} totale presente nella rete $\widehat{\mathcal{N}}$ normalizzata a 1 (analogo per la popolazione \textit{check} sulla rete $\widecheck{\mathcal{N}}$).
+Chiamiamo $\widehat{\theta_i}$ il numero di viaggiatori che scelgono di percorrere $\widehat{\gamma}_i$, con $i\in\{1,...,\widehat{n}\}$, e $\widecheck{\theta_j}$ il numero di
+viaggiatori che scelgono di percorrere $\widecheck{\gamma}_j$, con $j\in\{1,...,\widecheck{n}\}$. Allora $\widehat{\theta}\equiv(\widehat{\theta}_1,...,\widehat{\theta}_{\widehat{n}})$
+è un punto del simplesso $S^{\widehat{n}}$ di dimensione $\widehat{n}$, dove $\widehat{\theta}_i\in[0,1]$; rispettivamente $\widecheck{\theta}\equiv(\widecheck{\theta}_1,...,\widecheck{\theta}_{\widecheck{n}})$
+è un punto del simplesso $S^{\widecheck{n}}$ di dimensione $\widecheck{n}$, con $\widecheck{\theta}_j\in[0,1]$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono identificabili
+come vettori colonna.
+
+Definiamo i vettori $\widehat{\nu}$ e $\widecheck{\nu}$, le cui componenti, rispettivamente $\widehat{\nu}_i$ e $\widecheck{\nu}_i$ con $i=1,...,N$,
+rappresentano il numero di veicoli (delle popolazioni \textit{hat} e \textit{check}) sulla strada $r_i$.
+Sappiamo dunque che:
+\begin{equation}
+    \begin{split}
+    \widehat{\nu}=\widehat{\Gamma}\widehat{\theta}\\
+    \widecheck{\nu}=\widecheck{\Gamma}\widecheck{\theta}
+    \end{split}
+    \label{eq:1}
+\end{equation}
+
+Introduciamo ora $\widehat{\tau}_h=\widehat{\tau}_h(\widehat{\eta},\widecheck{\eta})$ e $\widecheck{\tau}_h=\widecheck{\tau}_h(\widehat{\eta},\widecheck{\eta})$,
+rispettivamente i costi della strada $r_h$, $h\in\{1,...,N\}$, per la popolazione \textit{hat} e per la popolazione \textit{check}. I costi possono rappresentare, per esempio,
+il tempo necessario a percorrere la strada, il consumo di benzina oppure l'emissione di inquinanti. In questa trattazione, similmente a \cite{MR4911797}, considereremo i costi come tempi di viaggio,
+in quanto ciò permette di aggiungere $+\infty$ ai valori che le funzioni di costo possono assumere, rappresentante una strada
+completamente congestionata o, comunque, bloccata/non percorribile:
+\begin{equation*}
+    \widehat{\tau}, \widecheck{\tau}: [0,1]^N\times[0,1]^N \to \mathbb{R}_+^N \cup \{+\infty\}
+\end{equation*}
+
+Per completezza, possiamo definire $\widehat{\zeta}$ e $\widecheck{\zeta}$, numero totale di veicoli, rispettivamente della popolazione \textit{hat} e \textit{check},
+presenti sulla rete. Allora possiamo estendere il dominio delle funzioni:
+\begin{equation*}
+    \widehat{\tau}, \widecheck{\tau}: \mathbb{R}_+^N\times\mathbb{R}_+^N \to \mathbb{R}_+^N \cup \{+\infty\}
+\end{equation*}
+dimodoché si possano ottenere i costi delle strade, applicando:
+\begin{equation}
+    \begin{split}
+    \widehat{\tau}(\widehat{\zeta}\widehat{\theta}, \widecheck{\zeta}\widecheck{\theta})\\
+    \widecheck{\tau}(\widehat{\zeta}\widehat{\theta}, \widecheck{\zeta}\widecheck{\theta})
+    \end{split}
+    \label{eq:10}
+\end{equation}
+Con un lieve abuso di notazione, indicheremo con $\widehat{\tau}$ e $\widecheck{\tau}$
+anche l’estensione delle funzioni di costo a $\mathbb{R}_+^N \times \mathbb{R}_+^N$,
+in modo da poterle applicare direttamente a $\widehat{\zeta}\widehat{\theta}$ e $\widecheck{\zeta}\widecheck{\theta}$.
+
+Denotiamo con $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ i tempi di viaggio dei percorsi $\widehat{\gamma}_i$ e $\widecheck{\gamma}_j$.
+$\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ sono componenti dei vettori $\widehat{T}(\theta)$ e $\widecheck{T}(\theta)$.
+Sfruttando anche \autoref{eq:1}:
+\begin{equation}
+    \begin{split}
+    \widehat{T}(\theta)\coloneqq\widehat{\Gamma}^{\intercal}\widehat{\tau}(\widehat{\Gamma}\widehat{\theta},\widecheck{\Gamma}\widecheck{\theta})
+    \text{\quad e\quad}
+    \widehat{T}_i(\theta)=\sum_{h=1}^{N}\widehat{\Gamma}_{hi}\widehat{\tau}_h(\widehat{\Gamma}_h\widehat{\theta},\widecheck{\Gamma}_h\widecheck{\theta})
+    \text{, }i\in\{1,...,\widehat{n}\};\\
+    \widecheck{T}(\theta)\coloneqq\widecheck{\Gamma}^{\intercal}\widecheck{\tau}(\widehat{\Gamma}\widehat{\theta},\widecheck{\Gamma}\widecheck{\theta})
+    \text{\quad e\quad}
+    \widecheck{T}_j(\theta)=\sum_{h=1}^{N}\widecheck{\Gamma}_{hj}\widecheck{\tau}_h(\widehat{\Gamma}_h\widehat{\theta},\widecheck{\Gamma}_h\widecheck{\theta})
+    \text{, }j\in\{1,...,\widecheck{n}\}.
+    \end{split}
+    \label{eq:2}
+\end{equation}
+
+Sarà utile, da ultimo, saper calcolare il tempo medio necessario ad attraversare la rete per la popolazione \textit{hat}
+e per quella \textit{check}:
+\begin{equation}
+    \begin{split}
+    \widehat{T}_M(\theta)=\widehat{\theta}^{\intercal}\widehat{T}(\theta)
+    \text{ o, equivalentemente }
+    \widehat{T}_M(\theta)\coloneqq\sum_{i=1}^{\widehat{n}}\widehat{\theta}_i\widehat{T}_i(\theta);\\
+    \widecheck{T}_M(\theta)=\widecheck{\theta}^{\intercal}\widecheck{T}(\theta)
+    \text{ o, equivalentemente }
+    \widecheck{T}_M(\theta)\coloneqq\sum_{i=1}^{\widecheck{n}}\widecheck{\theta}_i\widecheck{T}_i(\theta).
+    \end{split}
+    \label{eq:3}
+\end{equation}
+
+Notiamo che l'\autoref{eq:2} e l'\autoref{eq:3} non cambiano anche nel caso in cui si utilizzino le funzioni di costo 
+come nell'\autoref{eq:10}.
