@@ -71,7 +71,7 @@ $$
 
 In una situazione di traffico intenso, quindi, ci aspetteremmo che i guidatori \textit{hat} comincino ad utilizzare esclusivamente le scorciatoie, sfruttando la precedenza
 sul percorso principale per evitare il traffico intenso. Definiamo dunque le funzioni di costo:
-\begin{equation*}
+\begin{equation}
 \begin{array}{r @{\hspace{2cm}} r}
 
 \widehat{\tau}_1(\eta) = 30+\widehat{\eta}+\widecheck{\eta} &
@@ -90,7 +90,8 @@ sul percorso principale per evitare il traffico intenso. Definiamo dunque le fun
 \widecheck{\tau}_5(\eta) = +\infty 
 $$
 \end{array}
-\end{equation*}
+\label{eq:13}
+\end{equation}
 Facciamo variare il numero di veicoli nelle due popolazioni da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 101$. Otteniamo dunque (vedi \autoref{script:22}):
 
 \newpage
@@ -113,7 +114,6 @@ Facciamo variare il numero di veicoli nelle due popolazioni da $\widehat{\zeta} 
 \rule{0pt}{5.5cm} \\
 
 \end{tabular}
-
 \end{figure}
 
 Facendo ciò si otterrà un peggioramento nel tempo di attraversamento della rete per la popolazione \textit{check}
@@ -122,7 +122,7 @@ due scorciatoie si dovrebbe ottenere un miglioramento nel tempo di percorrenza d
 
 Ponendo $\widehat{\zeta} = \widecheck{\zeta} = 30$ possiamo far variare i costi di $\widehat{\tau}_4$ e $\widehat{\tau}_5$ avendo come situazione iniziale
 l'utilizzo delle scorciatoie da parte della popolazione \textit{hat}. Facciamo dunque passare i due costi da $\widehat{\tau}_4(\eta) = 135+\widehat{\eta}$ a $\widehat{\tau}_4(\eta) = 205+\widehat{\eta}$
-e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 175+\widehat{\eta}$. Questa operazione restituisce:
+e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 175+\widehat{\eta}$. Questa operazione restituisce (vedi \autoref{script:23}):
 
 \newpage
 \vspace*{-4cm}
@@ -144,7 +144,6 @@ e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 1
 \rule{0pt}{5.5cm} \\
 
 \end{tabular}
-
 \end{figure}
 Il risultato ottenuto non è esattamente quello atteso: i guidatori \textit{hat} smettono progressivamente di utilizzare le scorciatoie
 (dato che i costi delle stesse aumentano), ma il tempo di percorrenza della rete per i veicoli \textit{check} non migliora.
@@ -156,6 +155,7 @@ La precedenza, per come è intesa in questo esempio, non è rappresentabile con 
 Generalizziamo comunque questa equazione, uscendo dal modello presentato in precedenza, e tentiamo di ottenere un risultato più realistico:
 
 \begin{equation}
+\label{eq:12}
 \begin{split}
 \begin{array}{rccc}
 \widehat{\tau}: & [0,1]^N\times[0,1]^N & \to & \mathbb{R}_+^N \cup \{+\infty\}\\
@@ -175,5 +175,96 @@ Generalizziamo comunque questa equazione, uscendo dal modello presentato in prec
 \bigr)
 \end{array}
 \end{split}
-\label{eq:12}
 \end{equation}
+
+Possiamo dunque riscrivere le equazioni di costo come segue:
+
+\begin{equation}
+\label{eq:14}
+\begin{array}{r @{\hspace{2cm}} r}
+
+\widehat{\tau}_1(\eta) = 30+\widehat{\eta}_1 + \widecheck{\eta}_1 + \widehat{\eta}_4 + \widehat{\eta}_5 &
+\widecheck{\tau}_1(\eta) = 30+\widehat{\eta}_1 + \widecheck{\eta}_1 + \widehat{\eta}_4 + \widehat{\eta}_5\\
+
+\widehat{\tau}_2(\eta) = 30+\widehat{\eta}_2 + \widecheck{\eta}_2 + \widehat{\eta}_4 + \widehat{\eta}_5&
+\widecheck{\tau}_2(\eta) = 30+\widehat{\eta}_2 + \widecheck{\eta}_2 + + \widehat{\eta}_4 + \widehat{\eta}_5 \\
+
+\widehat{\tau}_3(\eta) = 5+\widehat{\eta}_3+\widecheck{\eta}_3 + \widehat{\eta}_5&
+\widecheck{\tau}_3(\eta) = 5+\widehat{\eta}_3+\widecheck{\eta}_3 + \widehat{\eta}_5\\
+
+\widehat{\tau}_4(\eta) = 135+\widehat{\eta}_4 &
+\widecheck{\tau}_4(\eta) =  +\infty\\
+
+\widehat{\tau}_5(\eta) = 105+\widehat{\eta}_5 &
+\widecheck{\tau}_5(\eta) = +\infty 
+$$
+\end{array}
+\end{equation}
+
+Se facciamo nuovamente variare il numero di veicoli da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 101$, 
+otteniamo (vedi \autoref{script:24}):
+
+\newpage
+\vspace*{-4cm}
+\begin{figure}[H]
+\centering
+
+\includegraphics[height=8cm]{../figures/Es4/grafico_main_Variazione_del_numero_di_individui_nella_popolazione.png}
+
+\begin{tabular}{cc}
+
+\includegraphics[height=5.5cm]{../figures/Es4/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\includegraphics[height=5.5cm]{../figures/Es4/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
+
+\includegraphics[height=5.5cm]{../figures/Es4/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\rule{0pt}{5.5cm} \\
+
+\includegraphics[height=5.5cm]{../figures/Es4/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\rule{0pt}{5.5cm} \\
+
+\end{tabular}
+
+\end{figure}
+
+Il risultato rispetta, come quello ottenuto con i parametri definiti nell'\autoref{eq:13}, le nostre aspettative sul comportamento della popolazione \textit{hat} all'aumentare
+del traffico e sul tempo di percorrenza della rete per i guidatori \textit{check}.
+
+Controlliamo ora l'effetto dell'aumento dei costi delle strade da $\widehat{\tau}_4(\eta) = 135+\widehat{\eta}$ a $\widehat{\tau}_4(\eta) = 205+\widehat{\eta}$
+e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 175+\widehat{\eta}$ con $\widehat{\zeta} = \widecheck{\zeta} = 30$ (vedi \autoref{script:24}). Confrontiamo il risultato ottenuto
+con quello ricavato in precedenza applicando la stessa variazione ai costi definiti nell'\autoref{eq:13}. Tralasciamo il grafico rappresentante 
+l'equilibrio di Nash della popolazione \textit{check}, data la presenza di un unico percorso per essa:
+
+\newpage
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=8cm]{../figures/Es3/grafico_main_Variazione_del_costo_delle_strade.png}
+\caption*{Tempo di percorrenza della rete al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in \autoref{eq:13}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=8cm]{../figures/Es4/grafico_main_Variazione_del_costo_delle_strade.png}
+\caption*{Tempo di percorrenza della rete al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in \autoref{eq:14}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+
+\begin{tabular}{cc}
+
+\includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_1_Variazione_del_costo_delle_strade.png} &
+\includegraphics[height=6cm]{../figures/Es4/grafico_hat/hat_theta_1_Variazione_del_costo_delle_strade.png} \\
+
+\includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_2_Variazione_del_costo_delle_strade.png} &
+\includegraphics[height=6cm]{../figures/Es4/grafico_hat/hat_theta_2_Variazione_del_costo_delle_strade.png} \\
+
+\includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_3_Variazione_del_costo_delle_strade.png} &
+\includegraphics[height=6cm]{../figures/Es4/grafico_hat/hat_theta_3_Variazione_del_costo_delle_strade.png} \\
+\end{tabular}
+\caption*{A sinistra la variazione dell'Equilibrio di Nash calcolato utilizzando le funzioni di costo definite in \autoref{eq:13}. A destra la variazione dell'Equilibrio di Nash calcolato utilizzando le funzioni di costo definite in \autoref{eq:14}.}
+\end{figure}
+
+I costi definiti nell'\autoref{eq:14} permettono di rappresentare il comportamento atteso in modo più accurato: se i guidatori \textit{hat} smettono
+di utilizzare le scorciatoie il tempo di percorrenza della popolazione \textit{check} diminuisce, dato che non devono più cedere la precedenza ai veicoli che
+provengono da $r_4$ ed $r_5$.
