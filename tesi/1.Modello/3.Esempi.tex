@@ -46,7 +46,7 @@ Introduciamo la rete stradale così formata:
 \quad
 \]
 In prima analisi prendiamo l'esempio principe riguardante il Paradosso di Braess \cite{BraessParadox}, presente in svariati trattati sul tema (si veda, per esempio, \cite[Cap. 8]{Easley_Kleinberg_2010}).
-Nel nostro caso, definiamo:
+Solitamente viene studiato con una singola popolazione sulla rete; nel nostro caso, riprendiamo i parametri utilizzati in \cite[Cap. 3]{MR4911797}:
 \begin{equation*}
 \begin{array}{r @{\hspace{2cm}} r}
 
@@ -78,7 +78,7 @@ con:
 \widecheck{\gamma}_2 = (r_1, r_4) \\
 
 \widehat{\gamma}_3 = (r_2, r_5, r_4) &
-\widecheck{\gamma}_3 = (r_2, r_5, r_4) \\
+\widecheck{\gamma}_3 = (r_2, r_5, r_4) 
 $$
 \end{array}
 \end{equation*}
@@ -115,7 +115,7 @@ del tempo di attraversamento.
 
 La rimozione di suddetta strada migliora la qualità del viaggio sulla rete. 
 Spingendoci oltre, notiamo che questa situazione paradossale è molto fragile; infatti se esaminiamo il caso in cui $\widehat{\tau_5}(\eta) = \widecheck{\tau_5}(\eta) = 0$ e facciamo variare 
-il numero di veicoli delle popolazioni da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 3$:
+il numero di veicoli delle popolazioni da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 3$ (vedi \autoref{script:19}):
 
 otteniamo:
 \newpage
@@ -148,7 +148,7 @@ attraversarla.
 \subsubsection{Esempio 2}
 \label{subsubsec:Es2}
 
-Introduciamo, sempre riprendendola da \cite[Cap. 3]{MR4911797}, la seguente rete:
+Introduciamo ora una rete particolare, in cui l'aggiunta di una strada utilizzata solo da una popolazione peggiora solo il tempo di attraversamento dell'altra:
 \[
 \quad
 \begin{tikzpicture}[scale=1.2]
@@ -188,10 +188,47 @@ Introduciamo, sempre riprendendola da \cite[Cap. 3]{MR4911797}, la seguente rete
 \end{tikzpicture}
 \quad
 \]
+La strada $r_6$ permette alla popolazione \textit{hat} di utilizzare anche le strade della \textit{check}.
+Sempre riprendendoli da \cite[Cap. 3]{MR4911797}, usiamo i seguenti parametri:
+\begin{equation*}
+\begin{array}{r @{\hspace{2cm}} r}
 
-Variando il costo della strada $r_6$ \textbf{solamente per la popolazione \textit{hat}}, da $\widehat{\tau_6}(\eta)=1$ a $\widehat{\tau_6}(\eta)=1.5$:
+\widehat{\tau}_1(\eta) = 4 &
+\widecheck{\tau}_1(\eta) = +\infty \\
 
-otteniamo:
+\widehat{\tau}_2(\eta) = 1+\widehat{\eta} &
+\widecheck{\tau}_2(\eta) = +\infty \\
+
+\widehat{\tau}_3(\eta) = +\infty &
+\widecheck{\tau}_3(\eta) = \widehat{\eta} \\
+
+\widehat{\tau}_4(\eta) = 5\widehat{\eta}+5\widecheck{\eta} &
+\widecheck{\tau}_4(\eta) = 5\widehat{\eta}+5\widecheck{\eta} \\
+
+\widehat{\tau}_5(\eta) = 1+\widehat{\eta}+\widecheck{\eta} &
+\widecheck{\tau}_5(\eta) = 1+\widehat{\eta}+\widecheck{\eta} \\
+
+\widehat{\tau}_6(\eta) = 1 &
+\widecheck{\tau}_6(\eta) = +\infty 
+$$
+\end{array}
+\end{equation*}
+con:
+\begin{equation*}
+\begin{array}{r @{\hspace{2cm}} r}
+
+\widehat{\gamma}_1 = r_1 &
+\widecheck{\gamma}_1 = (r_3, r_5)\\
+
+\widehat{\gamma}_2 = (r_2, r_5) &
+\widecheck{\gamma}_2 = r_4 \\
+
+\widehat{\gamma}_3 = (r_6, r_4) & \\
+$$
+\end{array}
+\end{equation*}
+
+Variando il costo della strada $r_6$ \textbf{solamente per la popolazione \textit{hat}}, da $\widehat{\tau_6}(\eta)=1$ a $\widehat{\tau_6}(\eta)=1.5$ otteniamo (vedi \autoref{script:20}):
 \newpage
 \vspace*{-4cm}
 
@@ -219,7 +256,7 @@ Come nella \autoref{subsubsec:Es1} osserviamo un Paradosso di Braess \cite{Braes
 non migliora il tempo di attraversamento dell'unica popolazione che ne usufruisce (\textit{hat}), peggiora invece il tempo di attraversamento dell'altra.
 
 Nuovamente si nota che questo stato paradossale è fragile: facendo variare, per esempio, il numero di veicoli nella popolazione \textit{check}, da $\widecheck{\zeta} = 1$
-a $\widecheck{\zeta} = 6$:
+a $\widecheck{\zeta} = 6$ (vedi \autoref{script:21}):
 
 \newpage
 \vspace*{-4cm}

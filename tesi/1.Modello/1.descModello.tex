@@ -56,9 +56,17 @@ rispettivamente i costi della strada $r_h$, $h\in\{1,...,N\}$, per la popolazion
 il tempo necessario a percorrere la strada, il consumo di benzina oppure l'emissione di inquinanti. In questa trattazione, similmente a \cite{MR4911797}, considereremo i costi come tempi di viaggio,
 in quanto ciò permette di aggiungere $+\infty$ ai valori che le funzioni di costo possono assumere, rappresentante una strada
 completamente congestionata o, comunque, bloccata/non percorribile:
-\begin{equation*}
-    \widehat{\tau}, \widecheck{\tau}: [0,1]^N\times[0,1]^N \to \mathbb{R}_+^N \cup \{+\infty\}
-\end{equation*}
+\begin{equation}
+    \begin{split}
+    \begin{array}{l c c c}
+        \widehat{\tau}: & [0,1]^N\times[0,1]^N & \to & \mathbb{R}_+^N \cup \{+\infty\}\\
+        & \widehat{n}, \widecheck{n} & \mapsto & \widehat{\tau}(\widehat{n}, \widecheck{n}) \quad dove \quad (\widehat{\tau}(\widehat{n}, \widecheck{n}))_h = \widehat{\tau}_h(\widehat{n}_h, \widecheck{n}_h) \quad per \quad h\in\{1,...,N\}\\
+        \widecheck{\tau}: & [0,1]^N\times[0,1]^N & \to & \mathbb{R}_+^N \cup \{+\infty\}\\
+        & \widehat{n}, \widecheck{n} & \mapsto & \widecheck{\tau}(\widehat{n}, \widecheck{n}) \quad dove \quad (\widecheck{\tau}(\widehat{n}, \widecheck{n}))_h = \widecheck{\tau}_h(\widehat{n}_h, \widecheck{n}_h) \quad per \quad h\in\{1,...,N\}
+    \end{array}
+    \end{split}
+    \label{eq:11}
+\end{equation}
 
 Per completezza, possiamo definire $\widehat{\zeta}$ e $\widecheck{\zeta}$, numero totale di veicoli, rispettivamente della popolazione \textit{hat} e \textit{check},
 presenti sulla rete. Allora possiamo estendere il dominio delle funzioni:
@@ -74,7 +82,7 @@ dimodoché si possano ottenere i costi delle strade, applicando:
     \label{eq:10}
 \end{equation}
 Con un lieve abuso di notazione, indicheremo con $\widehat{\tau}$ e $\widecheck{\tau}$
-anche l’estensione delle funzioni di costo a $\mathbb{R}_+^N \times \mathbb{R}_+^N$,
+anche l'estensione delle funzioni di costo a $\mathbb{R}_+^N \times \mathbb{R}_+^N$,
 in modo da poterle applicare direttamente a $\widehat{\zeta}\widehat{\theta}$ e $\widecheck{\zeta}\widecheck{\theta}$.
 
 Denotiamo con $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ i tempi di viaggio dei percorsi $\widehat{\gamma}_i$ e $\widecheck{\gamma}_j$.

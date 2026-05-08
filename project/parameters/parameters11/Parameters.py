@@ -24,14 +24,6 @@ class Parameters(AbstractParam):
         return 1.
     
     @property
-    def entity_number_hat(self) -> float:
-        return 20.
-    
-    @property
-    def entity_number_check(self) -> float:
-        return 20.
-    
-    @property
     def output_directory(self):
         return "parameters\\parameters11"
 

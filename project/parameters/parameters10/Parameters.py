@@ -17,7 +17,7 @@ class Parameters(AbstractParam):
 
     @property
     def MAX(self):
-        return 25.
+        return 70.
 
     @property
     def step(self):
@@ -25,11 +25,11 @@ class Parameters(AbstractParam):
     
     @property
     def entity_number_hat(self) -> float:
-        return 20.
+        return 30.
     
     @property
     def entity_number_check(self) -> float:
-        return 20.
+        return 30.
     
     @property
     def variation_hat(self) -> SafeArray:
