@@ -91,8 +91,89 @@ sul percorso principale per evitare il traffico intenso. Definiamo dunque le fun
 $$
 \end{array}
 \end{equation*}
-Ed otteniamo:
+Facciamo variare il numero di veicoli nelle due popolazioni da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 101$. Otteniamo dunque (vedi \autoref{script:22}):
 
-Facendo ciò, però, si otterrà un peggioramento nel tempo di attraversamento della rete per la popolazione \textit{check}
+\newpage
+\vspace*{-4cm}
+
+\begin{figure}[H]
+\centering
+
+\includegraphics[height=8cm]{../figures/Es3/grafico_main_Variazione_del_numero_di_individui_nella_popolazione.png}
+
+\begin{tabular}{cc}
+
+\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\includegraphics[height=5.5cm]{../figures/Es3/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
+
+\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\rule{0pt}{5.5cm} \\
+
+\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\rule{0pt}{5.5cm} \\
+
+\end{tabular}
+
+\end{figure}
+
+Facendo ciò si otterrà un peggioramento nel tempo di attraversamento della rete per la popolazione \textit{check}
 (dato che i guidatori \text{check} sono costretti a cedere la precedenza), già elevato a causa dell'elevata presenza di veicoli nella rete. Aumentando, dunque, il costo delle
-due scorciatoie si dovrebbe ottenere un miglioramento nel tempo di percorrenza della rete per \textit{check}.
+due scorciatoie si dovrebbe ottenere un miglioramento nel tempo di percorrenza della rete per \textit{check}. 
+
+Ponendo $\widehat{\zeta} = \widecheck{\zeta} = 30$ possiamo far variare i costi di $\widehat{\tau}_4$ e $\widehat{\tau}_5$ avendo come situazione iniziale
+l'utilizzo delle scorciatoie da parte della popolazione \textit{hat}. Facciamo dunque passare i due costi da $\widehat{\tau}_4(\eta) = 135+\widehat{\eta}$ a $\widehat{\tau}_4(\eta) = 205+\widehat{\eta}$
+e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 175+\widehat{\eta}$. Questa operazione restituisce:
+
+\newpage
+\vspace*{-4cm}
+
+\begin{figure}[H]
+\centering
+
+\includegraphics[height=8cm]{../figures/Es3/grafico_main_Variazione_del_costo_delle_strade.png}
+
+\begin{tabular}{cc}
+
+\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_1_Variazione_del_costo_delle_strade.png} &
+\includegraphics[height=5.5cm]{../figures/Es3/grafico_check/check_theta_1_Variazione_del_costo_delle_strade.png} \\
+
+\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_2_Variazione_del_costo_delle_strade.png} & 
+\rule{0pt}{5.5cm}\\
+
+\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_3_Variazione_del_costo_delle_strade.png} &
+\rule{0pt}{5.5cm} \\
+
+\end{tabular}
+
+\end{figure}
+Il risultato ottenuto non è esattamente quello atteso: i guidatori \textit{hat} smettono progressivamente di utilizzare le scorciatoie
+(dato che i costi delle stesse aumentano), ma il tempo di percorrenza della rete per i veicoli \textit{check} non migliora.
+
+Per risolvere questo problema i costi delle strade su cui bisogna cedere precedenza dovrebbero aumentare con l'aumento del numero di veicoli sulle strade che hanno precedenza.
+Servirebbe dunque far dipendere i $\tau$ che costituiscono il percorso principale non solo dal numero di veicoli sulla loro relativa strada,
+ma anche da $\theta_4$ e $\theta_5$.
+La precedenza, per come è intesa in questo esempio, non è rappresentabile con il modello descritto nella \autoref{sec:Modello} a causa dell'\autoref{eq:11}.
+Generalizziamo comunque questa equazione, uscendo dal modello presentato in precedenza, e tentiamo di ottenere un risultato più realistico:
+
+\begin{equation}
+\begin{split}
+\begin{array}{rccc}
+\widehat{\tau}: & [0,1]^N\times[0,1]^N & \to & \mathbb{R}_+^N \cup \{+\infty\}\\
+& (\widehat n,\widecheck n) & \mapsto &
+\bigl(
+\widehat{\tau}_1(\widehat n,\widecheck n),
+\dots,
+\widehat{\tau}_N(\widehat n,\widecheck n)
+\bigr)
+\\[1em]
+\widecheck{\tau}: & [0,1]^N\times[0,1]^N & \to & \mathbb{R}_+^N \cup \{+\infty\}\\
+& (\widehat n,\widecheck n) & \mapsto &
+\bigl(
+\widecheck{\tau}_1(\widehat n,\widecheck n),
+\dots,
+\widecheck{\tau}_N(\widehat n,\widecheck n)
+\bigr)
+\end{array}
+\end{split}
+\label{eq:12}
+\end{equation}
