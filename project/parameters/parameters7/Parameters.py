@@ -25,7 +25,7 @@ class Parameters(AbstractParam):
     
     @property
     def output_directory(self):
-        return "parameters\\parameters7"
+        return "esempi\\Es4"
 
     @property
     def Gamma_hat(self):

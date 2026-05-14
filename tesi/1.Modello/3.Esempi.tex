@@ -1,4 +1,4 @@
-\subsection{Esempi}
+\subsection{Applicazioni}//Sezione
 \label{subsec:Esempi}
 
 Il programma riportato in \autoref{sec:Programma}, al seguito della creazione di una classe Python \cite{python_docs} rappresentante
@@ -9,7 +9,7 @@ la rete stradale studiata, può essere utilizzato per 3 diversi scopi:
     \item Computazione del grafico del tempo di attraversamento della rete e dell'equilibrio di Nash dipendenti dalla variazione delle popolazioni
 \end{itemize}
 
-\subsubsection{Esempio 1}
+\subsubsection{Esempio 1}//paradosso braess
 \label{subsubsec:Es1}
 
 Introduciamo la rete stradale così formata:
@@ -145,7 +145,7 @@ costante, in cui le due popolazioni iniziano progressivamente ad utilizzare i du
 costante nessuno utilizza $r_5$ e si perde il comportamento paradossale della rete: anche se la strada ha costo 0 non conviene
 attraversarla.
 
-\subsubsection{Esempio 2}
+\subsubsection{Esempio 2}//Effetti a distanza!!
 \label{subsubsec:Es2}
 
 Introduciamo ora una rete particolare, in cui l'aggiunta di una strada utilizzata solo da una popolazione peggiora solo il tempo di attraversamento dell'altra:
@@ -255,7 +255,7 @@ Come nella \autoref{subsubsec:Es1} osserviamo un Paradosso di Braess \cite{Braes
 (\textit{check}) risente della variazione di costo di $r_6$, nonostante nessun veicolo \textit{check} la attraversi: l'aggiunta di $r_6$, che
 non migliora il tempo di attraversamento dell'unica popolazione che ne usufruisce (\textit{hat}), peggiora invece il tempo di attraversamento dell'altra.
 
-Nuovamente si nota che questo stato paradossale è fragile: facendo variare, per esempio, il numero di veicoli nella popolazione \textit{check}, da $\widecheck{\zeta} = 1$
+Nuovamente si nota che questo stato paradossale è solo localmente stabile!!!!!!!!!!!!!!!: facendo variare, per esempio, il numero di veicoli nella popolazione \textit{check}, da $\widecheck{\zeta} = 1$
 a $\widecheck{\zeta} = 6$ (vedi \autoref{script:21}):
 
 \newpage

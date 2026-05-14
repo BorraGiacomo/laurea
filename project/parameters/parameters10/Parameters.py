@@ -37,7 +37,7 @@ class Parameters(AbstractParam):
     
     @property
     def output_directory(self):
-        return "parameters\\parameters10"
+        return "esempi\\Es3"
 
     @property
     def Gamma_hat(self):

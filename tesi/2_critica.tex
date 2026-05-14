@@ -1,6 +1,6 @@
-\section{Critica al modello}
+\section{Estensione del modello}!!!!!
 \label{sec:Critica}
-Il modello presentato nella \autoref{subsec:DescModello} e utilizzato per gli esempi nella \autoref{subsec:Esempi} non permette di descrivere un particolare esempio di interesse.
+Il modello presentato nella \autoref{subsec:DescModello} e utilizzato per gli esempi nella \autoref{subsec:Esempi} non permette di descrivere adeguatamente un particolare esempio di interesse.
 Consideriamo la seguente rete:
 \begin{figure}[h!]
 \centering
@@ -49,7 +49,7 @@ Consideriamo la seguente rete:
 
 \end{figure}
 
-Il percorso $(r_1, r_2, r_3)$ è il percorso principale che, in situazioni di traffico moderato ($\widehat{\zeta}$ e $\widecheck{\zeta}$ non troppo elevati), le due popolazioni utilizzano esclusivamente per arrivare a destinazione.
+Il percorso principale è $(r_1, r_2, r_3)$ che, in situazioni di traffico moderato ($\widehat{\zeta}$ e $\widecheck{\zeta}$ non troppo elevati), le due popolazioni utilizzano esclusivamente per arrivare a destinazione.
 Le strade $r_4$ e $r_5$ rappresentano, invece, delle "scorciatoie", convenienti solo in caso di traffico intenso ($\widehat{\zeta}$ e $\widecheck{\zeta}$ elevati). L'unico motivo
 per cui queste ultime due strade sono opzioni allettanti per i guidatori è la precedenza che i veicoli hanno in uscita da esse: i veicoli provenienti da $r_4$ hanno precedenza sui veicoli
 provenienti da $r_2$ (analogo per i veicoli su $r_5$ rispetto a quelli su $r_3$).
@@ -69,7 +69,7 @@ $$
 \end{array}
 \end{equation*}
 
-In una situazione di traffico intenso, quindi, ci aspetteremmo che i guidatori \textit{hat} comincino ad utilizzare esclusivamente le scorciatoie, sfruttando la precedenza
+In una situazione di traffico intenso, quindi, ci aspetteremmo che i guidatori \textit{hat} utilizzino le scorciatoie, sfruttando la precedenza
 sul percorso principale per evitare il traffico intenso. Definiamo dunque le funzioni di costo:
 \begin{equation}
 \begin{array}{r @{\hspace{2cm}} r}
@@ -92,7 +92,7 @@ $$
 \end{array}
 \label{eq:13}
 \end{equation}
-Facciamo variare il numero di veicoli nelle due popolazioni da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 101$. Otteniamo dunque (vedi \autoref{script:22}):
+La variazione nel numero di veicoli nelle due popolazioni da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 101$ comporta (vedi \autoref{script:22}):
 
 \newpage
 \vspace*{-4cm}
@@ -117,7 +117,7 @@ Facciamo variare il numero di veicoli nelle due popolazioni da $\widehat{\zeta} 
 \end{figure}
 
 Facendo ciò si otterrà un peggioramento nel tempo di attraversamento della rete per la popolazione \textit{check}
-(dato che i guidatori \text{check} sono costretti a cedere la precedenza), già elevato a causa dell'elevata presenza di veicoli nella rete. Aumentando, dunque, il costo delle
+(dato che i guidatori \textit{check} sono costretti a cedere la precedenza), già elevato a causa della forte presenza di veicoli nella rete. Aumentando, dunque, il costo delle
 due scorciatoie si dovrebbe ottenere un miglioramento nel tempo di percorrenza della rete per \textit{check}. 
 
 Ponendo $\widehat{\zeta} = \widecheck{\zeta} = 30$ possiamo far variare i costi di $\widehat{\tau}_4$ e $\widehat{\tau}_5$ avendo come situazione iniziale
@@ -145,14 +145,14 @@ e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 1
 
 \end{tabular}
 \end{figure}
-Il risultato ottenuto non è esattamente quello atteso: i guidatori \textit{hat} smettono progressivamente di utilizzare le scorciatoie
+Risultato è atteso per il modello, dato che non tiene conto delle precedenze. Questo esempio reale se permetto ad una strada di variare rispetto al costo di un'altra allora...!!!!!!!!!!!!!Il risultato ottenuto non è esattamente quello atteso: i guidatori \textit{hat} smettono progressivamente di utilizzare le scorciatoie
 (dato che i costi delle stesse aumentano), ma il tempo di percorrenza della rete per i veicoli \textit{check} non migliora.
 
 Per risolvere questo problema i costi delle strade su cui bisogna cedere precedenza dovrebbero aumentare con l'aumento del numero di veicoli sulle strade che hanno precedenza.
 Servirebbe dunque far dipendere i $\tau$ che costituiscono il percorso principale non solo dal numero di veicoli sulla loro relativa strada,
 ma anche da $\theta_4$ e $\theta_5$.
 La precedenza, per come è intesa in questo esempio, non è rappresentabile con il modello descritto nella \autoref{sec:Modello} a causa dell'\autoref{eq:11}.
-Generalizziamo comunque questa equazione, uscendo dal modello presentato in precedenza, e tentiamo di ottenere un risultato più realistico:
+Generalizziamo comunque questa equazione, estendendo il modello presentato in precedenza, e tentiamo di ottenere un risultato più realistico:
 
 \begin{equation}
 \label{eq:12}

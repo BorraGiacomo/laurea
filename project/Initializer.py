@@ -121,24 +121,41 @@ class Initializer:
         return theta_hat, theta_check, T_hat, T_check
     
     def saveResultVariation(self, variation_values, time_of_travel_hat, time_of_travel_check, xLabel):
-        plt.plot(variation_values, time_of_travel_hat, label=f'Hat', color='blue')
+        # Grafico Hat
+        plt.figure()
+        plt.plot(variation_values, time_of_travel_hat, label='Hat', color='blue')
+        plt.xlabel(xLabel)
+        plt.ylabel('Tempo di attraversamento della rete')
+        plt.title(f'Tempo di attraversamento della rete (Hat)\nin funzione di: {xLabel}')
+        plt.legend()
+        plt.grid(True)
+        self.saveGraph(f'main_hat_{xLabel}')
+
+        # Grafico Check
+        plt.figure()
         plt.plot(variation_values, time_of_travel_check, label='Check', color='red')
         plt.xlabel(xLabel)
         plt.ylabel('Tempo di attraversamento della rete')
-        plt.title(f'Tempo di attraversamento della rete\nin funzione di: {xLabel}')
+        plt.title(f'Tempo di attraversamento della rete (Check)\nin funzione di: {xLabel}')
         plt.legend()
         plt.grid(True)
-        self.saveGraph(f'main_{xLabel}')
+        self.saveGraph(f'main_check_{xLabel}')
         
     def saveResultThetaVariation(self, variation_values, thetas, pop, xLabel):
         n = thetas.shape[0]
 
         subfolder = "hat" if pop == "hat" else "check"
+        color = "blue" if pop == "hat" else "red"
 
         for i in range(n):
             plt.figure(figsize=(6, 4))
 
-            plt.plot(variation_values, thetas[i, :], linewidth=1.8, color='red')
+            plt.plot(
+                variation_values,
+                thetas[i, :],
+                linewidth=1.8,
+                color=color
+            )
 
             plt.title(f'Theta_{pop}_{i+1}')
             plt.xlabel(xLabel)
@@ -150,7 +167,7 @@ class Initializer:
 
             self.saveGraph(file_label)
 
-            plt.close() 
+            plt.close()
  
  
     def saveGraph(self, xLabel):
