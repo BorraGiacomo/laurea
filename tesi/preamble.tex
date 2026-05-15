@@ -85,7 +85,10 @@ pdfauthor=Giacomo Borra
 \providecommand*{\remarkautorefname}{Remark}
 \providecommand*{\equationautorefname}{Equazione}
 
+
 \newcommand{\norm}[1]{\left\|#1\right\|}
-\renewcommand{\sectionautorefname}{§}
-\renewcommand{\subsectionautorefname}{§}
-\renewcommand{\subsubsectionautorefname}{§}
+\addto\extrasitalian{%
+  \renewcommand{\sectionautorefname}{§}%
+  \renewcommand{\subsectionautorefname}{§}%
+  \renewcommand{\subsubsectionautorefname}{§}%
+}

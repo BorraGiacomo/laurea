@@ -1,7 +1,7 @@
 \subsection{Equilibrio di Nash}
 \label{subsec:EqNash}
 
-Di seguito sono riportate alcune definizioni utili da \cite[Cap. 2]{MR4911797}. Si noti che l'analisi effettuata in questa sezione non cambia se si utilizzano le funzioni di costo come nell'\autoref{eq:10}.
+Di seguito sono riportate alcune definizioni utili da \cite[Cap. 2]{MR4911797}. Si noti che l'analisi effettuata in questa sezione non cambia se si utilizzano le funzioni di costo come nell'(\autoref{eq:10}).
 \begin{definition}\label{def:1}
     Dato uno stato $\theta\in S^{\widehat{n}}\times S^{\widecheck{n}}$ chiamiamo \textit{hat}-rilevante, rispettivamente
     \textit{check}-rilevante, un tempo di viaggio $\widehat{T}_i(\theta)$, rispettivamente $\widecheck{T}_i(\theta)$, tale 
@@ -10,7 +10,7 @@ Di seguito sono riportate alcune definizioni utili da \cite[Cap. 2]{MR4911797}. 
 
 \begin{definition}\label{def:2}
     Uno stato $\theta^{*}\in S^{\widehat{n}}\times S^{\widecheck{n}}$ è uno \textit{stato di equilibrio}
-    se tutti i tempi di viaggio rilevanti, come da \autoref{def:1}, di ogni popolazione coincidono, ovvero se:
+    se tutti i tempi di viaggio rilevanti, come da (\autoref{def:1}), di ogni popolazione coincidono, ovvero se:
     \begin{equation*}
         \begin{split}
         \forall i,j\in\{1,...,\widehat{n}\} \text{, se }\widehat{\theta}_i^{*}\neq 0 \text{ e }\widehat{\theta}_j^{*}\neq 0
@@ -21,7 +21,7 @@ Di seguito sono riportate alcune definizioni utili da \cite[Cap. 2]{MR4911797}. 
     \end{equation*}
 \end{definition}
 
-La \autoref{def:2} assicura che all'equilibrio tutti i guidatori di una stessa popolazione impieghino lo stesso tempo per
+La (\autoref{def:2}) assicura che all'equilibrio tutti i guidatori di una stessa popolazione impieghino lo stesso tempo per
 arrivare dall'origine alla destinazione appartenenti a suddetta popolazione.
 
 Grazie a queste definizioni ed a (\autoref{eq:3}), introduciamo:
@@ -42,7 +42,7 @@ Grazie a queste definizioni ed a (\autoref{eq:3}), introduciamo:
 \end{definition}
 
 Notiamo che, in uno stato di equilibrio $\theta^*$, $\widehat{T}_M(\theta^*)=\widehat{T}_i(\theta^*)$ $\forall i\in\{0,...,\widehat{n}\}$ (analogo per la popolazione \textit{check}),
-dato che, per la \autoref{def:2}, tutti i tempi di viaggio dei percorsi sono uguali. Perciò la \autoref{def:3}
+dato che, per la (\autoref{def:2}), tutti i tempi di viaggio dei percorsi sono uguali. Perciò la (\autoref{def:3})
 implica che un equilibrio di Nash è uno stato di equilibrio in cui a nessun guidatore di nessuna popolazione conviene cambiare percorso.
 Ciò è dato dal fatto che in suddetto equilibrio i $T$ non rilevanti sono 
 maggiori del tempo di viaggio, di conseguenza:
@@ -56,7 +56,7 @@ maggiori del tempo di viaggio, di conseguenza:
 Non è detto, però, che esista un equilibrio di Nash in ogni rete. Si riporta, dunque, da \cite[Cap. 2]{MR4911797}:
 \begin{theorem}\label{th:1}
     Supponiamo che $\forall i\in\{1,...,N\}$ $(\widehat{\tau}_i,\widecheck{\tau}_i)\in C^0([0,1]^2;(\mathbb{R}_+\cup\{+\infty\})^2)$.
-    Allora esiste un equilibrio di Nash $\theta^*\in S^{\widehat{n}}\times S^{\widecheck{n}}$, al senso della \autoref{def:3}.
+    Allora esiste un equilibrio di Nash $\theta^*\in S^{\widehat{n}}\times S^{\widecheck{n}}$, al senso della (\autoref{def:3}).
 \end{theorem}
 
 \subsection{Funzioni ausiliarie}
@@ -89,7 +89,7 @@ Definiamo quindi la normalizzazione $\mathscr{N}:C_+^n\to S^n$, le cui component
 Useremo $\varphi$ e $\bar{\varphi}$ indipendentemente che siano definite su $\mathbb{R}^{\widehat{n}}\cup\{+\infty\}$ o
 su $\mathbb{R}^{\widecheck{n}}\cup\{+\infty\}$. Vale lo stesso per $\mathscr{N}$.
 
-Nella dimostrazione del \autoref{th:1} presente in \cite[Cap. 4]{MR4911797} si fa utilizzo della funzione:
+Nella dimostrazione del (\autoref{th:1}) presente in \cite[Cap. 4]{MR4911797} si fa utilizzo della funzione:
 \begin{equation}
     \mathcal{F}:\text{ } S^{\widehat{n}}\times S^{\widecheck{n}} \to S^{\widehat{n}}\times S^{\widecheck{n}},
     \label{eq:6}
@@ -114,7 +114,7 @@ con:
     \label{eq:8}
 \end{equation}
 
-Per la dimostrazione del \autoref{th:1} ci si serve del Teorema del Punto Fisso di Brouwer, usato anche da John Nash nella sua tesi di
+Per la dimostrazione del (\autoref{th:1}) ci si serve del Teorema del Punto Fisso di Brouwer, usato anche da John Nash nella sua tesi di
 dottorato \cite[Cap. 3]{nash1950noncooperative} per dimostrare che \textit{"Every finite game has an equilibrium point"}, punto di equilibrio
 denominato in seguito Equilibrio di Nash.
 
@@ -123,4 +123,4 @@ In \cite[Cap. 4]{MR4911797} viene dunque verificato che (\autoref{eq:6}), per Br
     \exists\theta^*\in S^{\widehat{n}}\times S^{\widecheck{n}}:\text{ } \mathcal{F}(\theta^*)=\theta^*
     \label{eq:9}
 \end{equation}
-e che ogni punto fisso di $\mathcal{F}$ è un Equilibrio di Nash per la rete stradale, al senso della \autoref{def:3}.
+e che ogni punto fisso di $\mathcal{F}$ è un Equilibrio di Nash per la rete stradale, al senso della (\autoref{def:3}).

@@ -1,6 +1,6 @@
 \section{Estensione del modello}
 \label{sec:Critica}
-Il modello presentato nella \autoref{subsec:DescModello} e utilizzato per gli esempi nella \autoref{subsec:Esempi} non permette di descrivere adeguatamente un particolare esempio di interesse.
+Il modello presentato nella \autoref{subsec:DescModello} e utilizzato per gli esempi nella \autoref{sec:Applicazioni} non permette di descrivere adeguatamente un particolare esempio di interesse.
 Consideriamo la seguente rete:
 \begin{figure}[h!]
 \centering
@@ -49,12 +49,12 @@ Consideriamo la seguente rete:
 
 \end{figure}
 
-Il percorso principale è $(r_1, r_2, r_3)$ che, in situazioni di traffico moderato ($\widehat{\zeta}$ e $\widecheck{\zeta}$ non troppo elevati), le due popolazioni utilizzano esclusivamente per arrivare a destinazione.
+Identifichiamo come percorso principale è $(r_1, r_2, r_3)$. In situazioni di traffico moderato ($\widehat{\zeta}$ e $\widecheck{\zeta}$ non troppo elevati) le due popolazioni lo utilizzano esclusivamente per arrivare a destinazione.
 Le strade $r_4$ e $r_5$ rappresentano, invece, delle "scorciatoie", convenienti solo in caso di traffico intenso ($\widehat{\zeta}$ e $\widecheck{\zeta}$ elevati). L'unico motivo
 per cui queste ultime due strade sono opzioni allettanti per i guidatori è la precedenza che i veicoli hanno in uscita da esse: i veicoli provenienti da $r_4$ hanno precedenza sui veicoli
 provenienti da $r_2$ (analogo per i veicoli su $r_5$ rispetto a quelli su $r_3$).
 
-Consideriamo apparteneti alla popolazione \textit{hat} i veicoli che conoscono le "scorciatoie" $r_4$ e $r_5$, mentre i veicoli di \textit{check} ne ignorano l'esistenza:
+Consideriamo apparteneti alla popolazione \textit{hat} i guidatori che conoscono le "scorciatoie" $r_4$ e $r_5$, mentre i guidatori di \textit{check} ne ignorano l'esistenza:
 
 \begin{equation*}
 \begin{array}{r @{\hspace{2cm}} r}
@@ -69,8 +69,10 @@ $$
 \end{array}
 \end{equation*}
 
-In una situazione di traffico intenso, quindi, ci aspetteremmo che i guidatori \textit{hat} utilizzino le scorciatoie, sfruttando la precedenza
-sul percorso principale per evitare il traffico intenso. Definiamo dunque le funzioni di costo:
+Realisticamente, in una situazione di traffico intenso i guidatori \textit{hat} utilizzano le scorciatoie, sfruttando la precedenza
+sul percorso principale per evitare il traffico intenso. Tentiamo di desccrivere questa situazione con il modello \autoref{sec:Modello}.
+
+Definiamo dunque le funzioni di costo:
 \begin{equation}
 \begin{array}{r @{\hspace{2cm}} r}
 
@@ -104,14 +106,14 @@ La variazione nel numero di veicoli nelle due popolazioni da $\widehat{\zeta} = 
 \includegraphics[height=6cm]{../figures/Es3/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png} &
 \includegraphics[height=6cm]{../figures/Es3/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png} \\
 
-\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
-\includegraphics[height=5.5cm]{../figures/Es3/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
+\includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\includegraphics[height=6cm]{../figures/Es3/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
 
-\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_nella_popolazione.png} &
-\rule{0pt}{5.5cm} \\
+\includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\rule{0pt}{6cm} \\
 
-\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_nella_popolazione.png} &
-\rule{0pt}{5.5cm} \\
+\includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\rule{0pt}{6cm} \\
 
 \end{tabular}
 \end{figure}
@@ -134,25 +136,24 @@ e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 1
 \includegraphics[height=6cm]{../figures/Es3/grafico_main_hat_Variazione_del_costo_delle_strade.png} &
 \includegraphics[height=6cm]{../figures/Es3/grafico_main_check_Variazione_del_costo_delle_strade.png} \\
 
-\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_1_Variazione_del_costo_delle_strade.png} &
-\includegraphics[height=5.5cm]{../figures/Es3/grafico_check/check_theta_1_Variazione_del_costo_delle_strade.png} \\
+\includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_1_Variazione_del_costo_delle_strade.png} &
+\includegraphics[height=6cm]{../figures/Es3/grafico_check/check_theta_1_Variazione_del_costo_delle_strade.png} \\
 
-\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_2_Variazione_del_costo_delle_strade.png} & 
-\rule{0pt}{5.5cm}\\
+\includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_2_Variazione_del_costo_delle_strade.png} & 
+\rule{0pt}{6cm}\\
 
-\includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_3_Variazione_del_costo_delle_strade.png} &
-\rule{0pt}{5.5cm} \\
+\includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_3_Variazione_del_costo_delle_strade.png} &
+\rule{0pt}{6cm} \\
 
 \end{tabular}
 \end{figure}
-Risultato è atteso per il modello, dato che non tiene conto delle precedenze. Questo esempio reale se permetto ad una strada di variare rispetto al costo di un'altra allora...!!!!!!!!!!!!!Il risultato ottenuto non è esattamente quello atteso: i guidatori \textit{hat} smettono progressivamente di utilizzare le scorciatoie
-(dato che i costi delle stesse aumentano), ma il tempo di percorrenza della rete per i veicoli \textit{check} non migliora.
+Il modello definito in \autoref{sec:Modello} non può tenere conto delle precedenze: i guidatori \textit{hat} smettono progressivamente di utilizzare le scorciatoie
+(dato che i costi delle stesse aumentano), ma il tempo di percorrenza della rete per i veicoli \textit{check} non migliora. 
 
-Per risolvere questo problema i costi delle strade su cui bisogna cedere precedenza dovrebbero aumentare con l'aumento del numero di veicoli sulle strade che hanno precedenza.
-Servirebbe dunque far dipendere i $\tau$ che costituiscono il percorso principale non solo dal numero di veicoli sulla loro relativa strada,
-ma anche da $\theta_4$ e $\theta_5$.
-La precedenza, per come è intesa in questo esempio, non è rappresentabile con il modello descritto nella \autoref{sec:Modello} a causa dell'\autoref{eq:11}.
-Generalizziamo comunque questa equazione, estendendo il modello presentato in precedenza, e tentiamo di ottenere un risultato più realistico:
+Se vogliamo descrivere meglio il comportamento reale dobbiamo permettere al costo di una strada di variare rispetto alla popolazione presente su un'altra.
+Servirebbe dunque far dipendere i $\tau$ che costituiscono il percorso principale non solo dalla concentrazione di veicoli sulla loro relativa strada,
+ma anche da $\theta_4$ e $\theta_5$. Questa necessità comporta una generalizzazione del modello, che non intaccherà altre definizioni e non invaliderà il \autoref{th:1}.
+Estendiamo dunque il modello presentato in precedenza:
 
 \begin{equation}
 \label{eq:12}
@@ -214,25 +215,25 @@ otteniamo (vedi \autoref{script:24}):
 \includegraphics[height=6cm]{../figures/Es4/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png} &
 \includegraphics[height=6cm]{../figures/Es4/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png} \\
 
-\includegraphics[height=5.5cm]{../figures/Es4/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
-\includegraphics[height=5.5cm]{../figures/Es4/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
+\includegraphics[height=6cm]{../figures/Es4/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\includegraphics[height=6cm]{../figures/Es4/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
 
-\includegraphics[height=5.5cm]{../figures/Es4/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_nella_popolazione.png} &
-\rule{0pt}{5.5cm} \\
+\includegraphics[height=6cm]{../figures/Es4/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\rule{0pt}{6cm} \\
 
-\includegraphics[height=5.5cm]{../figures/Es4/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_nella_popolazione.png} &
-\rule{0pt}{5.5cm} \\
+\includegraphics[height=6cm]{../figures/Es4/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\rule{0pt}{6cm} \\
 
 \end{tabular}
 
 \end{figure}
 
-Il risultato rispetta, come quello ottenuto con i parametri definiti nell'\autoref{eq:13}, le nostre aspettative sul comportamento della popolazione \textit{hat} all'aumentare
+Il risultato rispetta, come quello ottenuto con i parametri definiti nell'(\autoref{eq:13}), le nostre aspettative sul comportamento della popolazione \textit{hat} all'aumentare
 del traffico e sul tempo di percorrenza della rete per i guidatori \textit{check}.
 
 Controlliamo ora l'effetto dell'aumento dei costi delle strade da $\widehat{\tau}_4(\eta) = 135+\widehat{\eta}$ a $\widehat{\tau}_4(\eta) = 205+\widehat{\eta}$
 e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 175+\widehat{\eta}$ con $\widehat{\zeta} = \widecheck{\zeta} = 30$ (vedi \autoref{script:24}). Confrontiamo il risultato ottenuto
-con quello ricavato in precedenza applicando la stessa variazione ai costi definiti nell'\autoref{eq:13}. Tralasciamo il grafico rappresentante 
+con quello ricavato in precedenza applicando la stessa variazione ai costi definiti nell'(\autoref{eq:13}). Tralasciamo il grafico rappresentante 
 l'equilibrio di Nash della popolazione \textit{check}, data la presenza di un unico percorso per essa:
 
 \newpage
@@ -243,7 +244,7 @@ l'equilibrio di Nash della popolazione \textit{check}, data la presenza di un un
 \includegraphics[height=6cm]{../figures/Es3/grafico_main_hat_Variazione_del_costo_delle_strade.png}&
 \includegraphics[height=6cm]{../figures/Es3/grafico_main_check_Variazione_del_costo_delle_strade.png}\\
 \end{tabular}
-\caption*{Tempo di viaggio al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in \autoref{eq:13}.}
+\caption*{Tempo di viaggio al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in (\autoref{eq:13}).}
 \end{figure}
 
 \begin{figure}[H]
@@ -252,7 +253,7 @@ l'equilibrio di Nash della popolazione \textit{check}, data la presenza di un un
 \includegraphics[height=6cm]{../figures/Es4/grafico_main_hat_Variazione_del_costo_delle_strade.png} &
 \includegraphics[height=6cm]{../figures/Es4/grafico_main_check_Variazione_del_costo_delle_strade.png} \\
 \end{tabular}
-\caption*{Tempo di viaggio al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in \autoref{eq:14}.}
+\caption*{Tempo di viaggio al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in (\autoref{eq:14}).}
 \end{figure}
 
 \begin{figure}[H]
@@ -269,9 +270,9 @@ l'equilibrio di Nash della popolazione \textit{check}, data la presenza di un un
 \includegraphics[height=6cm]{../figures/Es3/grafico_hat/hat_theta_3_Variazione_del_costo_delle_strade.png} &
 \includegraphics[height=6cm]{../figures/Es4/grafico_hat/hat_theta_3_Variazione_del_costo_delle_strade.png} \\
 \end{tabular}
-\caption*{A sinistra la variazione dell'Equilibrio di Nash calcolato utilizzando le funzioni di costo definite in \autoref{eq:13}. A destra la variazione dell'Equilibrio di Nash calcolato utilizzando le funzioni di costo definite in \autoref{eq:14}.}
+\caption*{A sinistra la variazione dell'Equilibrio di Nash calcolato utilizzando le funzioni di costo definite in (\autoref{eq:13}). A destra la variazione dell'Equilibrio di Nash calcolato utilizzando le funzioni di costo definite in (\autoref{eq:14}).}
 \end{figure}
 
-I costi definiti nell'\autoref{eq:14} permettono di rappresentare il comportamento atteso in modo più accurato: se i guidatori \textit{hat} smettono
+I costi definiti nell'(\autoref{eq:14}) permettono di rappresentare il comportamento atteso in modo più accurato: se i guidatori \textit{hat} smettono
 di utilizzare le scorciatoie il tempo di viaggio della popolazione \textit{check} diminuisce, dato che non devono più cedere la precedenza ai veicoli che
 provengono da $r_4$ ed $r_5$.
