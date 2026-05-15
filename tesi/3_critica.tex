@@ -1,4 +1,4 @@
-\section{Estensione del modello}!!!!!
+\section{Estensione del modello}
 \label{sec:Critica}
 Il modello presentato nella \autoref{subsec:DescModello} e utilizzato per gli esempi nella \autoref{subsec:Esempi} non permette di descrivere adeguatamente un particolare esempio di interesse.
 Consideriamo la seguente rete:
@@ -100,9 +100,9 @@ La variazione nel numero di veicoli nelle due popolazioni da $\widehat{\zeta} = 
 \begin{figure}[H]
 \centering
 
-\includegraphics[height=8cm]{../figures/Es3/grafico_main_Variazione_del_numero_di_individui_nella_popolazione.png}
-
 \begin{tabular}{cc}
+\includegraphics[height=6cm]{../figures/Es3/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\includegraphics[height=6cm]{../figures/Es3/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png} \\
 
 \includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
 \includegraphics[height=5.5cm]{../figures/Es3/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
@@ -116,7 +116,7 @@ La variazione nel numero di veicoli nelle due popolazioni da $\widehat{\zeta} = 
 \end{tabular}
 \end{figure}
 
-Facendo ciò si otterrà un peggioramento nel tempo di attraversamento della rete per la popolazione \textit{check}
+Facendo ciò si otterrà un peggioramento nel tempo di viaggio per la popolazione \textit{check}
 (dato che i guidatori \textit{check} sono costretti a cedere la precedenza), già elevato a causa della forte presenza di veicoli nella rete. Aumentando, dunque, il costo delle
 due scorciatoie si dovrebbe ottenere un miglioramento nel tempo di percorrenza della rete per \textit{check}. 
 
@@ -130,9 +130,9 @@ e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 1
 \begin{figure}[H]
 \centering
 
-\includegraphics[height=8cm]{../figures/Es3/grafico_main_Variazione_del_costo_delle_strade.png}
-
 \begin{tabular}{cc}
+\includegraphics[height=6cm]{../figures/Es3/grafico_main_hat_Variazione_del_costo_delle_strade.png} &
+\includegraphics[height=6cm]{../figures/Es3/grafico_main_check_Variazione_del_costo_delle_strade.png} \\
 
 \includegraphics[height=5.5cm]{../figures/Es3/grafico_hat/hat_theta_1_Variazione_del_costo_delle_strade.png} &
 \includegraphics[height=5.5cm]{../figures/Es3/grafico_check/check_theta_1_Variazione_del_costo_delle_strade.png} \\
@@ -209,9 +209,10 @@ otteniamo (vedi \autoref{script:24}):
 \begin{figure}[H]
 \centering
 
-\includegraphics[height=8cm]{../figures/Es4/grafico_main_Variazione_del_numero_di_individui_nella_popolazione.png}
-
 \begin{tabular}{cc}
+
+\includegraphics[height=6cm]{../figures/Es4/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\includegraphics[height=6cm]{../figures/Es4/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png} \\
 
 \includegraphics[height=5.5cm]{../figures/Es4/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
 \includegraphics[height=5.5cm]{../figures/Es4/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
@@ -238,14 +239,20 @@ l'equilibrio di Nash della popolazione \textit{check}, data la presenza di un un
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=8cm]{../figures/Es3/grafico_main_Variazione_del_costo_delle_strade.png}
-\caption*{Tempo di percorrenza della rete al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in \autoref{eq:13}.}
+\begin{tabular}{cc}
+\includegraphics[height=6cm]{../figures/Es3/grafico_main_hat_Variazione_del_costo_delle_strade.png}&
+\includegraphics[height=6cm]{../figures/Es3/grafico_main_check_Variazione_del_costo_delle_strade.png}\\
+\end{tabular}
+\caption*{Tempo di viaggio al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in \autoref{eq:13}.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=8cm]{../figures/Es4/grafico_main_Variazione_del_costo_delle_strade.png}
-\caption*{Tempo di percorrenza della rete al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in \autoref{eq:14}.}
+\begin{tabular}{cc}
+\includegraphics[height=6cm]{../figures/Es4/grafico_main_hat_Variazione_del_costo_delle_strade.png} &
+\includegraphics[height=6cm]{../figures/Es4/grafico_main_check_Variazione_del_costo_delle_strade.png} \\
+\end{tabular}
+\caption*{Tempo di viaggio al variare del costo delle scorciatoie, utilizzando le funzioni di costo definite in \autoref{eq:14}.}
 \end{figure}
 
 \begin{figure}[H]
@@ -266,5 +273,5 @@ l'equilibrio di Nash della popolazione \textit{check}, data la presenza di un un
 \end{figure}
 
 I costi definiti nell'\autoref{eq:14} permettono di rappresentare il comportamento atteso in modo più accurato: se i guidatori \textit{hat} smettono
-di utilizzare le scorciatoie il tempo di percorrenza della popolazione \textit{check} diminuisce, dato che non devono più cedere la precedenza ai veicoli che
+di utilizzare le scorciatoie il tempo di viaggio della popolazione \textit{check} diminuisce, dato che non devono più cedere la precedenza ai veicoli che
 provengono da $r_4$ ed $r_5$.

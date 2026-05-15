@@ -1,16 +1,16 @@
-\subsection{Applicazioni}//Sezione
-\label{subsec:Esempi}
+\section{Applicazioni}
+\label{sec:Applicazioni}
 
 Il programma riportato in \autoref{sec:Programma}, al seguito della creazione di una classe Python \cite{python_docs} rappresentante
 la rete stradale studiata, può essere utilizzato per 3 diversi scopi:
 \begin{itemize}
-    \item Calcolo dell'equilibrio di Nash e del tempo di attraversamento della rete
-    \item Computazione dei grafici del tempo di attraversamento della rete e dell'equilibrio di Nash dipendenti dalla variazione dei costi delle strade
-    \item Computazione del grafico del tempo di attraversamento della rete e dell'equilibrio di Nash dipendenti dalla variazione delle popolazioni
+    \item Calcolo dell'equilibrio di Nash e del tempo di viaggio per le due popolazioni
+    \item Calcolo dei grafici del tempo di viaggio e dell'equilibrio di Nash dipendenti dalla variazione dei costi delle strade
+    \item Calcolo del grafico del tempo di viaggio e dell'equilibrio di Nash dipendenti dalla variazione delle popolazioni
 \end{itemize}
 
-\subsubsection{Esempio 1}//paradosso braess
-\label{subsubsec:Es1}
+\subsection{Paradosso di Braess}
+\label{subsec:Es1}
 
 Introduciamo la rete stradale così formata:
 \[
@@ -92,9 +92,9 @@ $\widehat{\tau_5}(\eta) = \widecheck{\tau_5}(\eta) = 50$ (vedi \autoref{script:1
 \begin{figure}[H]
 \begin{center}
 
-\includegraphics[height=8cm]{../figures/Es1/grafico_main_Variazione_del_costo_delle_strade.png}
-
 \begin{tabular}{cc}
+\includegraphics[height=6cm]{../figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png} &
+\includegraphics[height=6cm]{../figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png} \\
 
 \includegraphics[height=5.5cm]{../figures/Es1/grafico_hat/hat_theta_1_Variazione_del_costo_delle_strade.png} &
 \includegraphics[height=5.5cm]{../figures/Es1/grafico_check/check_theta_1_Variazione_del_costo_delle_strade.png} \\
@@ -109,9 +109,9 @@ $\widehat{\tau_5}(\eta) = \widecheck{\tau_5}(\eta) = 50$ (vedi \autoref{script:1
 
 \end{center}
 \end{figure}
-Con l'aumentare del costo di $r_5$ si ottiene un risultato inatteso: il tempo di attraversamento della rete diminuisce. Progressivamente
+Con l'aumentare del costo di $r_5$ si ottiene un risultato inatteso: il tempo di viaggio diminuisce. Progressivamente
 sempre più veicoli delle due popolazioni scelgono i percorsi che non contengono la strada $r_5$ finché nessuno la utilizza più, raggiungendo il minimo
-del tempo di attraversamento. 
+del tempo di viaggio. 
 
 La rimozione di suddetta strada migliora la qualità del viaggio sulla rete. 
 Spingendoci oltre, notiamo che questa situazione paradossale è molto fragile; infatti se esaminiamo il caso in cui $\widehat{\tau_5}(\eta) = \widecheck{\tau_5}(\eta) = 0$ e facciamo variare 
@@ -124,9 +124,9 @@ otteniamo:
 \begin{figure}[H]
 \centering
 
-\includegraphics[height=8cm]{../figures/Es1/grafico_main_Variazione_del_numero_di_individui_nella_popolazione.png}
-
 \begin{tabular}{cc}
+\includegraphics[height=6cm]{../figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png} & 
+\includegraphics[height=6cm]{../figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png} \\
 
 \includegraphics[height=5.5cm]{../figures/Es1/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
 \includegraphics[height=5.5cm]{../figures/Es1/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
@@ -140,15 +140,15 @@ otteniamo:
 \end{tabular}
 
 \end{figure}
-Aumentando il numero di veicoli delle due popolazioni si ottiene, a seguito di una breve crescita del tempo di attraversamento, una fase transitoria
+Aumentando il numero di veicoli delle due popolazioni si ottiene, a seguito di una breve crescita del tempo di viaggio, una fase transitoria
 costante, in cui le due popolazioni iniziano progressivamente ad utilizzare i due percorsi che non contengono $r_5$. Terminato il transitorio
 costante nessuno utilizza $r_5$ e si perde il comportamento paradossale della rete: anche se la strada ha costo 0 non conviene
 attraversarla.
 
-\subsubsection{Esempio 2}//Effetti a distanza!!
-\label{subsubsec:Es2}
+\subsection{Effetti a distanza}
+\label{subsec:Es2}
 
-Introduciamo ora una rete particolare, in cui l'aggiunta di una strada utilizzata solo da una popolazione peggiora solo il tempo di attraversamento dell'altra:
+Introduciamo ora una rete particolare, in cui l'aggiunta di una strada utilizzata solo da una popolazione peggiora solo il tempo di viaggio dell'altra:
 \[
 \quad
 \begin{tikzpicture}[scale=1.2]
@@ -235,9 +235,9 @@ Variando il costo della strada $r_6$ \textbf{solamente per la popolazione \texti
 \begin{figure}[H]
 \centering
 
-\includegraphics[height=8cm]{../figures/Es2/grafico_main_Variazione_del_costo_delle_strade.png}
-
 \begin{tabular}{cc}
+\includegraphics[height=6cm]{../figures/Es2/grafico_main_hat_Variazione_del_costo_delle_strade.png}&
+\includegraphics[height=6cm]{../figures/Es2/grafico_main_check_Variazione_del_costo_delle_strade.png} \\
 
 \includegraphics[height=5.5cm]{../figures/Es2/grafico_hat/hat_theta_1_Variazione_del_costo_delle_strade.png} &
 \includegraphics[height=5.5cm]{../figures/Es2/grafico_check/check_theta_1_Variazione_del_costo_delle_strade.png} \\
@@ -251,9 +251,9 @@ Variando il costo della strada $r_6$ \textbf{solamente per la popolazione \texti
 \end{tabular}
 
 \end{figure}
-Come nella \autoref{subsubsec:Es1} osserviamo un Paradosso di Braess \cite{BraessParadox}. Questa volta, però, solo una delle due popolazioni
+Come nella \autoref{subsec:Es1} osserviamo un Paradosso di Braess \cite{BraessParadox}. Questa volta, però, solo una delle due popolazioni
 (\textit{check}) risente della variazione di costo di $r_6$, nonostante nessun veicolo \textit{check} la attraversi: l'aggiunta di $r_6$, che
-non migliora il tempo di attraversamento dell'unica popolazione che ne usufruisce (\textit{hat}), peggiora invece il tempo di attraversamento dell'altra.
+non migliora il tempo di viaggio dell'unica popolazione che ne usufruisce (\textit{hat}), peggiora invece il tempo di viaggio dell'altra.
 
 Nuovamente si nota che questo stato paradossale è solo localmente stabile!!!!!!!!!!!!!!!: facendo variare, per esempio, il numero di veicoli nella popolazione \textit{check}, da $\widecheck{\zeta} = 1$
 a $\widecheck{\zeta} = 6$ (vedi \autoref{script:21}):
@@ -264,9 +264,9 @@ a $\widecheck{\zeta} = 6$ (vedi \autoref{script:21}):
 \begin{figure}[H]
 \centering
 
-\includegraphics[height=8cm]{../figures/Es2/grafico_main_Variazione_del_numero_di_individui_nella_popolazione.png}
-
 \begin{tabular}{cc}
+\includegraphics[height=6cm]{../figures/Es2/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png} &
+\includegraphics[height=6cm]{../figures/Es2/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png} \\
 
 \includegraphics[height=5.5cm]{../figures/Es2/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} &
 \includegraphics[height=5.5cm]{../figures/Es2/grafico_check/check_theta_1_Variazione_del_numero_di_individui_nella_popolazione.png} \\
