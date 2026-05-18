@@ -83,7 +83,7 @@ $$
 \end{array}
 \end{equation*}
 
-Il comportamento paradossale deriva dal fatto che la presenza della strada $r_5$, nonostante abbia costo nullo, faccia peggiorare i tempi di attarversamento di entrambe le popolazioni.
+Il comportamento paradossale deriva dal fatto che la presenza della strada $r_5$, nonostante abbia costo nullo, faccia peggiorare i tempi di viaggio di entrambe le popolazioni.
 Infatti se variamo il costo della strada $r_5$, passando da $\widehat{\tau_5}(\eta) = \widecheck{\tau_5}(\eta) = 0$ a 
 $\widehat{\tau_5}(\eta) = \widecheck{\tau_5}(\eta) = 50$ (vedi \autoref{script:18}): 
 
@@ -115,7 +115,7 @@ del tempo di viaggio.
 
 La rimozione di suddetta strada migliora la qualità del viaggio sulla rete. 
 Spingendoci oltre, notiamo che questa situazione è stabile solo localmente: da questa configurazione riusciamo a variare di poco i parametri prima di perdere del tutto il comportamento paradossale.
-Infatti se esaminiamo il caso in cui $\widehat{\tau_5}(\eta) = \widecheck{\tau_5}(\eta) = 0$ e facciamo variare 
+Se esaminiamo il caso in cui $\widehat{\tau_5}(\eta) = \widecheck{\tau_5}(\eta) = 0$ e facciamo variare 
 il numero di veicoli delle popolazioni da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 3$ (vedi \autoref{script:19}):
 \newpage
 \vspace*{-4cm}
@@ -147,7 +147,7 @@ attraversarla.
 \subsection{Effetti a distanza}
 \label{subsec:Es2}
 
-Introduciamo ora una rete particolare, in cui l'aggiunta di una strada utilizzata solo da una popolazione peggiora solo il tempo di viaggio dell'altra:
+Introduciamo ora una rete particolare, in cui l'aggiunta di una strada utilizzata solo da una popolazione peggiora unicamente il tempo di viaggio dell'altra:
 \[
 \quad
 \begin{tikzpicture}[scale=1.2]
@@ -251,7 +251,8 @@ Variando il costo della strada $r_6$ \textbf{solamente per la popolazione \texti
 
 \end{figure}
 Come nella \autoref{subsec:Es1} osserviamo un Paradosso di Braess \cite{BraessParadox}. Questa volta, però, solo una delle due popolazioni
-(\textit{check}) risente della variazione di costo di $r_6$, nonostante nessun veicolo \textit{check} la attraversi: l'aggiunta di $r_6$, che
+(\textit{check}) risente della variazione di costo di $r_6$, nonostante nessun veicolo \textit{check} la attraversi.
+L'aggiunta di $r_6$, che
 non migliora il tempo di viaggio dell'unica popolazione che ne usufruisce (\textit{hat}), peggiora invece il tempo di viaggio dell'altra.
 
 Nuovamente si nota che questo stato paradossale è solo localmente stabile: facendo variare, per esempio, il numero di veicoli nella popolazione \textit{check}, da $\widecheck{\zeta} = 1$

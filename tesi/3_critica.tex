@@ -49,9 +49,9 @@ Consideriamo la seguente rete:
 
 \end{figure}
 
-Identifichiamo come percorso principale è $(r_1, r_2, r_3)$. In situazioni di traffico moderato ($\widehat{\zeta}$ e $\widecheck{\zeta}$ non troppo elevati) le due popolazioni lo utilizzano esclusivamente per arrivare a destinazione.
-Le strade $r_4$ e $r_5$ rappresentano, invece, delle "scorciatoie", convenienti solo in caso di traffico intenso ($\widehat{\zeta}$ e $\widecheck{\zeta}$ elevati). L'unico motivo
-per cui queste ultime due strade sono opzioni allettanti per i guidatori è la precedenza che i veicoli hanno in uscita da esse: i veicoli provenienti da $r_4$ hanno precedenza sui veicoli
+Identifichiamo come percorso principale $(r_1, r_2, r_3)$. In situazioni di traffico moderato ($\widehat{\zeta}$ e $\widecheck{\zeta}$ non troppo elevati) entrambe le popolazioni lo utilizzano per arrivare a destinazione.
+Le strade $r_4$ e $r_5$ rappresentano, invece, delle "scorciatoie", convenienti solo in caso di traffico intenso ($\widehat{\zeta}$ e $\widecheck{\zeta}$ elevati). Il motivo
+per cui queste ultime due strade sono opzioni allettanti per i guidatori è la precedenza che si ha in uscita da esse: i veicoli provenienti da $r_4$ hanno precedenza sui veicoli
 provenienti da $r_2$ (analogo per i veicoli su $r_5$ rispetto a quelli su $r_3$).
 
 Consideriamo apparteneti alla popolazione \textit{hat} i guidatori che conoscono le "scorciatoie" $r_4$ e $r_5$, mentre i guidatori di \textit{check} ne ignorano l'esistenza:
@@ -69,8 +69,8 @@ $$
 \end{array}
 \end{equation*}
 
-Realisticamente, in una situazione di traffico intenso i guidatori \textit{hat} utilizzano le scorciatoie, sfruttando la precedenza
-sul percorso principale per evitare il traffico intenso. Tentiamo di desccrivere questa situazione con il modello \autoref{sec:Modello}.
+Realisticamente, in una situazione di traffico intenso, i guidatori \textit{hat} utilizzano le scorciatoie, sfruttando la precedenza
+sul percorso principale per evitare il traffico intenso. Tentiamo di descrivere questa situazione con il modello in \autoref{sec:Modello}.
 
 Definiamo dunque le funzioni di costo:
 \begin{equation}
@@ -118,12 +118,12 @@ La variazione nel numero di veicoli nelle due popolazioni da $\widehat{\zeta} = 
 \end{tabular}
 \end{figure}
 
-Facendo ciò si otterrà un peggioramento nel tempo di viaggio per la popolazione \textit{check}
-(dato che i guidatori \textit{check} sono costretti a cedere la precedenza), già elevato a causa della forte presenza di veicoli nella rete. Aumentando, dunque, il costo delle
+Si ottiene un maggiore aumento del tempo di viaggio per la popolazione \textit{check} rispetto a quello per la popolazione \textit{hat}.
+Ciò è dato dal fatto che i guidatori \textit{check} sono costretti a cedere la precedenza, aumentando il tempo di viaggio già elevato a causa della forte presenza di veicoli nella rete. Facendo crescere, dunque, il costo delle
 due scorciatoie si dovrebbe ottenere un miglioramento nel tempo di percorrenza della rete per \textit{check}. 
 
 Ponendo $\widehat{\zeta} = \widecheck{\zeta} = 30$ possiamo far variare i costi di $\widehat{\tau}_4$ e $\widehat{\tau}_5$ avendo come situazione iniziale
-l'utilizzo delle scorciatoie da parte della popolazione \textit{hat}. Facciamo dunque passare i due costi da $\widehat{\tau}_4(\eta) = 135+\widehat{\eta}$ a $\widehat{\tau}_4(\eta) = 205+\widehat{\eta}$
+l'utilizzo delle scorciatoie da parte della popolazione \textit{hat}. Aumentiamo i due costi da $\widehat{\tau}_4(\eta) = 135+\widehat{\eta}$ a $\widehat{\tau}_4(\eta) = 205+\widehat{\eta}$
 e da $\widehat{\tau}_5(\eta) = 105+\widehat{\eta}$ a $\widehat{\tau}_5(\eta) = 175+\widehat{\eta}$. Questa operazione restituisce (vedi \autoref{script:23}):
 
 \newpage
@@ -178,7 +178,7 @@ Estendiamo dunque il modello presentato in precedenza:
 \end{split}
 \end{equation}
 
-Possiamo dunque riscrivere le equazioni di costo come segue:
+Le equazioni di costo diventano:
 
 \begin{equation}
 \label{eq:14}
@@ -202,8 +202,7 @@ $$
 \end{array}
 \end{equation}
 
-Se facciamo nuovamente variare il numero di veicoli da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 101$, 
-otteniamo (vedi \autoref{script:24}):
+Se facciamo nuovamente variare il numero di veicoli da $\widehat{\zeta} = \widecheck{\zeta} = 1$ a $\widehat{\zeta} = \widecheck{\zeta} = 101$ (vedi \autoref{script:24}):
 
 \newpage
 \vspace*{-4cm}

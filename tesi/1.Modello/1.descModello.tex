@@ -2,12 +2,12 @@
 \label{subsec:DescModello}
 Rappresentiamo una rete stradale $\mathcal{N}$ come un grafo avente per archi le $N$ strade $r_1,...,r_N$,
 le cui proprietà verranno descritte in seguito. Le due popolazioni presenti nella suddetta rete sono 
-la popolazione \textit{hat} e la popolazione \textit{check}. Se chiamiamo \textit{nodo} l'intersezione di due archi, possiamo identificare un'origine e una destinazione per entrambe le popolazioni,
-$(\widehat{\mathcal{O}}, \widehat{\mathcal{D}})$ e $(\widecheck{\mathcal{O}}, \widecheck{\mathcal{D}})$, non per forza distinte.
+la popolazione \textit{hat} e la popolazione \textit{check}. Se chiamiamo \textit{nodo} l'intersezione di due archi, possiamo identificare un \textit{nodo} d'origine e un \textit{nodo} di destinazione per entrambe le popolazioni,
+$(\widehat{\mathcal{O}}, \widehat{\mathcal{D}})$ e $(\widecheck{\mathcal{O}}, \widecheck{\mathcal{D}})$, non per forza distinti.
 Introduciamo infine il concetto di percorso, ovvero una $m$-tupla composta di strade adiacenti e distinte $\gamma\equiv(r_{h_1},...,r_{h_m})$, 
 tale che il punto finale di $r_{h_l}$ è il punto iniziale di $r_{h_{l+1}}$, con $l\in(1,...,m-1)$.
 
-Viene utile introdurre, come in \cite[Cap. 2]{MR4911797}, una suddivisione di $\mathcal{N}$ in due sottoreti, $\widehat{\mathcal{N}}$,
+Viene utile introdurre, come in \cite[Cap. 2]{MR4911797}, una suddivisione di $\mathcal{N}$ in due sottoreti: $\widehat{\mathcal{N}}$,
 costituita dagli $\widehat{n}$ percorsi $\widehat{\gamma}_1,...,\widehat{\gamma}_{\widehat{n}}$ che collegano $\widehat{\mathcal{O}}$ a $\widehat{\mathcal{D}}$, e
 $\widecheck{\mathcal{N}}$, costituita dagli $\widecheck{n}$ percorsi $\widecheck{\gamma}_1,...,\widecheck{\gamma}_{\widecheck{n}}$ che collegano $\widecheck{\mathcal{O}}$ a $\widecheck{\mathcal{D}}$.
 Queste due sottoreti devono essere grafi orientati aciclici (DAG, \textit{Directed Acyclic Graph}) connessi. Si noti che non è necessario imporre queste condizioni
@@ -52,7 +52,7 @@ Sappiamo dunque che:
 
 Introduciamo ora $\widehat{\tau}_h=\widehat{\tau}_h(\widehat{\eta},\widecheck{\eta})$ e $\widecheck{\tau}_h=\widecheck{\tau}_h(\widehat{\eta},\widecheck{\eta})$,
 rispettivamente i costi della strada $r_h$, $h\in\{1,...,N\}$, per la popolazione \textit{hat} e per la popolazione \textit{check}. In questa trattazione considereremo i costi come tempi di viaggio,
-in quanto ciò permette di aggiungere $+\infty$ ai valori che le funzioni di costo possono assumere, rappresentante una strada
+in quanto ciò permette di aggiungere $+\infty$ ai valori che le funzioni di costo possono assumere. Useremo $+\infty$ per rappresentare una strada
 completamente congestionata o, comunque, bloccata/non percorribile (vedi \cite[cap. 2]{MR4911797}).
 
 Per completezza, possiamo definire $\widehat{\zeta}$ e $\widecheck{\zeta}$, numero totale di veicoli, rispettivamente della popolazione \textit{hat} e \textit{check},
@@ -60,7 +60,7 @@ presenti sulla rete. Allora possiamo estendere il dominio delle funzioni:
 \begin{equation*}
     \widehat{\tau}, \widecheck{\tau}: \mathbb{R}_+^N\times\mathbb{R}_+^N \to \mathbb{R}_+^N \cup \{+\infty\}
 \end{equation*}
-dimodoché si possano ottenere i costi delle strade, applicando:
+dimodoché si possano ottenere i costi delle strade applicando:
 \begin{equation}
     \begin{split}
     \widehat{\tau}(\widehat{\zeta}\widehat{\theta}, \widecheck{\zeta}\widecheck{\theta})\\
@@ -72,9 +72,8 @@ Con un lieve abuso di notazione, indicheremo con $\widehat{\tau}$ e $\widecheck{
 anche l'estensione delle funzioni di costo a $\mathbb{R}_+^N \times \mathbb{R}_+^N$,
 in modo da poterle applicare direttamente a $\widehat{\zeta}\widehat{\theta}$ e $\widecheck{\zeta}\widecheck{\theta}$.
 
-Denotiamo con $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ i tempi di viaggio dei percorsi $\widehat{\gamma}_i$ e $\widecheck{\gamma}_j$.
-$\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ sono componenti dei vettori $\widehat{T}(\theta)$ e $\widecheck{T}(\theta)$.
-Sfruttando anche (\autoref{eq:1}):
+Denotiamo con $\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ i tempi necessari a percorrere $\widehat{\gamma}_i$ e $\widecheck{\gamma}_j$.
+$\widehat{T}_i(\theta)$ e $\widecheck{T}_j(\theta)$ sono componenti dei vettori $\widehat{T}(\theta)$ e $\widecheck{T}(\theta)$:
 \begin{equation}
     \begin{split}
     \widehat{T}(\theta)\coloneqq\widehat{\Gamma}^{\intercal}\widehat{\tau}(\widehat{\Gamma}\widehat{\theta},\widecheck{\Gamma}\widecheck{\theta})

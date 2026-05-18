@@ -190,7 +190,7 @@ class Initializer:
         lines.append(f"theta_hat:\n{vec_frac(theta_hat)}")
         lines.append(f"theta_check:\n{vec_frac(theta_check)}")
         lines.append("")
-        lines.append("Tempi di attraversamento dei percorsi:")
+        lines.append("Tempi di viaggio dei percorsi:")
         lines.append(f"T_hat:\n{vec_frac(T_hat)}")
         lines.append(f"T_check:\n{vec_frac(T_check)}")
 
