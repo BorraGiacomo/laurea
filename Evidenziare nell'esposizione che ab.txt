@@ -1,0 +1,2 @@
+Evidenziare nell'esposizione che abbiamo 2 equilibri di nash di 2 popolazioni che giocano giochi diversi ma si influenzano comunque a vicenda. Un gioco su una rete e un gioco su un'altra.Spiegarlo bene!!!!!!
+Nel th iniziale c'è la cond di unicità, verosimilmente è estendibile al mio. In generale l'unicità è un problema difficile.
