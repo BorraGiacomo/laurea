@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.1)  3 JUN 2026 23:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.1)  9 JUN 2026 11:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1241,82 +1241,122 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 
 {C:/Users/Bora/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]) (slides/intro.tex [2
 
-]) (slides/Estensione/rete.tex
-LaTeX Font Info:    Trying to load font information for U+msa on input line 68.
+]) (slides/modello.tex
+LaTeX Font Info:    Trying to load font information for U+msa on input line 20.
  (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 68.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 20.
  (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 68.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 20.
  (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 68.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 20.
  (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 68.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 20.
  (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/sansmathaccent\ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
-)
+) [3
+
+]) (slides/distribuzioneTraffico.tex
+Overfull \vbox (4.09302pt too high) detected at line 37
+ []
+
+[4
+
+]) (slides/tempi.tex [5
+
+]) (slides/equilibrio.tex [6
+
+]) (slides/Esempio1/rete.tex [7
+
+]) (slides/Esempio1/tempo.tex
+<figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png, id=310, 474.0912pt x 399.1713pt>
+File: figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png Graphic file (type png)
+<use figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png>
+Package pdftex.def Info: figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png  used on input line 20.
+(pdftex.def)             Requested size: 173.33826pt x 145.94908pt.
+<figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png, id=312, 464.4552pt x 399.1713pt>
+File: figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png Graphic file (type png)
+<use figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png>
+Package pdftex.def Info: figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png  used on input line 20.
+(pdftex.def)             Requested size: 173.33826pt x 148.97014pt.
+ [8
+
+ <./figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png> <./figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png>]) (slides/Esempio1/numero_veicoli.tex
+<figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png, id=343, 493.6041pt x 399.1713pt>
+File: figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png Graphic file (type png)
+<use figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png>
+Package pdftex.def Info: figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png  used on input line 20.
+(pdftex.def)             Requested size: 173.33826pt x 140.17494pt.
+<figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png, id=344, 487.0998pt x 399.1713pt>
+File: figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png Graphic file (type png)
+<use figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png>
+Package pdftex.def Info: figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png  used on input line 20.
+(pdftex.def)             Requested size: 173.33826pt x 142.04485pt.
+ [9
+
+ <./figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png> <./figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png>]) (slides/Estensione/rete.tex
 Overfull \hbox (2.86595pt too wide) in paragraph at lines 68--68
  [] 
  []
 
-[3
+[10
 
 ]) (slides/Estensione/modello_normale1.tex
-<figures/estensione/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png, id=136, 431.9337pt x 334.3692pt>
+<figures/estensione/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png, id=404, 431.9337pt x 334.3692pt>
 File: figures/estensione/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png Graphic file (type png)
 <use figures/estensione/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png>
 Package pdftex.def Info: figures/estensione/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png  used on input line 20.
 (pdftex.def)             Requested size: 173.33826pt x 134.18408pt.
-<figures/estensione/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png, id=138, 431.6928pt x 336.0555pt>
+<figures/estensione/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png, id=405, 431.6928pt x 336.0555pt>
 File: figures/estensione/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png Graphic file (type png)
 <use figures/estensione/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png>
 Package pdftex.def Info: figures/estensione/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png  used on input line 20.
 (pdftex.def)             Requested size: 173.33826pt x 134.93771pt.
- [4
+ [11
 
  <./figures/estensione/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png> <./figures/estensione/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png>]) (slides/Estensione/modello_normale2.tex
-<figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png, id=170, 413.8662pt x 334.3692pt>
+<figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png, id=437, 413.8662pt x 334.3692pt>
 File: figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png Graphic file (type png)
 <use figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png>
 Package pdftex.def Info: figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png  used on input line 20.
 (pdftex.def)             Requested size: 173.33826pt x 140.04124pt.
-<figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png, id=171, 410.9754pt x 335.3328pt>
+<figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png, id=438, 410.9754pt x 335.3328pt>
 File: figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png Graphic file (type png)
 <use figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png>
 Package pdftex.def Info: figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png  used on input line 20.
 (pdftex.def)             Requested size: 173.33826pt x 141.43234pt.
- [5
+ [12
 
  <./figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png> <./figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png>]) (slides/Estensione/modello_esteso1.tex
 File: figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png Graphic file (type png)
 <use figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png>
 Package pdftex.def Info: figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png  used on input line 20.
 (pdftex.def)             Requested size: 173.33826pt x 140.04124pt.
-<figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png, id=203, 408.8073pt x 334.1283pt>
+<figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png, id=470, 408.8073pt x 334.1283pt>
 File: figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png Graphic file (type png)
 <use figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png>
 Package pdftex.def Info: figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png  used on input line 20.
 (pdftex.def)             Requested size: 173.33826pt x 141.6738pt.
- [6
+ [13
 
  <./figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png>]) (slides/Estensione/modello_esteso2.tex
 File: figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png Graphic file (type png)
 <use figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png>
 Package pdftex.def Info: figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png  used on input line 20.
 (pdftex.def)             Requested size: 173.33826pt x 141.43234pt.
-<figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png, id=233, 410.0118pt x 334.3692pt>
+<figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png, id=501, 410.0118pt x 334.3692pt>
 File: figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png Graphic file (type png)
 <use figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png>
 Package pdftex.def Info: figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png  used on input line 20.
 (pdftex.def)             Requested size: 173.33826pt x 141.36267pt.
- [7
+ [14
 
  <./figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png>])
 \tf@nav=\write6
@@ -1334,20 +1374,20 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 07A6BB010792D1024678FC4B37504F7F;262.
+(rerunfilecheck)             Checksum: 700D239ACCD4495B19FD01EBE481A384;418.
  ) 
 Here is how much of TeX's memory you used:
- 31405 strings out of 467867
- 623446 string characters out of 5418819
+ 31697 strings out of 467867
+ 632048 string characters out of 5418819
  1022238 words of memory out of 5000000
- 59568 multiletter control sequences out of 15000+600000
- 643955 words of font info for 86 fonts, out of 8000000 for 9000
+ 59810 multiletter control sequences out of 15000+600000
+ 654768 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 133i,16n,126p,457b,1089s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi657\matha10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi657\mathx10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0600.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1440.pk><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on c:\Users\Bora\Desktop\universita\Laurea\laurea\presentazione\build\main.pdf (7 pages, 729456 bytes).
+ 133i,16n,126p,457b,1069s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi657\matha10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi480\mathx10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi657\mathx10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi600\mathx10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1000.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1000.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0600.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1440.pk><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on c:\Users\Bora\Desktop\universita\Laurea\laurea\presentazione\build\main.pdf (14 pages, 1274170 bytes).
 PDF statistics:
- 442 PDF objects out of 1000 (max. 8388607)
- 17 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 810 PDF objects out of 1000 (max. 8388607)
+ 33 named destinations out of 1000 (max. 500000)
+ 287 words of extra memory for PDF output out of 10000 (max. 10000000)
 
