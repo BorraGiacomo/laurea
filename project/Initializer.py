@@ -120,7 +120,7 @@ class Initializer:
 
         return theta_hat, theta_check, T_hat, T_check
     
-    def saveResultVariation(self, variation_values, time_of_travel_hat, time_of_travel_check, xLabel):
+    def saveResultVariation(self, variation_values, time_of_travel_hat, time_of_travel_check, xLabel):        
         # Grafico Hat
         plt.figure()
         plt.plot(variation_values, time_of_travel_hat, label='Hat', color='blue')
@@ -129,7 +129,13 @@ class Initializer:
         plt.title(f'Tempo di viaggio (Hat)\nin funzione di: {xLabel}')
         plt.legend()
         plt.grid(True)
+        
+        if self.param.ymin_main_graph[0] != self.param.ymax_main_graph[0]:
+            plt.ylim(self.param.ymin_main_graph[0], self.param.ymax_main_graph[0])
+        
         self.saveGraph(f'main_hat_{xLabel}')
+        
+        
 
         # Grafico Check
         plt.figure()
@@ -139,6 +145,10 @@ class Initializer:
         plt.title(f'Tempo di viaggio (Check)\nin funzione di: {xLabel}')
         plt.legend()
         plt.grid(True)
+        
+        if self.param.ymin_main_graph[1] != self.param.ymax_main_graph[1]:
+            plt.ylim(self.param.ymin_main_graph[1], self.param.ymax_main_graph[1])
+            
         self.saveGraph(f'main_check_{xLabel}')
         
     def saveResultThetaVariation(self, variation_values, thetas, pop, xLabel):
@@ -160,7 +170,7 @@ class Initializer:
             plt.title(f'Theta_{pop}_{i+1}')
             plt.xlabel(xLabel)
             plt.ylabel('Distribuzione popolazione')
-            plt.ylim(0, 1)
+            plt.ylim(0, 1.2)
             plt.grid(True)
 
             file_label = f"{pop}/{subfolder}_theta_{i+1}_{xLabel}"

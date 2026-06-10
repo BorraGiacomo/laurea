@@ -36,6 +36,14 @@ class Parameters(AbstractParam):
         return SafeArray([0., 0., 0., 1., 1.])
     
     @property
+    def ymin_main_graph(self):
+        return [180., 180.]
+    
+    @property
+    def ymax_main_graph(self):
+        return [300., 300.]
+    
+    @property
     def output_directory(self):
         return "esempi\\Es4"
 

@@ -69,6 +69,28 @@ class AbstractParam(ABC):
             str: percorso della directory di output
         """
         pass
+    
+    @property
+    def ymin_main_graph(self):
+        """
+        Valore minimo visualizzato nei grafici dei tempi di viaggio
+        
+        Returns:
+            return[0]: valore minimo hat
+            return[1]: valore minimo check
+        """
+        return [0., 0.]
+    
+    @property
+    def ymax_main_graph(self):
+        """
+        Valore massimo visualizzato nei grafici dei tempi di viaggio
+        
+        Returns:
+            return[0]: valore minimo hat
+            return[1]: valore minimo check
+        """
+        return [0., 0.]
 
     @property
     def save_result(self) -> bool:

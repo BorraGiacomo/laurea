@@ -424,6 +424,14 @@ class Parameters(AbstractParam):
         return "parameters\\parameters11"
 
     @property
+    def ymin_main_graph(self):
+        return [0., 0.]
+    
+    @property
+    def ymax_main_graph(self):
+        return [450., 750.]
+
+    @property
     def Gamma_hat(self):
         return SafeArray([[1., 0., 1.],
                           [1., 0., 0.],
@@ -505,6 +513,14 @@ class Parameters(AbstractParam):
     @property
     def output_directory(self):
         return "parameters\\parameters10"
+    
+    @property
+    def ymin_main_graph(self):
+        return [180., 180.]
+    
+    @property
+    def ymax_main_graph(self):
+        return [300., 300.]
 
     @property
     def Gamma_hat(self):
@@ -576,6 +592,14 @@ class Parameters(AbstractParam):
     @property
     def output_directory(self):
         return "parameters\\parameters7"
+
+    @property
+    def ymin_main_graph(self):
+        return [0., 0.]
+    
+    @property
+    def ymax_main_graph(self):
+        return [450., 750.]
 
     @property
     def Gamma_hat(self):
@@ -659,6 +683,14 @@ class Parameters(AbstractParam):
     @property
     def output_directory(self):
         return "parameters\\parameters8"
+
+    @property
+    def ymin_main_graph(self):
+        return [180., 180.]
+    
+    @property
+    def ymax_main_graph(self):
+        return [300., 300.]
 
     @property
     def Gamma_hat(self):

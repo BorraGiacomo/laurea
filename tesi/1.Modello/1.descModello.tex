@@ -10,9 +10,7 @@ tale che il punto finale di $r_{h_l}$ è il punto iniziale di $r_{h_{l+1}}$, con
 Viene utile introdurre, come in \cite[Cap. 2]{MR4911797}, una suddivisione di $\mathcal{N}$ in due sottoreti: $\widehat{\mathcal{N}}$,
 costituita dagli $\widehat{n}$ percorsi $\widehat{\gamma}_1,...,\widehat{\gamma}_{\widehat{n}}$ che collegano $\widehat{\mathcal{O}}$ a $\widehat{\mathcal{D}}$, e
 $\widecheck{\mathcal{N}}$, costituita dagli $\widecheck{n}$ percorsi $\widecheck{\gamma}_1,...,\widecheck{\gamma}_{\widecheck{n}}$ che collegano $\widecheck{\mathcal{O}}$ a $\widecheck{\mathcal{D}}$.
-Queste due sottoreti devono essere grafi orientati aciclici (DAG, \textit{Directed Acyclic Graph}) connessi. Si noti che non è necessario imporre queste condizioni
-all'intera rete $\mathcal{N}$, anche se, per ottenere risultati rilevanti, in seguito si troveranno solo reti di traffico che sono 
-DAG connessi.
+Queste due sottoreti devono essere grafi orientati aciclici (DAG, \textit{Directed Acyclic Graph}) connessi.
 
 Costruiamo ora la matrice $\widehat{\Gamma}$, di dimensioni $N\times\widehat{n}$, e la matrice $\widecheck{\Gamma}$, di dimensioni $N\times\widecheck{n}$:
 \[
@@ -35,8 +33,8 @@ Costruiamo ora la matrice $\widehat{\Gamma}$, di dimensioni $N\times\widehat{n}$
 Consideriamo la popolazione \textit{hat} totale presente nella rete $\widehat{\mathcal{N}}$ normalizzata a 1 (analogo per la popolazione \textit{check} sulla rete $\widecheck{\mathcal{N}}$).
 Chiamiamo $\widehat{\theta_i}$ il numero di viaggiatori che scelgono di percorrere $\widehat{\gamma}_i$, con $i\in\{1,...,\widehat{n}\}$, e $\widecheck{\theta_j}$ il numero di
 viaggiatori che scelgono di percorrere $\widecheck{\gamma}_j$, con $j\in\{1,...,\widecheck{n}\}$. Allora $\widehat{\theta}\equiv(\widehat{\theta}_1,...,\widehat{\theta}_{\widehat{n}})$
-è un punto del simplesso $S^{\widehat{n}}$ di dimensione $\widehat{n}$, dove $\widehat{\theta}_i\in[0,1]$; rispettivamente $\widecheck{\theta}\equiv(\widecheck{\theta}_1,...,\widecheck{\theta}_{\widecheck{n}})$
-è un punto del simplesso $S^{\widecheck{n}}$ di dimensione $\widecheck{n}$, con $\widecheck{\theta}_j\in[0,1]$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono identificabili
+è un punto del simplesso $S^{\widehat{n}}$, dove $\widehat{\theta}_i\in[0,1]$; rispettivamente $\widecheck{\theta}\equiv(\widecheck{\theta}_1,...,\widecheck{\theta}_{\widecheck{n}})$
+è un punto del simplesso $S^{\widecheck{n}}$, con $\widecheck{\theta}_j\in[0,1]$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono rappresentati
 come vettori colonna.
 
 Definiamo i vettori $\widehat{\nu}$ e $\widecheck{\nu}$, le cui componenti, rispettivamente $\widehat{\nu}_i$ e $\widecheck{\nu}_i$ con $i=1,...,N$,
@@ -51,8 +49,7 @@ Sappiamo dunque che:
 \end{equation}
 
 Introduciamo ora $\widehat{\tau}_h=\widehat{\tau}_h(\widehat{\eta},\widecheck{\eta})$ e $\widecheck{\tau}_h=\widecheck{\tau}_h(\widehat{\eta},\widecheck{\eta})$,
-rispettivamente i costi della strada $r_h$, $h\in\{1,...,N\}$, per la popolazione \textit{hat} e per la popolazione \textit{check}. In questa trattazione considereremo i costi come tempi di viaggio,
-in quanto ciò permette di aggiungere $+\infty$ ai valori che le funzioni di costo possono assumere. Useremo $+\infty$ per rappresentare una strada
+rispettivamente i costi della strada $r_h$, $h\in\{1,...,N\}$, per la popolazione \textit{hat} e per la popolazione \textit{check}. Useremo $+\infty$ per rappresentare una strada
 completamente congestionata o, comunque, bloccata/non percorribile (vedi \cite[cap. 2]{MR4911797}).
 
 Per completezza, possiamo definire $\widehat{\zeta}$ e $\widecheck{\zeta}$, numero totale di veicoli, rispettivamente della popolazione \textit{hat} e \textit{check},
@@ -102,5 +99,5 @@ e per quella \textit{check}:
     \label{eq:3}
 \end{equation}
 
-Notiamo che l'(\autoref{eq:2}) e l'(\autoref{eq:3}) non cambiano anche nel caso in cui si utilizzino le funzioni di costo 
-come nell'(\autoref{eq:10}).
+Notiamo che l'\autoref{eq:2} e l'\autoref{eq:3} non cambiano anche nel caso in cui si utilizzino le funzioni di costo 
+come nell'\autoref{eq:10}.

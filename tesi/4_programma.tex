@@ -71,6 +71,28 @@ class AbstractParam(ABC):
         pass
 
     @property
+    def ymin_main_graph(self):
+        """
+        Valore minimo visualizzato nei grafici dei tempi di viaggio
+        
+        Returns:
+            return[0]: valore minimo hat
+            return[1]: valore minimo check
+        """
+        return [0., 0.]
+    
+    @property
+    def ymax_main_graph(self):
+        """
+        Valore massimo visualizzato nei grafici dei tempi di viaggio
+        
+        Returns:
+            return[0]: valore minimo hat
+            return[1]: valore minimo check
+        """
+        return [0., 0.]
+
+    @property
     def save_result(self) -> bool:
         """
         Indica se salvare i risultati su file.
@@ -309,7 +331,7 @@ Viene introdotta una Enum per permettere all'utente di definire quale operazione
 \end{lstlisting}
 
 Estendiamo anche la classe \textbf{np.ndarray} (vedi \cite{numpy_docs}) per gestire i casi in cui un valore di un array/matrice posto ad \textbf{np.inf} viene moltiplicato per 0.
-Ciò può capitare soprattutto durante il calcolo dell'(\autoref{eq:2})
+Ciò può capitare soprattutto durante il calcolo dell'\autoref{eq:2}
 
 \begin{lstlisting}[style=myStile, caption={SafeArray}, label={script:3}]
   import numpy as np
@@ -517,7 +539,7 @@ Per disegnare i grafici calcolati nel \autoref{script:6} si fa uso della libreri
 
     ...
 
-    def saveResultVariation(self, variation_values, time_of_travel_hat, time_of_travel_check, xLabel):
+    def saveResultVariation(self, variation_values, time_of_travel_hat, time_of_travel_check, xLabel):        
         # Grafico Hat
         plt.figure()
         plt.plot(variation_values, time_of_travel_hat, label='Hat', color='blue')
@@ -526,7 +548,13 @@ Per disegnare i grafici calcolati nel \autoref{script:6} si fa uso della libreri
         plt.title(f'Tempo di viaggio (Hat)\nin funzione di: {xLabel}')
         plt.legend()
         plt.grid(True)
+        
+        if self.param.ymin_main_graph[0] != self.param.ymax_main_graph[0]:
+            plt.ylim(self.param.ymin_main_graph[0], self.param.ymax_main_graph[0])
+        
         self.saveGraph(f'main_hat_{xLabel}')
+        
+        
 
         # Grafico Check
         plt.figure()
@@ -536,6 +564,10 @@ Per disegnare i grafici calcolati nel \autoref{script:6} si fa uso della libreri
         plt.title(f'Tempo di viaggio (Check)\nin funzione di: {xLabel}')
         plt.legend()
         plt.grid(True)
+        
+        if self.param.ymin_main_graph[1] != self.param.ymax_main_graph[1]:
+            plt.ylim(self.param.ymin_main_graph[1], self.param.ymax_main_graph[1])
+            
         self.saveGraph(f'main_check_{xLabel}')
         
     def saveResultThetaVariation(self, variation_values, thetas, pop, xLabel):
@@ -557,7 +589,7 @@ Per disegnare i grafici calcolati nel \autoref{script:6} si fa uso della libreri
             plt.title(f'Theta_{pop}_{i+1}')
             plt.xlabel(xLabel)
             plt.ylabel('Distribuzione popolazione')
-            plt.ylim(0, 1)
+            plt.ylim(0, 1.2)
             plt.grid(True)
 
             file_label = f"{pop}/{subfolder}_theta_{i+1}_{xLabel}"
@@ -596,7 +628,7 @@ bensì viene mascherata ad esso dall'utilizzo di \textbf{Initializer}, \autoref{
         self.one_n_check = SafeArray(np.ones((self.param.n_routes_check, 1)))
 \end{lstlisting}
 
-Per calcolare l'Equilibrio di Nash sfruttiamo la dimostrazione (vedi \cite[Cap. 4]{MR4911797}) del (\autoref{th:1}): individuiamo un punto fisso della funzione $\mathcal{F}$.
+Per calcolare l'Equilibrio di Nash sfruttiamo la dimostrazione (vedi \cite[Cap. 4]{MR4911797}) del \autoref{th:1}: individuiamo un punto fisso della funzione $\mathcal{F}$.
 Cominciamo da un $(\widehat{\theta}, \widecheck{\theta})\in S^{\widehat{n}}\times S^{\widecheck{n}}$ generico; si ricava $\mathcal{F}(\widehat{\theta}, \widecheck{\theta})$,
 che va a sostituire il valore di $(\widehat{\theta}, \widecheck{\theta})$, salvato invece come $(\widehat{\theta}_{prev}, \widecheck{\theta}_{prev})$. Questa operazione viene ripetuta finché
 $\norm{\widehat{\theta} - \widehat{\theta}_{prev}} < \widehat{limit}$ e $\norm{\widecheck{\theta} - \widecheck{\theta}_{prev}} < \widecheck{limit}$, dove i $limit$ sono limiti di precisione
@@ -628,7 +660,8 @@ def getNashEquilibriaVariation(self, theta_hat, theta_check, limit_hat, limit_ch
     return theta_hat, theta_check
 \end{lstlisting}
 
-Per calcolare l'Equilibrio di Nash data unicamente una variazione sui tempi di viaggio:
+Introduciamo 2 metodi per calcolare l'Equilibrio di Nash in 2 casi specifici.
+Durante il calcolo della variazione dell'Equilibrio di Nash in funzione della variazione dei costi delle strade viene utilizzato (vedi \autoref{script:13}):
 \begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibriaCostVariation}, label={script:15}]
     def getNashEquilibriaCostVariation(self, theta_hat, theta_check, limit_hat, limit_check, variation):
         """
@@ -646,7 +679,7 @@ Per calcolare l'Equilibrio di Nash data unicamente una variazione sui tempi di v
                                                variation)
 \end{lstlisting}
 
-Mentre per calcolarlo specificando una popolazione diversa da quella in \textbf{param}:
+Durante il calcolo della variazione dell'Equilibrio di Nash in funzione della variazione del numero di veicoli viene utilizzato (vedi \autoref{script:13}):
 \begin{lstlisting}[style=myStile, caption={Computer::getNashEquilibriaCostVariation}, label={script:16}]
     def getNashEquilibriaPopVariation(self, theta_hat, theta_check, limit_hat, limit_check, zeta_hat, zeta_check):
         """
@@ -686,7 +719,7 @@ Si può sfruttare la funzione \textbf{getNashEquilibria} per calcolare l'Equilib
 Vengono introdotte le seguenti funzioni ausiliarie:
 
 \begin{lstlisting}[style=myStile, caption={Funzioni ausiliarie di Computer}, label={script:11}, escapeinside={(*@}{@*)}]
-    #(*@(\autoref{eq:4})@*)
+    #(*@\autoref{eq:4}@*)
     def phi(self, x):
         x = np.asarray(x)
         res = np.empty_like(x)
@@ -697,7 +730,7 @@ Vengono introdotte le seguenti funzioni ausiliarie:
 
         return SafeArray(res.reshape(-1, 1))
     
-    #(*@(\autoref{eq:2})@*) utilizzando i tau come nell'(*@(\autoref{eq:10})@*)
+    #(*@\autoref{eq:2}@*) utilizzando i tau come nell'(*@\autoref{eq:10}@*)
     def T_hat(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
@@ -705,7 +738,7 @@ Vengono introdotte le seguenti funzioni ausiliarie:
 
         return self.param.Gamma_hat.T @ self.param.tau_hat_variated(nu_hat*zeta_hat, nu_check*zeta_check, variation)
     
-    #(*@(\autoref{eq:2})@*) utilizzando i tau come nell'(*@(\autoref{eq:10})@*)
+    #(*@\autoref{eq:2}@*) utilizzando i tau come nell'(*@\autoref{eq:10}@*)
     def T_check(self, theta_hat, theta_check, zeta_hat, zeta_check, variation):
         nu_hat = self.param.Gamma_hat @ theta_hat
 
@@ -713,7 +746,7 @@ Vengono introdotte le seguenti funzioni ausiliarie:
 
         return self.param.Gamma_check.T @ self.param.tau_check_variated(nu_hat*zeta_hat, nu_check*zeta_check, variation)
     
-    #(*@(\autoref{eq:5})@*)
+    #(*@\autoref{eq:5}@*)
     def normalize(self, theta):
         theta_max = np.maximum(theta, 0)
         sum = np.sum(theta_max)

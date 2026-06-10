@@ -26,6 +26,14 @@ class Parameters(AbstractParam):
     @property
     def output_directory(self):
         return "esempi\\Es3"
+    
+    @property
+    def ymin_main_graph(self):
+        return [0., 0.]
+    
+    @property
+    def ymax_main_graph(self):
+        return [450., 750.]
 
     @property
     def Gamma_hat(self):
