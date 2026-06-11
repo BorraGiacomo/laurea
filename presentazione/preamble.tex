@@ -2,6 +2,44 @@
 
 % Tema
 \usetheme{CambridgeUS}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{title page}{
+\begin{center}
+% LOGO (più piccolo e stabile)
+\includegraphics[height=1.2cm]{./figures/frontespizio2026.png}
+
+% DIPARTIMENTO (meno aggressivo)
+{\small\scshape DIPARTIMENTO DI INGEGNERIA DELL'INFORMAZIONE}
+
+{\small Corso di Laurea in Ingegneria Informatica}
+
+% TITOLO (vero protagonista)
+{\LARGE \bfseries \inserttitle}
+
+\end{center}
+
+% COLONNE CON SPAZIO CORRETTO
+\begin{columns}
+
+% SINISTRA: RELATORE
+\column{0.45\textwidth}
+\raggedright
+{\large \textbf{Relatore}}\\[0.2cm]
+Prof. Rinaldo M. Colombo\\
+[1cm]
+
+% DESTRA: LAUREANDO
+\column{0.45\textwidth}
+\raggedleft
+{\large \textbf{Laureando}}\\[0.2cm]
+Giacomo Borra\\
+Matricola n. 725662
+
+\end{columns}
+
+\vfill
+}
 
 % Lingua
 \usepackage[italian]{babel}
@@ -28,6 +66,7 @@
 Calcolo dell'Equilibrio di Nash\\
 in una Rete di Traffico con due Popolazioni
 }
+
 \author{Giacomo Borra}
 \institute{Università di Brescia}
 \date{\today}

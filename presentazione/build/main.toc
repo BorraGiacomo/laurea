@@ -2,5 +2,5 @@
 \babel@toc {italian}{}\relax 
 \beamer@sectionintoc {1}{Introduzione}{2}{0}{1}
 \beamer@sectionintoc {2}{Modello}{3}{0}{2}
-\beamer@sectionintoc {3}{Esempio}{7}{0}{3}
+\beamer@sectionintoc {3}{Paradosso di Braess}{7}{0}{3}
 \beamer@sectionintoc {4}{Estensione del modello}{10}{0}{4}

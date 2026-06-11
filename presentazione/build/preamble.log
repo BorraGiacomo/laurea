@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.1)  3 JUN 2026 21:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.1)  12 JUN 2026 01:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1079,10 +1079,10 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 
  
 Here is how much of TeX's memory you used:
- 29402 strings out of 467867
- 572923 string characters out of 5418819
- 987620 words of memory out of 5000000
- 57721 multiletter control sequences out of 15000+600000
+ 29404 strings out of 467867
+ 572981 string characters out of 5418819
+ 987703 words of memory out of 5000000
+ 57723 multiletter control sequences out of 15000+600000
  629789 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,0n,123p,444b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
