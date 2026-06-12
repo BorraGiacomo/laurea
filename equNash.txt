@@ -1,0 +1,1 @@
+La definizione rappresenta eq Nash perché se una parte infinitesima si sposta su una strada usata non cambia niente, ma se una parte infinitesima si sposta su una strada con theta = 0 cambia!

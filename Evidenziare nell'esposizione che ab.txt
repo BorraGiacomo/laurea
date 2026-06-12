@@ -1,2 +1,9 @@
 Evidenziare nell'esposizione che abbiamo 2 equilibri di nash di 2 popolazioni che giocano giochi diversi ma si influenzano comunque a vicenda. Un gioco su una rete e un gioco su un'altra.Spiegarlo bene!!!!!!
 Nel th iniziale c'è la cond di unicità, verosimilmente è estendibile al mio. In generale l'unicità è un problema difficile.
+
+1. presentazione modello: introdurre con un esempio di rete, origini, tau, T
+2. Punto fisso di Brouwer: io ho usato un programma per trovarlo, p.e. riga della funzione. Con questo programma possiamo considerare braess classico, consideriamo invece quello con 2 popolazioni
+2. caso generale (Braess 2 popolazioni); programma funziona, infatti rileva tot fenomeno
+3. mio caso: esperienza personale diretta (nomi dei paesi), infatti la strada 2 dipende da 4 per la precedenza. Questo comportamento non può essere descritto con rete normale, metti solo i confronti.
+
+No slide introduzione

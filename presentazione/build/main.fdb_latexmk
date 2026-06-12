@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1781221581.37535 "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/main.tex" "build/main.pdf" "main" 1781221592.95653 0
+["pdflatex"] 1781251934.15849 "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/main.tex" "build/main.pdf" "main" 1781251945.21992 0
   "C:/Users/Bora/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1780503218 96514 87ff68f1f0f1d389dc37266f6a951d54 ""
   "C:/Users/Bora/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/eccc1000.pk" 1781221091 25100 3bc9bf624b2eddbfd07882a943e46053 ""
   "C:/Users/Bora/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecsi1095.pk" 1780514310 26868 fe8f69474431c4f4f47cd8e38792897c ""
@@ -303,9 +303,9 @@
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "build/main.aux" 1781221592 3843 939d23af63fb3a97af6736b954228a75 "pdflatex"
-  "build/main.nav" 1781221592 2219 6ede4db6a2dea9627c08fe52767b564f "pdflatex"
-  "build/main.out" 1781221592 484 d1c23b375f3577d18186eef7dd352bc7 "pdflatex"
+  "build/main.aux" 1781251944 3843 939d23af63fb3a97af6736b954228a75 "pdflatex"
+  "build/main.nav" 1781251944 2219 6ede4db6a2dea9627c08fe52767b564f "pdflatex"
+  "build/main.out" 1781251944 484 d1c23b375f3577d18186eef7dd352bc7 "pdflatex"
   "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/main.tex" 1781217949 748 154026751e930391888d180052ff9e4b ""
   "figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png" 1778864205 110218 983e48eff3b69b564fa16f452a1fd294 ""
   "figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png" 1778866421 120245 0b011206bfcd87e5c289a2a861d8654f ""
@@ -319,7 +319,7 @@
   "figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png" 1781122012 108001 730b219c1bb765a610304a5fe921b710 ""
   "figures/frontespizio2026.png" 1772622786 146296 974cafbfcaae4b79c8e1a11612662931 ""
   "main.tex" 1781217949 748 154026751e930391888d180052ff9e4b ""
-  "preamble.tex" 1781221569 1538 920ab1e19fd169a0b737cd29967d1ae5 ""
+  "preamble.tex" 1781251888 1571 259a339dc9b2c42851d6e46a483bb1d1 ""
   "slides/Esempio1/numero_veicoli.tex" 1781217949 693 17da1d64aaa55e83b997a0f927274548 ""
   "slides/Esempio1/rete.tex" 1780990072 808 d4d6edb5aa425157815b2b40f6c93d7c ""
   "slides/Esempio1/tempo.tex" 1781217949 648 a4d4f676957c1d07b64cd76c360b00fe ""

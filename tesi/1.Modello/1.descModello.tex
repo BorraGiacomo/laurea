@@ -37,7 +37,7 @@ viaggiatori che scelgono di percorrere $\widecheck{\gamma}_j$, con $j\in\{1,...,
 è un punto del simplesso $S^{\widecheck{n}}$, con $\widecheck{\theta}_j\in[0,1]$. $\widehat{\theta}$ e $\widecheck{\theta}$ sono rappresentati
 come vettori colonna.
 
-Per completezza, possiamo definire $\widehat{\zeta}$ e $\widecheck{\zeta}$, numero totale di veicoli, rispettivamente della popolazione \textit{hat} e \textit{check},
+Per completezza, possiamo definire $\widehat{\zeta}$ e $\widecheck{\zeta}$, il numero totale di veicoli rispettivamente della popolazione \textit{hat} e \textit{check},
 presenti sulla rete.
 
 Definiamo i vettori $\widehat{\nu}$ e $\widecheck{\nu}$, le cui componenti, rispettivamente $\widehat{\nu}_i$ e $\widecheck{\nu}_i$ con $i=1,...,N$,
@@ -55,16 +55,18 @@ Introduciamo ora $\widehat{\tau}_h=\widehat{\tau}_h(\widehat{\eta},\widecheck{\e
 rispettivamente i costi della strada $r_h$, $h\in\{1,...,N\}$, per la popolazione \textit{hat} e per la popolazione \textit{check}. Useremo $+\infty$ per rappresentare una strada
 completamente congestionata o, comunque, bloccata/non percorribile, nel caso di utilizzo come tempo di viaggio (vedi \cite[cap. 2]{MR4911797}).
 
-I costi delle due popolazioni sono scollegati: dato che i guidatori \textit{hat} e \textit{check} prendono parte a due giochi diversi i costi delle strade
-possono rappresentare criteri diversi per le due popolazioni.
+A priori i costi delle due popolazioni sono completamente scollegati. I guidatori \textit{hat} e \textit{check} prendono parte a giochi differenti ma interdipendenti: i $\tau$
+possono rappresentare criteri distinti per le due popolazioni. Per esempio...
 
-Supponiamo inoltre che:
-\begin{equation*}
+Da un punto di vista modellistico è naturale assumere che:
+\begin{equation*} 
     \begin{split}
-    \forall \widehat{\eta}, \widecheck{\eta}', \widecheck{\eta}''\in[0,1]\:\widecheck{\eta}'\leq\widecheck{\eta}''\implies\widehat{\tau}(\widehat{\eta}, \widecheck{\eta}')\leq\widehat{\tau}(\widehat{\eta}, \widecheck{\eta}''),\,\widecheck{\tau}(\widehat{\eta}, \widecheck{\eta}')\leq\widecheck{\tau}(\widehat{\eta}, \widecheck{\eta}'')\\
+    \forall \widehat{\eta}, \widecheck{\eta}', \widecheck{\eta}''\in[0,1]\:!!!!piùspazio\widecheck{\eta}'\leq\widecheck{\eta}''\implies\widehat{\tau}(\widehat{\eta}, \widecheck{\eta}')\leq\widehat{\tau}(\widehat{\eta}, \widecheck{\eta}''),\,\widecheck{\tau}(\widehat{\eta}, \widecheck{\eta}')\leq\widecheck{\tau}(\widehat{\eta}, \widecheck{\eta}'')\\
     \forall \widehat{\eta}', \widehat{\eta}'', \widecheck{\eta}\in[0,1]\:\widehat{\eta}'\leq\widehat{\eta}''\implies\widehat{\tau}(\widehat{\eta}', \widecheck{\eta})\leq\widehat{\tau}(\widehat{\eta}'', \widecheck{\eta}),\,\widecheck{\tau}(\widehat{\eta}', \widecheck{\eta})\leq\widecheck{\tau}(\widehat{\eta}'', \widecheck{\eta})
     \end{split}
 \end{equation*}
+dato che, al crescer
+
 
 Possiamo estendere il dominio delle funzioni:
 \begin{equation*}
