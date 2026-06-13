@@ -180,6 +180,20 @@ Applichiamo dunque la nuova estensione:
 \end{split}
 \end{equation}
 
+Per quanto riguarda la monotonia, possiamo introdurre la relazione d'ordine parziale:
+\begin{equation}
+\label{eq:16}
+\eta', \eta'' \in [0,1]^N, \quad \eta'\leq\eta''\rightleftharpoons\forall i \in {1,...,N}\quad \eta'_i\leq\eta''_i
+\end{equation}
+Questo ci consente di riscrivere l'\autoref{eq:15}:
+\begin{equation}
+\label{eq:17}
+\begin{split}
+    \forall \widehat{\eta}, \widecheck{\eta}', \widecheck{\eta}''\in[0,1]^N\quad\widecheck{\eta}'\leq\widecheck{\eta}''\implies\widehat{\tau}(\widehat{\eta}, \widecheck{\eta}')\leq\widehat{\tau}(\widehat{\eta}, \widecheck{\eta}''),\,\widecheck{\tau}(\widehat{\eta}, \widecheck{\eta}')\leq\widecheck{\tau}(\widehat{\eta}, \widecheck{\eta}'')\\
+    \forall \widehat{\eta}', \widehat{\eta}'', \widecheck{\eta}\in[0,1]^N\quad\widehat{\eta}'\leq\widehat{\eta}''\implies\widehat{\tau}(\widehat{\eta}', \widecheck{\eta})\leq\widehat{\tau}(\widehat{\eta}'', \widecheck{\eta}),\,\widecheck{\tau}(\widehat{\eta}', \widecheck{\eta})\leq\widecheck{\tau}(\widehat{\eta}'', \widecheck{\eta})
+\end{split}
+\end{equation}
+
 Le equazioni di costo diventano:
 
 \begin{equation}
