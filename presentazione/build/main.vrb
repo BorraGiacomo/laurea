@@ -1,4 +1,4 @@
-\begin{frame}[fragile]{Modello della rete}
+\frametitle{Modello della rete}
 
 \begin{columns}[c]
 
@@ -30,4 +30,3 @@ def f_hat(...):
 
 \end{columns}
 
-\end{frame}

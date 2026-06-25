@@ -670,10 +670,8 @@ Durante il calcolo della variazione dell'Equilibrio di Nash in funzione della va
             :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
             :param limit_hat, limit_check, variation, totPopulation: float
         """
-        return self.getNashEquilibriaVariation(theta_hat, 
-                                               theta_check, 
-                                               limit_hat, 
-                                               limit_check, 
+        return self.getNashEquilibriaVariation(theta_hat, theta_check, 
+                                               limit_hat, limit_check, 
                                                self.param.entity_number_hat, 
                                                self.param.entity_number_check, 
                                                variation)
@@ -688,10 +686,8 @@ Durante il calcolo della variazione dell'Equilibrio di Nash in funzione della va
             :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
             :param limit_hat, limit_check, totPopulation, zeta_hat, zeta_check: float
         """
-        return self.getNashEquilibriaVariation(theta_hat,
-                                               theta_check,
-                                               limit_hat,
-                                               limit_check,
+        return self.getNashEquilibriaVariation(theta_hat, theta_check,
+                                               limit_hat, limit_check,
                                                zeta_hat,
                                                zeta_check,
                                                0)
@@ -707,10 +703,8 @@ Si può sfruttare la funzione \textbf{getNashEquilibria} per calcolare l'Equilib
             :param theta_hat, theta_check: vettore di dimensione [param.n_routes_hat, 1] e [param.n_routes_check, 1]
             :param limit_hat, limit_check: float
         """
-        return self.getNashEquilibriaVariation(theta_hat, 
-                                               theta_check, 
-                                               limit_hat, 
-                                               limit_check, 
+        return self.getNashEquilibriaVariation(theta_hat, theta_check, 
+                                               limit_hat, limit_check, 
                                                self.param.entity_number_hat, 
                                                self.param.entity_number_check,
                                                0)

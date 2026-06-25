@@ -61,8 +61,25 @@ Matricola n. 746260
 % Tabelle
 \usepackage{booktabs}
 
-% URL
+\usepackage{listings}
 \usepackage{hyperref}
+\usepackage{xcolor}
+
+\renewcommand{\lstlistingname}{Listato}
+
+\lstdefinestyle{myStile}{
+    language=Python,
+    basicstyle=\ttfamily\scriptsize,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    showstringspaces=false,
+    aboveskip=0.8em,
+    belowskip=0.8em
+}
+
 % Metadati
 \title[Calcolo dell'Equilibrio di Nash]{
 Calcolo dell'Equilibrio di Nash\\

@@ -1,34 +1,41 @@
-\begin{frame}{Rete}
+\begin{frame}{Effetti a distanza}
 
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[scale=1.2]
 
 \coordinate (L) at (0,0);
-\coordinate (T) at (2,1.5);
 \coordinate (R) at (4,0);
-\coordinate (B) at (2,-1.5);
+\coordinate (C) at (2,-3);
+\coordinate (B) at (2,-5);
 
-\draw[thick] (L) -- (T) -- (R) -- (B) -- cycle;
-\draw[thick] (T) -- (B);
 
-\draw[->] (0.65,0.3) -- (1.7,1.1);
+\draw[thick] (L) -- (R) -- (B) -- cycle;
+\draw[thick] (L) -- (C);
+\draw[thick] (R) -- (C);
+\draw[thick] (C) -- (B);
 
-\draw[->] (0.65,-0.3) -- (1.7,-1.1);
+\draw[->] (1.6,-0.3) -- (2.4,-0.3);
 
-\draw[->] (2.3,1.1) -- (3.35,0.3);
+\draw[->] (1.15,-2) -- (1.85,-3.1);
 
-\draw[->] (2.3,-1.1) -- (3.35,-0.3);
+\draw[->] (2.85,-2) -- (2.15,-3.1);
 
-\draw[->] (1.7, 0.7) -- (1.7, -0.7);
+\draw[->] (1.85,-3.4) -- (1.85,-4);
 
-\node at (1,1.1) {$r_2$};
-\node at (1,-1.1) {$r_1$};
-\node at (3,1.1) {$r_3$};
-\node at (3,-1.1) {$r_4$};
-\node at (2.3, 0) {$r_5$};
-\node at (-0.6, 0) {$\widehat{\mathcal{O}} = \widecheck{\mathcal{O}}$};
-\node at (4.6, 0) {$\widehat{\mathcal{D}} = \widecheck{\mathcal{D}}$};
+\draw[->] (1, -3) -- (1.4, -4);
+
+\draw[->] (3, -3) -- (2.6, -4);
+
+\node at (0.7,-2.8) {$r_1$};
+\node at (1.5,-1.8) {$r_2$};
+\node at (2.5,-1.8) {$r_3$};
+\node at (3.3,-2.8) {$r_4$};
+\node at (2.3, -3.5) {$r_5$};
+\node at (2, 0.2) {$r_6$};
+\node at (-0.2, 0) {$\widehat{\mathcal{O}}$};
+\node at (4.2, 0) {$\widecheck{\mathcal{O}}$};
+\node at (2, -5.2) {$\widehat{\mathcal{D}} = \widecheck{\mathcal{D}}$};
 \end{tikzpicture}
 
 \end{figure}
