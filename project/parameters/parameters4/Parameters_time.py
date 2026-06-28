@@ -9,31 +9,31 @@ class Parameters(AbstractParam):
 
     @property
     def operation(self):
-        return Operations.NASH_EQ_POP_VARIATIONS
+        return Operations.NASH_EQ_TIME_VARIATIONS
     
     @property
     def output_directory(self) -> str:
         return "esempi\\Es2"
 
-    @property
+    @property 
     def MIN(self):
         return 0.
 
     @property
     def MAX(self):
-        return 5.
+        return 0.5
 
     @property
     def step(self):
-        return 0.05
+        return 0.01
     
     @property
-    def variation_coefficient_pop_hat(self) -> float:
-        return 0.
+    def variation_hat(self):
+        return SafeArray([0., 0., 0., 0., 0., 1.])
     
     @property
-    def variation_coefficient_pop_check(self) -> float:
-        return 1.
+    def variation_check(self):
+        return SafeArray([0., 0., 0., 0., 0., 0.])
 
     @property
     def Gamma_hat(self):

@@ -2,49 +2,94 @@
 
 \begin{columns}[c]
 
-    \column{0.5\textwidth}
-    Due popolazioni: \textit{hat} e \textit{check}\\
-    Costi delle strade:
-    \begin{equation*}
-        \widehat{\tau}, \widecheck{\tau}: \mathbb{R}_+^N\times\mathbb{R}_+^N \to \mathbb{R}_+^N \cup \{+\infty\}
-    \end{equation*}
+    \column{0.45\textwidth}
+    \begin{itemize}
+        \item Due popolazioni: \textit{hat} e \textit{check}
+        \item Geometria della rete
+        \item Percorsi:
+            \[
+            \widehat{\Gamma}_{hi} \coloneqq
+            \begin{cases}
+                1 &\text{ se la strada } r_h \text{ appartiene al percorso } \widehat{\gamma}_i\\
+                0 &\text{ altrimenti}
+            \end{cases}
+            \]
+        \item Costi delle strade:
+            \begin{equation*}
+                \widehat{\tau}, \widecheck{\tau}: \mathbb{R}_+^N\times\mathbb{R}_+^N \to \mathbb{R}_+^N \cup \{+\infty\}
+            \end{equation*}
+    \end{itemize}
 
-    Costi dei percorsi:
-    \begin{equation*}
-        \begin{split}
-        \widehat{T}(\theta)\coloneqq\widehat{\Gamma}^{\intercal}\widehat{\tau}(\widehat{\Gamma}\widehat{\zeta}\widehat{\theta},\widecheck{\Gamma}\widecheck{\zeta}\widecheck{\theta})\\
-        \widecheck{T}(\theta)\coloneqq\widecheck{\Gamma}^{\intercal}\widecheck{\tau}(\widehat{\Gamma}\widehat{\zeta}\widehat{\theta},\widecheck{\Gamma}\widecheck{\zeta}\widecheck{\theta})
-        \end{split}
-    \end{equation*}
-
-    \column{0.5\textwidth}
+    \column{0.55\textwidth}
     \begin{tikzpicture}[scale=1.2]
 
-    \coordinate (L) at (0,0);
-    \coordinate (T) at (2,1.5);
-    \coordinate (R) at (4,0);
-    \coordinate (B) at (2,-1.5);
+    % Nodes
+    \coordinate (O1) at (-0.5,1.2);
+    \coordinate (O2) at (-0.5,-1.2);
 
-    \draw[thick] (L) -- (T) -- (R) -- (B) -- cycle;
-    \draw[thick] (T) -- (B);
+    \coordinate (A) at (1.5,1.5);
+    \coordinate (B) at (1.5,-1.5);
 
-    \draw[->] (0.65,0.3) -- (1.7,1.1);
+    \coordinate (C) at (3.5,1.5);
+    \coordinate (D) at (3.5,-1.5);
 
-    \draw[->] (0.65,-0.3) -- (1.7,-1.1);
+    \coordinate (T1) at (5.5,1.2);
+    \coordinate (T2) at (5.5,-1.2);
 
-    \draw[->] (2.3,1.1) -- (3.35,0.3);
+    % Edges
+    \draw[thick] (O1)--(A);
+    \draw[thick] (O2)--(B);
 
-    \draw[->] (2.3,-1.1) -- (3.35,-0.3);
+    \draw[thick] (A)--(C);
+    \draw[thick] (B)--(D);
 
-    \draw[->] (1.7, 0.7) -- (1.7, -0.7);
+    \draw[thick] (A)--(D);
+    \draw[thick] (B)--(C);
 
-    \node at (1,1.1) {$r_2$};
-    \node at (1,-1.1) {$r_1$};
-    \node at (3,1.1) {$r_3$};
-    \node at (3,-1.1) {$r_4$};
-    \node at (2.3, 0) {$r_5$};
-    \node at (-0.6, 0) {$\widehat{\mathcal{O}} = \widecheck{\mathcal{O}}$};
-    \node at (4.6, 0) {$\widehat{\mathcal{D}} = \widecheck{\mathcal{D}}$};
+    \draw[thick] (C)--(T1);
+    \draw[thick] (D)--(T2);
+
+    % Directions
+    \draw[->] (0.1,1.10)--(1.0,1.25);
+    \draw[->] (0.1,-1.10)--(1.0,-1.25);
+
+    \draw[->] (2.0,1.7)--(3.0,1.7);
+    \draw[->] (2.0,-1.7)--(3.0,-1.7);
+
+    \draw[->] (2.0,0.9) -- (2.8,-0.3);
+    \draw[->] (2.0,-0.9) -- (2.8,0.3);
+
+    \draw[->] (4.0,1.25)--(5.0,1.10);
+    \draw[->] (4.0,-1.25)--(5.0,-1.10);
+
+    % Labels
+    \node at (0.7,1.7) {$r_1$};
+    \node at (0.7,-1.7) {$r_2$};
+
+    \node at (2.5,2.0) {$r_3$};
+    \node at (2.5,-2.0) {$r_4$};
+
+    \node at (2.8,0.7) {$r_5$};
+    \node at (2.8,-0.7) {$r_6$};
+
+    \node at (4.7,1.7) {$r_7$};
+    \node at (4.7,-1.7) {$r_8$};
+
+    % OD labels
+    \node[left] at (O1) {$\widehat{\mathcal O}$};
+    \node[left] at (O2) {$\widecheck{\mathcal O}$};
+
+    \node[right] at (T1) {$\widehat{\mathcal D}$};
+    \node[right] at (T2) {$\widecheck{\mathcal D}$};
+
+    \fill (O1) circle (2pt);
+    \fill (O2) circle (2pt);
+    \fill (A) circle (2pt);
+    \fill (B) circle (2pt);
+    \fill (C) circle (2pt);
+    \fill (D) circle (2pt);
+    \fill (T1) circle (2pt);
+    \fill (T2) circle (2pt);
     \end{tikzpicture}
 
 \end{columns}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.1)  12 JUN 2026 01:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.1)  28 JUN 2026 10:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1071,7 +1071,38 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count393
 \@lastruleclass=\count394
 \@thisrulewidth=\dimen360
+) (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count395
+\lst@gtempboxa=\box89
+\lst@token=\toks57
+\lst@length=\count396
+\lst@currlwidth=\dimen361
+\lst@column=\count397
+\lst@pos=\count398
+\lst@lostspace=\dimen362
+\lst@width=\dimen363
+\lst@newlines=\count399
+\lst@lineno=\count400
+\lst@maxwidth=\dimen364
+ (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+) (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count401
+\lst@skipnumbers=\count402
+\lst@framebox=\box90
+) (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
 ))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+)
 ! Emergency stop.
 <*> ...ta/Laurea/laurea/presentazione/preamble.tex
                                                   
@@ -1079,11 +1110,11 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 
  
 Here is how much of TeX's memory you used:
- 29404 strings out of 467867
- 572981 string characters out of 5418819
- 987703 words of memory out of 5000000
- 57723 multiletter control sequences out of 15000+600000
+ 30584 strings out of 467867
+ 590915 string characters out of 5418819
+ 1008274 words of memory out of 5000000
+ 58891 multiletter control sequences out of 15000+600000
  629789 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,0n,123p,444b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,0n,123p,444b,461s stack positions out of 10000i,1000n,20000p,200000b,200000s
 !  ==> Fatal error occurred, no output PDF file produced!

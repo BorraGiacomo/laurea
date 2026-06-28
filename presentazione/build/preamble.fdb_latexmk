@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1781219860.12317 "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/preamble.tex" "build/preamble.pdf" "preamble" 1781219863.6506 2
+["pdflatex"] 1782635073.67854 "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/preamble.tex" "build/preamble.pdf" "preamble" 1782635078.89768 2
   "C:/Users/Bora/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1772376767 13333364 631a98ac5c978e8d5bd9af649bec950e ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/symbol/psyr.tfm" 1136768654 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768654 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
@@ -172,6 +172,10 @@
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrlogo.sty" 1770023710 2164 c44cdb4bc4dc3e1eacfb6a8e57830b70 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty" 1656236481 22555 6d8e155cfef6d82c3d5c742fea7c992e ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kvsetkeys.sty" 1665066333 13815 760b0c02f691ea230f5359c4e1de23a7 ""
+  "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.cfg" 1763898348 1865 73df61e45e2dfdc239ef37ab16d87d6a ""
+  "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.sty" 1763898348 81627 6a9c17f89f356724d1c9813b7025f0c1 ""
+  "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstmisc.sty" 1763898348 77105 002e983b638eadbf04e580642335f689 ""
+  "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstpatch.sty" 1763898348 353 9024412f43e92cd5b21fe9ded82d0610 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/mathabx/mathabx.sty" 1116399180 2145 5eaa46e7574d24ab999f2bebfa4b00a7 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/mathtools/mathtools.sty" 1728300125 62711 3b0ed1d68b598a75677c10d16646d5e5 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/mathtools/mhsetup.sty" 1728300125 5582 a43dedf8e5ec418356f1e9dfe5d29fc3 ""
@@ -209,9 +213,9 @@
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "build/preamble.aux" 0 -1 0 "pdflatex"
-  "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/preamble.tex" 1781219852 1369 a86c28f2238cad44b83e52f8351329f0 ""
-  "preamble.tex" 1781219852 1369 a86c28f2238cad44b83e52f8351329f0 ""
+  "build/preamble.aux" 1782635065 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/preamble.tex" 1782635037 1940 51b7a29e8ba7647b687d9bf2009e4b9d ""
+  "preamble.tex" 1782635037 1940 51b7a29e8ba7647b687d9bf2009e4b9d ""
   (generated)
   "build/preamble.aux"
   "build/preamble.log"

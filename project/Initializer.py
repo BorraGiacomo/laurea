@@ -86,9 +86,9 @@ class Initializer:
             thetas_check[:, idx] = theta_check[:, 0]
 
         if p.save_result:
-            label = ('Variazione del costo delle strade'
+            label = ('Variazione del costo di r4 e r5'
                     if p.operation == Operations.NASH_EQ_TIME_VARIATIONS
-                    else 'Variazione del numero di individui nella popolazione')
+                    else 'Variazione del numero di individui ')
 
             self.saveResultVariation(variation_values, time_hat, time_check, label)
             self.saveResultThetaVariation(variation_values, thetas_hat, 'hat', label)

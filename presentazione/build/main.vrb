@@ -1,13 +1,12 @@
-\frametitle{Modello della rete}
+\frametitle{Equilibrio di Nash}
 
 \begin{columns}[c]
 
     \column{0.5\textwidth}
 
     \begin{itemize}
-        \item Per calcolare Equilibrio di Nash cerchiamo il punto fisso di Brouwer di una specifica funzione
-        \item Applicazione iterata della funzione al risultato ottenuto da essa
-        \item Possibile analisi di paradossi di Braess, anche con 2 popolazioni
+        \item Analiticamente: Teorema del Punto Fisso di Brouwer
+        \item Numericamente: iterazioni controllate
     \end{itemize}
 
     \column{0.5\textwidth}

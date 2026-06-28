@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.1)  25 JUN 2026 22:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.1)  28 JUN 2026 16:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1272,7 +1272,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 \c@lstlisting=\count410
  (c:\Users\Bora\Desktop\universita\Laurea\laurea\presentazione\build\main.nav) (slides/title.tex
-<./figures/frontespizio2026.png, id=22, 587.5551pt x 222.8325pt>
+<./figures/frontespizio2026.png, id=26, 587.5551pt x 222.8325pt>
 File: ./figures/frontespizio2026.png Graphic file (type png)
 <use ./figures/frontespizio2026.png>
 Package pdftex.def Info: ./figures/frontespizio2026.png  used on input line 3.
@@ -1303,7 +1303,12 @@ LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inpu
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 ) [1
 
-{C:/Users/Bora/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./figures/frontespizio2026.png>]) (slides/modello.tex [2
+{C:/Users/Bora/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./figures/frontespizio2026.png>]) (slides/modello.tex
+Overfull \hbox (67.1185pt too wide) detected at line 97
+[] [][]\U/matha/m/n/10.95 ^^P []
+ []
+
+[2
 
 ]) (slides/equilibrio.tex
 \openout4 = `main.vrb'.
@@ -1311,84 +1316,112 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
  (c:\Users\Bora\Desktop\universita\Laurea\laurea\presentazione\build\main.vrb (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 15.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 14.
  (C:\Users\Bora\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.95pt on input line 15.
+(Font)              scaled to size 10.95pt on input line 14.
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 8.0pt on input line 15.
+(Font)              scaled to size 8.0pt on input line 14.
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
-(Font)              scaled to size 8.0pt on input line 16.
+(Font)              scaled to size 8.0pt on input line 15.
 ) [3
 
-{C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1-0.enc}]) (slides/Esempio1/rete.tex
-Overfull \vbox (7.59932pt too high) detected at line 43
+{C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1-0.enc}]) (slides/Esempio1/classico.tex [4
+
+]) (slides/Esempio1/rete.tex
+Overfull \vbox (7.59932pt too high) detected at line 58
  []
 
-[4
+[5
+
+]
+Overfull \vbox (7.59932pt too high) detected at line 58
+ []
+
+[6
 
 ]) (slides/Esempio1/tempo.tex
-<figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png, id=87, 474.0912pt x 399.1713pt>
-File: figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png Graphic file (type png)
-<use figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png>
-Package pdftex.def Info: figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png  used on input line 20.
-(pdftex.def)             Requested size: 173.33826pt x 145.94908pt.
-<figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png, id=88, 474.0912pt x 399.1713pt>
-File: figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png Graphic file (type png)
-<use figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png>
-Package pdftex.def Info: figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png  used on input line 20.
-(pdftex.def)             Requested size: 173.33826pt x 145.94908pt.
- [5
+<figures/Es1/grafico_hat/hat_theta_1_Variazione_del_costo_di_r6.png, id=106, 377.4903pt x 270.5307pt>
+File: figures/Es1/grafico_hat/hat_theta_1_Variazione_del_costo_di_r6.png Graphic file (type png)
+<use figures/Es1/grafico_hat/hat_theta_1_Variazione_del_costo_di_r6.png>
+Package pdftex.def Info: figures/Es1/grafico_hat/hat_theta_1_Variazione_del_costo_di_r6.png  used on input line 22.
+(pdftex.def)             Requested size: 109.20332pt x 78.262pt.
+<figures/Es1/grafico_hat/hat_theta_2_Variazione_del_costo_di_r6.png, id=107, 377.2494pt x 270.2898pt>
+File: figures/Es1/grafico_hat/hat_theta_2_Variazione_del_costo_di_r6.png Graphic file (type png)
+<use figures/Es1/grafico_hat/hat_theta_2_Variazione_del_costo_di_r6.png>
+Package pdftex.def Info: figures/Es1/grafico_hat/hat_theta_2_Variazione_del_costo_di_r6.png  used on input line 22.
+(pdftex.def)             Requested size: 109.20332pt x 78.2418pt.
+<figures/Es1/grafico_hat/hat_theta_3_Variazione_del_costo_di_r6.png, id=108, 377.9721pt x 270.2898pt>
+File: figures/Es1/grafico_hat/hat_theta_3_Variazione_del_costo_di_r6.png Graphic file (type png)
+<use figures/Es1/grafico_hat/hat_theta_3_Variazione_del_costo_di_r6.png>
+Package pdftex.def Info: figures/Es1/grafico_hat/hat_theta_3_Variazione_del_costo_di_r6.png  used on input line 22.
+(pdftex.def)             Requested size: 109.20332pt x 78.0892pt.
+<figures/Es1/grafico_main_check_Variazione_del_costo_di_r6.png, id=109, 403.9893pt x 327.3831pt>
+File: figures/Es1/grafico_main_check_Variazione_del_costo_di_r6.png Graphic file (type png)
+<use figures/Es1/grafico_main_check_Variazione_del_costo_di_r6.png>
+Package pdftex.def Info: figures/Es1/grafico_main_check_Variazione_del_costo_di_r6.png  used on input line 22.
+(pdftex.def)             Requested size: 173.33496pt x 140.46725pt.
+ [7
 
- <./figures/Es1/grafico_main_hat_Variazione_del_costo_delle_strade.png> <./figures/Es1/grafico_main_check_Variazione_del_costo_delle_strade.png>]) (slides/Esempio1/numero_veicoli.tex
-<figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png, id=100, 496.7358pt x 399.1713pt>
-File: figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png Graphic file (type png)
-<use figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png>
-Package pdftex.def Info: figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png  used on input line 20.
-(pdftex.def)             Requested size: 173.33826pt x 139.29178pt.
-<figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png, id=101, 480.8364pt x 399.1713pt>
-File: figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png Graphic file (type png)
-<use figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png>
-Package pdftex.def Info: figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png  used on input line 20.
-(pdftex.def)             Requested size: 173.33826pt x 143.89645pt.
- [6
+ <./figures/Es1/grafico_hat/hat_theta_1_Variazione_del_costo_di_r6.png> <./figures/Es1/grafico_hat/hat_theta_2_Variazione_del_costo_di_r6.png> <./figures/Es1/grafico_hat/hat_theta_3_Variazione_del_costo_di_r6.png> <./figures/Es1/grafico_main_check_Variazione_del_costo_di_r6.png>]) (slides/Esempio1/numero_veicoli.tex
+<figures/Es1/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_check.png, id=124, 377.7312pt x 270.5307pt>
+File: figures/Es1/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_check.png Graphic file (type png)
+<use figures/Es1/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_check.png>
+Package pdftex.def Info: figures/Es1/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_check.png  used on input line 22.
+(pdftex.def)             Requested size: 109.20332pt x 78.20833pt.
+<figures/Es1/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_check.png, id=125, 377.2494pt x 270.5307pt>
+File: figures/Es1/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_check.png Graphic file (type png)
+<use figures/Es1/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_check.png>
+Package pdftex.def Info: figures/Es1/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_check.png  used on input line 22.
+(pdftex.def)             Requested size: 109.20332pt x 78.31154pt.
+<figures/Es1/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_check.png, id=126, 377.2494pt x 270.2898pt>
+File: figures/Es1/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_check.png Graphic file (type png)
+<use figures/Es1/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_check.png>
+Package pdftex.def Info: figures/Es1/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_check.png  used on input line 22.
+(pdftex.def)             Requested size: 109.20332pt x 78.2418pt.
+<figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_check.png, id=127, 403.5075pt x 327.1422pt>
+File: figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_check.png Graphic file (type png)
+<use figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_check.png>
+Package pdftex.def Info: figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_check.png  used on input line 22.
+(pdftex.def)             Requested size: 173.33496pt x 140.52863pt.
+ [8
 
- <./figures/Es1/grafico_main_hat_Variazione_del_numero_di_individui_nella_popolazione.png> <./figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_nella_popolazione.png>]) (slides/Estensione/rete.tex
-Overfull \hbox (2.86595pt too wide) in paragraph at lines 73--73
+ <./figures/Es1/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_check.png> <./figures/Es1/grafico_hat/hat_theta_2_Variazione_del_numero_di_individui_check.png> <./figures/Es1/grafico_hat/hat_theta_3_Variazione_del_numero_di_individui_check.png> <./figures/Es1/grafico_main_check_Variazione_del_numero_di_individui_check.png>]) (slides/Estensione/rete.tex
+Overfull \hbox (2.86595pt too wide) in paragraph at lines 66--66
  [] 
  []
 
-[7
+[9
 
 ]) (slides/Estensione/modello_esteso1.tex
-<figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png, id=124, 400.3758pt x 326.6604pt>
-File: figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png Graphic file (type png)
-<use figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png>
-Package pdftex.def Info: figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png  used on input line 24.
-(pdftex.def)             Requested size: 173.33826pt x 141.4282pt.
-<figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png, id=125, 399.894pt x 327.1422pt>
-File: figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png Graphic file (type png)
-<use figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png>
-Package pdftex.def Info: figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png  used on input line 24.
-(pdftex.def)             Requested size: 173.33826pt x 141.80153pt.
- [8
+<figures/estensione/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png, id=151, 403.9893pt x 327.8649pt>
+File: figures/estensione/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png Graphic file (type png)
+<use figures/estensione/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png>
+Package pdftex.def Info: figures/estensione/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png  used on input line 24.
+(pdftex.def)             Requested size: 173.33826pt x 140.67398pt.
+<figures/estensione2/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png, id=152, 404.2302pt x 327.1422pt>
+File: figures/estensione2/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png Graphic file (type png)
+<use figures/estensione2/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png>
+Package pdftex.def Info: figures/estensione2/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png  used on input line 24.
+(pdftex.def)             Requested size: 173.33826pt x 140.28403pt.
+ [10
 
- <./figures/estensione/grafico_main_hat_Variazione_del_costo_delle_strade.png> <./figures/estensione2/grafico_main_hat_Variazione_del_costo_delle_strade.png>]) (slides/Estensione/modello_esteso2.tex
-<figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png, id=137, 400.3758pt x 326.9013pt>
-File: figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png Graphic file (type png)
-<use figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png>
-Package pdftex.def Info: figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png  used on input line 25.
-(pdftex.def)             Requested size: 173.33826pt x 141.5325pt.
-<figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png, id=138, 400.3758pt x 326.4195pt>
-File: figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png Graphic file (type png)
-<use figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png>
-Package pdftex.def Info: figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png  used on input line 25.
-(pdftex.def)             Requested size: 173.33826pt x 141.3239pt.
- [9
+ <./figures/estensione/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png> <./figures/estensione2/grafico_main_hat_Variazione_del_costo_di_r4_e_r5.png>]) (slides/Estensione/modello_esteso2.tex
+<figures/estensione/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png, id=164, 403.7484pt x 327.8649pt>
+File: figures/estensione/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png Graphic file (type png)
+<use figures/estensione/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png>
+Package pdftex.def Info: figures/estensione/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png  used on input line 25.
+(pdftex.def)             Requested size: 173.33826pt x 140.76402pt.
+<figures/estensione2/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png, id=165, 403.9893pt x 327.624pt>
+File: figures/estensione2/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png Graphic file (type png)
+<use figures/estensione2/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png>
+Package pdftex.def Info: figures/estensione2/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png  used on input line 25.
+(pdftex.def)             Requested size: 173.33826pt x 140.57062pt.
+ [11
 
- <./figures/estensione/grafico_main_check_Variazione_del_costo_delle_strade.png> <./figures/estensione2/grafico_main_check_Variazione_del_costo_delle_strade.png>])
+ <./figures/estensione/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png> <./figures/estensione2/grafico_main_check_Variazione_del_costo_di_r4_e_r5.png>])
 \tf@nav=\write6
 \openout6 = `main.nav'.
 
@@ -1404,20 +1437,20 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8EDC2C3AAA287ECDDA2F5E9F8491556B;222.
+(rerunfilecheck)             Checksum: 532659AA5B198093A35C7BC9B26DD08F;315.
  ) 
 Here is how much of TeX's memory you used:
- 33199 strings out of 467867
- 647182 string characters out of 5418819
- 1258226 words of memory out of 5000000
- 61321 multiletter control sequences out of 15000+600000
+ 33294 strings out of 467867
+ 650320 string characters out of 5418819
+ 1263336 words of memory out of 5000000
+ 61408 multiletter control sequences out of 15000+600000
  649391 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 133i,20n,126p,457b,1826s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi657\matha10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi600\matha8.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi657\mathx10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1440.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0600.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1728.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1000.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1000.pk><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on c:\Users\Bora\Desktop\universita\Laurea\laurea\presentazione\build\main.pdf (9 pages, 1045096 bytes).
+ 133i,16n,126p,457b,1826s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi600\matha8.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi657\matha10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/public/mathabx/dpi657\mathx10.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1440.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0600.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1728.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1000.pk> <C:\Users\Bora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1000.pk><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on c:\Users\Bora\Desktop\universita\Laurea\laurea\presentazione\build\main.pdf (11 pages, 1256937 bytes).
 PDF statistics:
- 448 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 500000)
- 110 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 467 PDF objects out of 1000 (max. 8388607)
+ 26 named destinations out of 1000 (max. 500000)
+ 138 words of extra memory for PDF output out of 10000 (max. 10000000)
 
