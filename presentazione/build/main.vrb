@@ -5,8 +5,8 @@
     \column{0.5\textwidth}
 
     \begin{itemize}
-        \item Analiticamente: Teorema del Punto Fisso di Brouwer
-        \item Numericamente: iterazioni controllate
+        \item Analiticamente:\\Teorema del Punto Fisso di Brouwer
+        \item Numericamente:\\Iterazioni Controllate
     \end{itemize}
 
     \column{0.5\textwidth}

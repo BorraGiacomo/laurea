@@ -1,0 +1,10 @@
+- Rete arbitraria, Costo di ciascuna strada, togli "Percorsi:"
+- Eq di Nash (a capo con TH di Brouwer)
+- (Sotto al posto di Calcolo dell'Equilibrio di Nash metti Equilibrio di Nash per due popolazioni)
+- Aumentando il costo di r6 per la popolazione hat i tempi di viaggio per check migliorano
+- Aumentando il numero di veicoli check si perde  il comportamento paradossale
+- Una critica costruttiva: Precedenze
+- check conosce solo …
+- hat conosce tutto
+- conosci tutto
+- effetto della precedenza nell'ultima slide
