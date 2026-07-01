@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1782889612.9281 "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/main.tex" "build/main.pdf" "main" 1782889628.25959 0
+["pdflatex"] 1782923678.18918 "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/main.tex" "build/main.pdf" "main" 1782923696.72007 0
   "C:/Users/Bora/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1780503218 96514 87ff68f1f0f1d389dc37266f6a951d54 ""
   "C:/Users/Bora/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/eccc1000.pk" 1781221091 25100 3bc9bf624b2eddbfd07882a943e46053 ""
   "C:/Users/Bora/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecsi1095.pk" 1780514310 26868 fe8f69474431c4f4f47cd8e38792897c ""
@@ -299,10 +299,10 @@
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/Bora/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "build/main.aux" 1782889627 2787 07d6bf8364d486218acac36cbe69ae62 "pdflatex"
-  "build/main.nav" 1782889627 1580 a4e9760ea0b34c31f6257c97743f2bbc "pdflatex"
-  "build/main.out" 1782889627 315 532659aa5b198093a35c7bc9b26dd08f "pdflatex"
-  "build/main.vrb" 1782889621 589 7c74f158db329c88a26f4d13f0d7e30e "pdflatex"
+  "build/main.aux" 1782923695 2787 07d6bf8364d486218acac36cbe69ae62 "pdflatex"
+  "build/main.nav" 1782923695 1580 a4e9760ea0b34c31f6257c97743f2bbc "pdflatex"
+  "build/main.out" 1782923695 315 532659aa5b198093a35c7bc9b26dd08f "pdflatex"
+  "build/main.vrb" 1782923687 589 7c74f158db329c88a26f4d13f0d7e30e "pdflatex"
   "c:/Users/Bora/Desktop/universita/Laurea/laurea/presentazione/main.tex" 1782654356 520 3553fa02bcd7aa85889f0dd6bf547bc8 ""
   "figures/Es1/grafico_hat/hat_theta_1_Variazione_del_costo_di_r6.png" 1782655943 73706 bff54889a50e3b33296a2d1848a53a47 ""
   "figures/Es1/grafico_hat/hat_theta_1_Variazione_del_numero_di_individui_check.png" 1782655992 86986 4f66140c697b04c1959915a462e4207f ""
@@ -323,7 +323,7 @@
   "slides/Esempio1/numero_veicoli.tex" 1782842298 922 6d6a5ba9dc16fd3c4d3154c1a91f4067 ""
   "slides/Esempio1/rete.tex" 1782655078 1116 57541c74fef3f8f79493eb14db680b9a ""
   "slides/Esempio1/tempo.tex" 1782842298 877 08d61fb08ec26bc3a1b29fea55fa978a ""
-  "slides/Estensione/modello_esteso1.tex" 1782889608 700 d3face4e353810e10ccc11da46f0765a ""
+  "slides/Estensione/modello_esteso1.tex" 1782923675 703 0613bb8d8bfc0a2b1c9d9fc9fe156b7d ""
   "slides/Estensione/modello_esteso2.tex" 1782842298 670 78119196011653a7f3770fc6099c8ac9 ""
   "slides/Estensione/rete.tex" 1782842298 1381 f3b85fb47d21501cace1f25279e3e0dd ""
   "slides/equilibrio.tex" 1782888455 642 6d0b01af7ce0a6bc40d64eb7144c8c72 ""
